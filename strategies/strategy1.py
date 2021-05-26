@@ -14,14 +14,14 @@ number_of_machines = 5
 
 machine_list = environment(number_of_machines)
 
-number_of_goes = 100
-for i in range(int(number_of_goes / 2)):
+number_of_trials = 100
+for i in range(int(number_of_trials / 2)):
     random_machine_number = randint(0, number_of_machines - 1)
     machine_list[random_machine_number].run()
 
 best_machine_index = best_machine(machine_list)
 
-for i in range(int(number_of_goes / 2)):
+for i in range(int(number_of_trials / 2)):
     machine_list[best_machine_index].run()
 
 print(total_value(machine_list))

@@ -68,5 +68,16 @@ def best_machine(machine_list: list):
     :return: the index of the machine with the highest realised expecation
     """
     realised_expecations = [machine.realised_expecation() for machine in
-                           machine_list]
+                            machine_list]
     return realised_expecations.index(max(realised_expecations))
+
+
+def worst_machine(machine_list: list):
+    """
+    Calculate the machine with the lowest realised expecation
+    :param machine_list:
+    :return: the index of the machine with the lowest realised expecation
+    """
+    realised_expecations = [machine.realised_expecation() for machine in
+                            machine_list]
+    return realised_expecations.index(min(realised_expecations))
