@@ -11,7 +11,8 @@ class Machine:
         """Initialize the class.
 
         :param expectation: actual expectation for bernouli realisations
-        :param name: name of the machine"""
+        :param name: name of the machine
+        """
         self.expectation = expectation
         self.realisations = []
         self.name = name
@@ -51,7 +52,7 @@ def environment(n: int):
 
 
 def total_value(machine_list: list):
-    """Calculates the value gained given a list of machines.
+    """Calculate the value gained given a list of machines.
 
     :param machine_list: list of machines
     :return calculates the total value gained from the machines
