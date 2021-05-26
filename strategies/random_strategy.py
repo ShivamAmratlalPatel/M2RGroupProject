@@ -1,4 +1,4 @@
-"""The main file."""
+"""This strategy randomly picks a slot machine to run"""
 from random import randint
 
 from bandits import environment, total_value
