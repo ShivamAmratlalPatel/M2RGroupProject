@@ -55,7 +55,18 @@ def total_value(machine_list: list):
     """Calculate the value gained given a list of machines.
 
     :param machine_list: list of machines
-    :return calculates the total value gained from the machines
+    :return the total value gained from the machines
     """
     machine_values = [sum(i.realisations) for i in machine_list]
     return int(sum(machine_values))
+
+
+def best_machine(machine_list: list):
+    """
+    Calculate the machine with the highest realised expecation
+    :param machine_list:
+    :return: the index of the machine with the highest realised expecation
+    """
+    realised_expecations = [machine.realised_expecation() for machine in
+                           machine_list]
+    return realised_expecations.index(max(realised_expecations))
