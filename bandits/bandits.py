@@ -23,7 +23,7 @@ class Machine:
         # Running a bernoulli trial
         self.realisations.append(bernoulli.rvs(size=1, p=self.expectation))
 
-    def realised_expecation(self):
+    def realised_expectation(self):
         """Return the realised expectation."""
         # Try to calculate the realised expectations.
         try:
@@ -79,10 +79,10 @@ def best_machine(machine_list: list):
     """
     # Create a list of all the realised expectations.
     # Should implement a check if any of the machines have not had any trials.
-    realised_expecations = [machine.realised_expecation() for machine in
-                            machine_list]
+    realised_expectations = [machine.realised_expectation() for machine in
+                             machine_list]
     # Return the index of the max of these realised expectations.
-    return realised_expecations.index(max(realised_expecations))
+    return realised_expectations.index(max(realised_expectations))
 
 
 def worst_machine(machine_list: list):
@@ -94,7 +94,7 @@ def worst_machine(machine_list: list):
     """
     # Create a list of all the realised expectations.
     # Should implement a check if any of the machines have not had any trials.
-    realised_expecations = [machine.realised_expecation() for machine in
+    realised_expecations = [machine.realised_expectation() for machine in
                             machine_list]
     # Return the index of the min of these realised expectations.
     return realised_expecations.index(min(realised_expecations))
