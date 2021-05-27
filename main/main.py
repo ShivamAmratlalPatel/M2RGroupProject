@@ -16,6 +16,7 @@ for i in range(number_of_iterations):
     random_strat.append(random_strategy(machine_no, trial_no))
     strat1.append(strategy1(machine_no, trial_no))
     strat2.append(strategy2(machine_no, trial_no))
+
 print(mean(random_strat))
 print(mean(strat1))
 print(mean(strat2))
