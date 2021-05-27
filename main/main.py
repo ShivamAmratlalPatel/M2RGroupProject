@@ -1,7 +1,7 @@
 """The main file for testing."""
 from statistics import mean
 
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import bar, grid, show
 
 from strategies import *
 
@@ -20,7 +20,7 @@ for i in range(number_of_iterations):
     strat1.append(strategy1(machine_no, trial_no))
     strat2.append(strategy2(machine_no, trial_no))
 
-plt.bar(x=strategy_list,
-        height=[mean(random_strat), mean(strat1), mean(strat2)])
-plt.grid()
-plt.show()
+bar(x=strategy_list,
+    height=[mean(random_strat), mean(strat1), mean(strat2)])
+grid()
+show()
