@@ -1,6 +1,7 @@
 """The main file for testing."""
-from strategies import random_strategy, strategy1, strategy2
 from statistics import mean
+
+from strategies import random_strategy, strategy1, strategy2
 
 machine_no = 10
 trial_no = 1000
