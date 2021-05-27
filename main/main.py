@@ -3,9 +3,7 @@ from statistics import mean
 
 import matplotlib.pyplot as plt
 
-from strategies.random_strategy import *
-from strategies.strategy1 import *
-from strategies.strategy2 import *
+from strategies import *
 
 machine_no = 10
 trial_no = 1000
