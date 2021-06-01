@@ -1,6 +1,7 @@
 """This file creates the Machine class which emulates a slot machine."""
 from random import random
 
+import numpy as np
 from scipy.stats import bernoulli
 
 
@@ -35,12 +36,32 @@ class Machine:
 
     def __repr__(self):
         """Return the name of the machine."""
-        # May need to be changed in future to give a more detialed response.
+        # May need to be changed in future to give a more detailed response.
         return self.name
 
     def __str__(self):
         """Return the name of the machine."""
         return self.name
+
+
+class ThompsonMachine(Machine):
+    def __init__(self, expectation: float, name: str):
+        super(ThompsonMachine, self).__init__(expectation, name)
+        self.alpha = 1
+        self.beta = 1
+        self.n = 0
+
+    def run(self):
+        self.n += 1
+        super(ThompsonMachine, self).run()
+        if self.realisations[-1] == 1:
+            self.alpha += 1
+        else:
+            self.beta += 1
+
+    def sample(self):
+        """ return a value sampled from the beta distribution """
+        return np.random.beta(self.alpha, self.beta)
 
 
 def environment(n: int):
@@ -98,3 +119,9 @@ def worst_machine(machine_list: list):
                             machine_list]
     # Return the index of the min of these realised expectations.
     return realised_expecations.index(min(realised_expecations))
+
+
+def random_argmax(value_list):
+    """ a random tie-breaking argmax"""
+    values = np.asarray(value_list)
+    return np.argmax(np.random.random(values.shape) * (values == values.max()))
