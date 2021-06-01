@@ -11,7 +11,7 @@ class Machine:
     def __init__(self, expectation: float, name: str, gaussian: bool):
         """Initialize the class.
 
-        :param expectation: actual expectation for Bernoulli realisations
+        :param expectation: actual expectation for realisations
         :param name: name of the machine
         """
         # Assigning values to class values.
@@ -21,7 +21,7 @@ class Machine:
         self.gaussian = gaussian
 
     def run(self):
-        """Return a bernoulli realisation of the machine if run."""
+        """Return a  realisation of the machine if run."""
         # Running a bernoulli trial
         if self.gaussian:
             realisation = norm.pdf(0, loc=self.expectation, scale=5)
@@ -53,13 +53,22 @@ class Machine:
 
 
 class ThompsonMachine(Machine):
+    """
+    Create a machine to be used specifically for the Thompson strategy.
+
+    This creates the same machine but also gives it alpha and beta
+    attributes which are the number of successes and fails respectively.
+    """
+
     def __init__(self, expectation: float, name: str, gaussian: bool):
+        """Initialise the machine."""
         super(ThompsonMachine, self).__init__(expectation, name, gaussian)
         self.alpha = 1
         self.beta = 1
         self.n = 0
 
     def run(self):
+        """Return a  realisation of the machine if run."""
         self.n += 1
         super(ThompsonMachine, self).run()
         if self.realisations[-1] > 0:
@@ -68,7 +77,7 @@ class ThompsonMachine(Machine):
             self.beta += 1
 
     def sample(self):
-        """ return a value sampled from the beta distribution """
+        """Return a value sampled from the beta distribution."""
         return np.random.beta(self.alpha, self.beta)
 
 
@@ -132,7 +141,25 @@ def worst_machine(machine_list: list):
 
 
 def random_argmax(value_list):
-    """ a random tie-breaking argmax"""
+    """Return the maximum machine for Thompson strategy."""
     values = np.asarray(value_list)
     return np.argmax(
         np.random.random(values.shape) * (values == values.max(initial=1)))
+
+
+def regret(machine_list):
+    """Calculate the regret from a list of machines."""
+    expectation_list = []
+    mean_machines = []
+    trial_numbers = []
+    for machine in machine_list:
+        expectation = machine.expectation
+        trial_numbers.append(len(machine.realisations))
+        expectation_list.append(machine.realised_expectation() * expectation)
+        mean_machines.append(expectation)
+
+    highest_mean: float = max(mean_machines)
+    number_of_trials: int = sum(trial_numbers)
+    sum_of_expectations_times_means: float = sum(expectation_list)
+
+    return highest_mean * number_of_trials - sum_of_expectations_times_means

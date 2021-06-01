@@ -1,4 +1,9 @@
 """
+Strategy uses the best possible machine given a probability.
+
+This strategy uses a prior distribution of a uniform distribution and
+computes beta posterior distributions. It then picks the beta distribution
+which would give the chance of the highest value.
 """
 from random import randint
 from random import random
@@ -8,7 +13,7 @@ from bandits import total_value, ThompsonMachine, random_argmax
 
 def thompson_sampling(number_of_machines: int, number_of_trials: int):
     """
-
+    Return the total value of the thompson sampling stategy.
 
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
