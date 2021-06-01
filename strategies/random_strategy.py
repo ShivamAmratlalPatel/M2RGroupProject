@@ -13,11 +13,11 @@ def random_strategy(number_of_machines: int, number_of_trials: int):
     :return: value gained from strategy
     """
     # Initialise the environment.
-    machine_list = environment(number_of_machines)
+    machine_list = environment(number_of_machines, True)
 
     # Randomly pick a machine for each trial.
     for i in range(number_of_trials):
-        random_machine_number = randint(0, number_of_machines - 1)
+        random_machine_number: int = randint(0, number_of_machines - 1)
         machine_list[random_machine_number].run()
 
     # Calculate the total value generated.

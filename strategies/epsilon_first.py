@@ -19,12 +19,13 @@ def epsilon_first(number_of_machines: int, number_of_trials: int):
     Then runs the machine with the highest realised expectation for the rest
     of the trials.
 
+    :type number_of_trials: int
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
     :return: value gained from strategy
     """
     # Initialise the environment
-    machine_list = environment(number_of_machines)
+    machine_list = environment(number_of_machines, True)
 
     # Do half the number of trials randomly.
     for i in range(int(number_of_trials / 2)):

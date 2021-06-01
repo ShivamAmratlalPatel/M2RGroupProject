@@ -3,7 +3,8 @@ from statistics import mean
 
 from matplotlib.pyplot import bar, grid, show
 
-from strategies import *
+from strategies import random_strategy, epsilon_first, strategy2, \
+    thompson_sampling
 
 machine_no = 10
 trial_no = 1000
@@ -14,7 +15,7 @@ strat2 = []
 thompson = []
 strategy_list = ["random", "strat1", "strat2", "thompson"]
 
-number_of_iterations = 100
+number_of_iterations = 1
 
 for i in range(number_of_iterations):
     random_strat.append(random_strategy(machine_no, trial_no))

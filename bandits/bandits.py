@@ -2,27 +2,35 @@
 from random import random
 
 import numpy as np
-from scipy.stats import bernoulli
+from scipy.stats import norm, bernoulli
 
 
 class Machine:
     """Create the machine class."""
 
-    def __init__(self, expectation: float, name: str):
+    def __init__(self, expectation: float, name: str, gaussian: bool):
         """Initialize the class.
 
-        :param expectation: actual expectation for bernouli realisations
+        :param expectation: actual expectation for Bernoulli realisations
         :param name: name of the machine
         """
         # Assigning values to class values.
         self.expectation = expectation
         self.realisations = []
         self.name = name
+        self.gaussian = gaussian
 
     def run(self):
         """Return a bernoulli realisation of the machine if run."""
         # Running a bernoulli trial
-        self.realisations.append(bernoulli.rvs(size=1, p=self.expectation))
+        if self.gaussian:
+            realisation = norm.pdf(0, loc=self.expectation, scale=5)
+            if realisation > 0:
+                self.realisations.append(realisation)
+            else:
+                self.realisations.append(0)
+        else:
+            self.realisations.append(bernoulli.rvs(size=1, p=self.expectation))
 
     def realised_expectation(self):
         """Return the realised expectation."""
@@ -45,8 +53,8 @@ class Machine:
 
 
 class ThompsonMachine(Machine):
-    def __init__(self, expectation: float, name: str):
-        super(ThompsonMachine, self).__init__(expectation, name)
+    def __init__(self, expectation: float, name: str, gaussian: bool):
+        super(ThompsonMachine, self).__init__(expectation, name, gaussian)
         self.alpha = 1
         self.beta = 1
         self.n = 0
@@ -54,7 +62,7 @@ class ThompsonMachine(Machine):
     def run(self):
         self.n += 1
         super(ThompsonMachine, self).run()
-        if self.realisations[-1] == 1:
+        if self.realisations[-1] > 0:
             self.alpha += 1
         else:
             self.beta += 1
@@ -64,19 +72,21 @@ class ThompsonMachine(Machine):
         return np.random.beta(self.alpha, self.beta)
 
 
-def environment(n: int):
+def environment(n: int, gaussian=False):
     """
     Create the environment.
 
-    :param n: number of slot machines
-    :return: list of n machines
+    :param n: list of machines
+    :param gaussian: whether to use a gaussian or Bernoulli distribution
+    :return the total value gained from the machines
     """
     # Initialise empty machine list
     machine_list = []
     # Add n machines with a random expectation.
     for i in range(n):
         machine_list.append(
-            Machine(expectation=random(), name="Machine " + str(i)))
+            Machine(expectation=random(), name="Machine " + str(i),
+                    gaussian=gaussian))
     return machine_list
 
 
@@ -93,10 +103,10 @@ def total_value(machine_list: list):
 
 def best_machine(machine_list: list):
     """
-    Calculate the machine with the highest realised expecation.
+    Calculate the machine with the highest realised expectation.
 
     :param machine_list:
-    :return: the index of the machine with the highest realised expecation
+    :return: the index of the machine with the highest realised expectation
     """
     # Create a list of all the realised expectations.
     # Should implement a check if any of the machines have not had any trials.
@@ -108,20 +118,21 @@ def best_machine(machine_list: list):
 
 def worst_machine(machine_list: list):
     """
-    Calculate the machine with the lowest realised expecation.
+    Calculate the machine with the lowest realised expectation.
 
     :param machine_list:
-    :return: the index of the machine with the lowest realised expecation
+    :return: the index of the machine with the lowest realised expectation
     """
     # Create a list of all the realised expectations.
     # Should implement a check if any of the machines have not had any trials.
-    realised_expecations = [machine.realised_expectation() for machine in
-                            machine_list]
+    realised_expectations = [machine.realised_expectation() for machine in
+                             machine_list]
     # Return the index of the min of these realised expectations.
-    return realised_expecations.index(min(realised_expecations))
+    return realised_expectations.index(min(realised_expectations))
 
 
 def random_argmax(value_list):
     """ a random tie-breaking argmax"""
     values = np.asarray(value_list)
-    return np.argmax(np.random.random(values.shape) * (values == values.max()))
+    return np.argmax(
+        np.random.random(values.shape) * (values == values.max(initial=1)))

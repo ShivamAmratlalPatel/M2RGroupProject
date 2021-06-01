@@ -20,7 +20,8 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
     # Add n machines with a random expectation.
     for i in range(number_of_machines):
         machine_list.append(
-            ThompsonMachine(expectation=random(), name="Machine " + str(i)))
+            ThompsonMachine(expectation=random(), name="Machine " + str(i),
+                            gaussian=True))
 
     random_machine_number = randint(0, number_of_machines - 1)
     machine_list[random_machine_number].run()
