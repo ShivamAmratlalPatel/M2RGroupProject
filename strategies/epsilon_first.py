@@ -8,7 +8,7 @@ trials.
 
 from random import randint
 
-from bandits import environment, total_value, best_machine
+from bandits import environment, best_machine
 
 
 def epsilon_first(number_of_machines: int, number_of_trials: int):
@@ -22,10 +22,10 @@ def epsilon_first(number_of_machines: int, number_of_trials: int):
     :type number_of_trials: int
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
-    :return: value gained from strategy
+    :return: machine list after strategy
     """
     # Initialise the environment
-    machine_list = environment(number_of_machines, True)
+    machine_list = environment(number_of_machines, False)
 
     # Do half the number of trials randomly.
     for i in range(int(number_of_trials / 2)):
@@ -39,5 +39,5 @@ def epsilon_first(number_of_machines: int, number_of_trials: int):
     for i in range(int(number_of_trials / 2)):
         machine_list[best_machine_index].run()
 
-    # Print the total value gained.
-    return total_value(machine_list)
+    # Return the machine list.
+    return machine_list

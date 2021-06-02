@@ -8,7 +8,7 @@ which would give the chance of the highest value.
 from random import randint
 from random import random
 
-from bandits import total_value, ThompsonMachine, random_argmax
+from bandits import ThompsonMachine, random_argmax
 
 
 def thompson_sampling(number_of_machines: int, number_of_trials: int):
@@ -17,7 +17,7 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
 
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
-    :return: value gained from strategy
+    :return: machine list after trials
     """
     # Initialise the environment
     # Initialise empty machine list
@@ -26,7 +26,7 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
     for i in range(number_of_machines):
         machine_list.append(
             ThompsonMachine(expectation=random(), name="Machine " + str(i),
-                            gaussian=True))
+                            gaussian=False))
 
     random_machine_number = randint(0, number_of_machines - 1)
     machine_list[random_machine_number].run()
@@ -36,5 +36,5 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
             [machine.sample() for machine in machine_list])
         machine_list[machine_to_run].run()
 
-    # Print the total value gained.
-    return total_value(machine_list)
+    # Return the machine list.
+    return machine_list

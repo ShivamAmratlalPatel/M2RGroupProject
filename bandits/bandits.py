@@ -13,6 +13,7 @@ class Machine:
 
         :param expectation: actual expectation for realisations
         :param name: name of the machine
+        :param gaussian: whether to use gaussian distribution or not
         """
         # Assigning values to class values.
         self.expectation = expectation
@@ -40,7 +41,7 @@ class Machine:
         except ZeroDivisionError:
             # If there have been no realisations
             # then return string rather than error.
-            return "No realisations have been done for " + self.name
+            return 0
 
     def __repr__(self):
         """Return the name of the machine."""
@@ -79,6 +80,9 @@ class ThompsonMachine(Machine):
     def sample(self):
         """Return a value sampled from the beta distribution."""
         return np.random.beta(self.alpha, self.beta)
+
+    def realised_expectation(self):
+        super(ThompsonMachine, self).realised_expectation()
 
 
 def environment(n: int, gaussian=False):
@@ -155,7 +159,7 @@ def regret(machine_list):
     for machine in machine_list:
         expectation = machine.expectation
         trial_numbers.append(len(machine.realisations))
-        expectation_list.append(machine.realised_expectation() * expectation)
+        expectation_list.append(float(sum(machine.realisations)))
         mean_machines.append(expectation)
 
     highest_mean: float = max(mean_machines)

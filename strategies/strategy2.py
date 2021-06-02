@@ -6,7 +6,7 @@ trials. Then discards the machine with the worst realised expectation.
 This process then continues till their is one machine left for a round.
 """
 
-from bandits import environment, total_value, worst_machine
+from bandits import environment, worst_machine
 
 
 def strategy2(number_of_machines: int, number_of_trials: int):
@@ -19,13 +19,13 @@ def strategy2(number_of_machines: int, number_of_trials: int):
 
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
-    :return: value gained from strategy
+    :return: machine list after strategy
     """
     # Calculate the number of trials per round.
     number_of_trials_per_round = int(number_of_trials / number_of_machines)
 
     # Initialise the environment
-    machine_list = environment(number_of_machines, True)
+    machine_list = environment(number_of_machines, False)
 
     # Initialise empty list for discarded machines.
     discarded_list = []
@@ -48,5 +48,5 @@ def strategy2(number_of_machines: int, number_of_trials: int):
         # Add it to the discarded list.
         discarded_list.append(machine_to_be_removed)
 
-    # Calculate the total value gained.
-    return total_value(discarded_list)
+    # Return the machine list.
+    return discarded_list
