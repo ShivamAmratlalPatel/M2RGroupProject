@@ -8,7 +8,7 @@ trials.
 
 from random import randint
 
-from bandits import environment, best_machine
+from bandits import Environment, best_machine
 
 
 def epsilon_first(number_of_machines: int, number_of_trials: int):
@@ -22,22 +22,24 @@ def epsilon_first(number_of_machines: int, number_of_trials: int):
     :type number_of_trials: int
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
-    :return: machine list after strategy
+    :return: environment of testing
     """
-    # Initialise the environment
-    machine_list = environment(number_of_machines, False)
+    # Initialise the environment.
+    epsilon_environment = Environment(number_of_machines, False)
 
     # Do half the number of trials randomly.
     for i in range(int(number_of_trials / 2)):
         random_machine_number = randint(0, number_of_machines - 1)
-        machine_list[random_machine_number].run()
+        epsilon_environment.machine_list[random_machine_number].run()
+        epsilon_environment.update()
 
-    # Calculate the best machine
-    best_machine_index = best_machine(machine_list)
+    # Calculate the best machine.
+    best_machine_index = best_machine(epsilon_environment.machine_list)
 
     # Do the rest of the trials on the final half.
     for i in range(int(number_of_trials / 2)):
-        machine_list[best_machine_index].run()
+        epsilon_environment.machine_list[best_machine_index].run()
+        epsilon_environment.update()
 
-    # Return the machine list.
-    return machine_list
+    # Return the environment.
+    return epsilon_environment

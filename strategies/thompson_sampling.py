@@ -5,10 +5,9 @@ This strategy uses a prior distribution of a uniform distribution and
 computes beta posterior distributions. It then picks the beta distribution
 which would give the chance of the highest value.
 """
-from random import randint
-from random import random
+from random import randint, random
 
-from bandits import ThompsonMachine, random_argmax
+from bandits import ThompsonMachine, random_argmax, Environment
 
 
 def thompson_sampling(number_of_machines: int, number_of_trials: int):
@@ -17,24 +16,24 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
 
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
-    :return: machine list after trials
+    :return: thompson environment
     """
     # Initialise the environment
-    # Initialise empty machine list
-    machine_list = []
-    # Add n machines with a random expectation.
+    thompson_environment = Environment(number_of_machines, False)
+    thompson_environment.machine_list = []
     for i in range(number_of_machines):
-        machine_list.append(
+        thompson_environment.machine_list.append(
             ThompsonMachine(expectation=random(), name="Machine " + str(i),
                             gaussian=False))
 
     random_machine_number = randint(0, number_of_machines - 1)
-    machine_list[random_machine_number].run()
+    thompson_environment.machine_list[random_machine_number].run()
 
     for i in range(number_of_trials - 1):
         machine_to_run = random_argmax(
-            [machine.sample() for machine in machine_list])
-        machine_list[machine_to_run].run()
+            [machine.sample() for machine in
+             thompson_environment.machine_list])
+        thompson_environment.machine_list[machine_to_run].run()
 
-    # Return the machine list.
-    return machine_list
+    # Return the environment.
+    return thompson_environment

@@ -41,7 +41,7 @@ class Machine:
             return sum(self.realisations) / len(self.realisations)
         except ZeroDivisionError:
             # If there have been no realisations
-            # then return string rather than error.
+            # then return 0 rather than error.
             return 0
 
     def __repr__(self):
@@ -86,22 +86,23 @@ class ThompsonMachine(Machine):
         super(ThompsonMachine, self).realised_expectation()
 
 
-def environment(n: int, gaussian=False):
-    """
-    Create the environment.
+class UCBMachine(Machine):
+    def __init__(self, confidence_level, expectation: float, name: str,
+                 gaussian: bool):
+        super(UCBMachine, self).__init__(expectation, name, gaussian)
+        self.confidence_level = confidence_level
+        self.uncertainty = float('inf')
 
-    :param n: number of machines
-    :param gaussian: whether to use a gaussian or Bernoulli distribution
-    :return the total value gained from the machines
-    """
-    # Initialise empty machine list
-    machine_list = []
-    # Add n machines with a random expectation.
-    for i in range(n):
-        machine_list.append(
-            Machine(expectation=random(), name="Machine " + str(i),
-                    gaussian=gaussian))
-    return machine_list
+    def run(self):
+        super(UCBMachine, self).run()
+        self.uncertainty = self.confidence_level * (np.sqrt(
+            np.log(len(self.realisations) + 1) / len(self.realisations)))
+
+    def realised_expectation(self):
+        return super(UCBMachine, self).realised_expectation()
+
+    def sample(self):
+        return self.realised_expectation() + self.uncertainty
 
 
 def regret(machine_list):
@@ -133,6 +134,20 @@ class Environment:
 
     def update(self):
         self.regret.append(regret(self.machine_list))
+
+
+def uncertainty(machine: Machine, confidence_level, t):
+    """
+    Calculate the uncertainty in the estimate of this socket's mean.
+
+    :param machine: machine for uncertainty to be calculated for
+    :param confidence_level: confidence level set by user
+    :param t: current time step
+    :return: the uncertainty of machine at time t
+    """
+    if machine.realised_expectation() == 0:
+        return float('inf')
+    return confidence_level * (np.sqrt(np.log(t) / len(machine.realisations)))
 
 
 def total_value(machine_list: list):
