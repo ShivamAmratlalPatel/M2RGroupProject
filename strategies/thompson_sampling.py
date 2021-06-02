@@ -13,7 +13,7 @@ from bandits import total_value, ThompsonMachine, random_argmax
 
 def thompson_sampling(number_of_machines: int, number_of_trials: int):
     """
-    Return the total value of the thompson sampling stategy.
+    Return the total value of the thompson sampling strategy.
 
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
