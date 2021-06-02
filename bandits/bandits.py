@@ -20,6 +20,7 @@ class Machine:
         self.realisations = []
         self.name = name
         self.gaussian = gaussian
+        self.regret = []
 
     def run(self):
         """Return a  realisation of the machine if run."""
@@ -89,7 +90,7 @@ def environment(n: int, gaussian=False):
     """
     Create the environment.
 
-    :param n: list of machines
+    :param n: number of machines
     :param gaussian: whether to use a gaussian or Bernoulli distribution
     :return the total value gained from the machines
     """
@@ -101,6 +102,37 @@ def environment(n: int, gaussian=False):
             Machine(expectation=random(), name="Machine " + str(i),
                     gaussian=gaussian))
     return machine_list
+
+
+def regret(machine_list):
+    """Calculate the regret from a list of machines."""
+    expectation_list = []
+    mean_machines = []
+    trial_numbers = []
+    for machine in machine_list:
+        expectation = machine.expectation
+        trial_numbers.append(len(machine.realisations))
+        expectation_list.append(float(sum(machine.realisations)))
+        mean_machines.append(expectation)
+
+    highest_mean: float = max(mean_machines)
+    number_of_trials: int = sum(trial_numbers)
+    sum_of_expectations_times_means: float = sum(expectation_list)
+
+    return highest_mean * number_of_trials - sum_of_expectations_times_means
+
+
+class Environment:
+    def __init__(self, n: int, gaussian=False):
+        self.machine_list = []
+        for i in range(n):
+            self.machine_list.append(
+                Machine(expectation=random(), name="Machine " + str(i),
+                        gaussian=gaussian))
+        self.regret = []
+
+    def update(self):
+        self.regret.append(regret(self.machine_list))
 
 
 def total_value(machine_list: list):
@@ -149,21 +181,3 @@ def random_argmax(value_list):
     values = np.asarray(value_list)
     return np.argmax(
         np.random.random(values.shape) * (values == values.max(initial=1)))
-
-
-def regret(machine_list):
-    """Calculate the regret from a list of machines."""
-    expectation_list = []
-    mean_machines = []
-    trial_numbers = []
-    for machine in machine_list:
-        expectation = machine.expectation
-        trial_numbers.append(len(machine.realisations))
-        expectation_list.append(float(sum(machine.realisations)))
-        mean_machines.append(expectation)
-
-    highest_mean: float = max(mean_machines)
-    number_of_trials: int = sum(trial_numbers)
-    sum_of_expectations_times_means: float = sum(expectation_list)
-
-    return highest_mean * number_of_trials - sum_of_expectations_times_means
