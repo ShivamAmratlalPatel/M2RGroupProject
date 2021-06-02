@@ -28,12 +28,14 @@ def thompson_sampling(number_of_machines: int, number_of_trials: int):
 
     random_machine_number = randint(0, number_of_machines - 1)
     thompson_environment.machine_list[random_machine_number].run()
+    thompson_environment.update()
 
     for i in range(number_of_trials - 1):
         machine_to_run = random_argmax(
             [machine.sample() for machine in
              thompson_environment.machine_list])
         thompson_environment.machine_list[machine_to_run].run()
+        thompson_environment.update()
 
     # Return the environment.
     return thompson_environment

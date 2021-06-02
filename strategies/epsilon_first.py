@@ -11,7 +11,7 @@ from random import randint
 from bandits import Environment, best_machine
 
 
-def epsilon_first(number_of_machines: int, number_of_trials: int):
+def epsilon_first_strategy(number_of_machines: int, number_of_trials: int):
     """
     Calculate value gained using strategy1.
 

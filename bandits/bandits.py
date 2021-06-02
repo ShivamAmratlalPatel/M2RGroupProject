@@ -105,7 +105,7 @@ class UCBMachine(Machine):
         return self.realised_expectation() + self.uncertainty
 
 
-def regret(machine_list):
+def regret_calculator(machine_list):
     """Calculate the regret from a list of machines."""
     expectation_list = []
     mean_machines = []
@@ -133,7 +133,7 @@ class Environment:
         self.regret = []
 
     def update(self):
-        self.regret.append(regret(self.machine_list))
+        self.regret.append(regret_calculator(self.machine_list))
 
 
 def uncertainty(machine: Machine, confidence_level, t):

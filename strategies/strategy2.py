@@ -41,7 +41,8 @@ def strategy2(number_of_machines: int, number_of_trials: int):
         for j in range(len(strategy2_environment.machine_list)):
             # Run k number of trials on each machine.
             for k in range(number_of_trials_per_machine_per_round):
-                strategy2_environment[j].run()
+                strategy2_environment.machine_list[j].run()
+                strategy2_environment.update()
         # Find the worst machine.
         machine_to_be_removed = strategy2_environment[
             worst_machine(strategy2_environment.machine_list)]

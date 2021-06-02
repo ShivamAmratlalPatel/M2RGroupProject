@@ -19,6 +19,7 @@ def random_strategy(number_of_machines: int, number_of_trials: int):
     for i in range(number_of_trials):
         random_machine_number: int = randint(0, number_of_machines - 1)
         random_environment.machine_list[random_machine_number].run()
+        random_environment.update()
 
     # Return environment
     return random_environment
