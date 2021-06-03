@@ -22,7 +22,7 @@ def send_email():
     # Add body to emailer
     message.attach(MIMEText(body, "plain"))
 
-    filename = '../main/test.png'  # In same directory as script
+    filename = 'test.png'  # In same directory as script
 
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:

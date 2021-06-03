@@ -4,7 +4,7 @@ import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
-from emailer.emailer import send_email
+import emailer as em
 from strategies import *
 
 machine_no = 100
@@ -50,5 +50,5 @@ plt.grid()
 plt.legend()
 plt.savefig('test.png')
 
-send_email()
+em.send_email()
 sys.exit()
