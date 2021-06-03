@@ -4,3 +4,4 @@ venv
 project.egg-info
 bandits/__pycache__/
 strategies/__pycache__/
+main/test.png
