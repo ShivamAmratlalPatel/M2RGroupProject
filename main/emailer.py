@@ -1,12 +1,13 @@
-def send_email():
+def send_email(filename: str):
     import smtplib
     import ssl
     from email import encoders
     from email.mime.base import MIMEBase
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
+    from datetime import datetime
 
-    subject = "Server output"
+    subject = "Server output at " + str(datetime.now())
     body = "Result from server"
     sender_email = "math50002project@gmail.com"
     receiver_email = "shivpatel1306@gmail.com"
@@ -21,8 +22,6 @@ def send_email():
 
     # Add body to emailer
     message.attach(MIMEText(body, "plain"))
-
-    filename = 'test.png'  # In same directory as script
 
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:
