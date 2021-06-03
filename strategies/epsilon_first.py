@@ -12,7 +12,7 @@ from bandits import Environment, best_machine
 
 
 def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
-                           epsilon=0.06):
+                           epsilon=0.06, gaussian=False):
     """
     Calculate value gained using strategy1.
 
@@ -20,6 +20,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     Then runs the machine with the highest realised expectation for the rest
     of the trials.
 
+    :param gaussian: whether to use gaussian or Bernoulli distribution
     :param epsilon: user defined value
     :type number_of_trials: int
     :param number_of_machines: number of slot machines
@@ -27,7 +28,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     :return: environment of testing
     """
     # Initialise the environment.
-    epsilon_environment = Environment(number_of_machines, True)
+    epsilon_environment = Environment(number_of_machines, gaussian)
 
     # Do half the number of trials randomly.
     for i in range(int(number_of_trials * epsilon)):

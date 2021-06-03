@@ -5,22 +5,23 @@ from bandits import Environment, UCBMachine, random_argmax
 
 
 def ucb_strategy(number_of_machines: int, number_of_trials: int,
-                 confidence_level):
+                 confidence_level, gaussian=False):
     """
     Return the total value of the ucb strategy.
 
+    :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
     :param confidence_level: the confidence level set by user
     :return: UCB environment
     """
     # Initialise the environment
-    ucb_environment = Environment(number_of_machines, True)
+    ucb_environment = Environment(number_of_machines, gaussian)
     ucb_environment.machine_list = []
     for i in range(number_of_machines):
         ucb_environment.machine_list.append(
             UCBMachine(expectation=random(), name="Machine " + str(i),
-                       gaussian=True, confidence_level=confidence_level))
+                       gaussian=gaussian, confidence_level=confidence_level))
 
     random_machine_number = randint(0, number_of_machines - 1)
     ucb_environment.machine_list[random_machine_number].run()

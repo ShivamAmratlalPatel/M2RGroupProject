@@ -9,7 +9,7 @@ This process then continues till their is one machine left for a round.
 from bandits import Environment, worst_machine
 
 
-def strategy2(number_of_machines: int, number_of_trials: int):
+def strategy2(number_of_machines: int, number_of_trials: int, gaussian=False):
     """
     Calculate value gained from strategy2.
 
@@ -17,6 +17,7 @@ def strategy2(number_of_machines: int, number_of_trials: int):
     trials. Then discards the machine with the worst realised expectation.
     This process then continues till their is one machine left for a round.
 
+    :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
     :return: strategy 2 environment
@@ -25,7 +26,7 @@ def strategy2(number_of_machines: int, number_of_trials: int):
     number_of_trials_per_round = int(number_of_trials / number_of_machines)
 
     # Initialise the environment
-    strategy2_environment = Environment(number_of_machines, True)
+    strategy2_environment = Environment(number_of_machines, gaussian)
 
     # Initialise empty list for discarded machines.
     discarded_list = []

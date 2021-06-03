@@ -1,14 +1,16 @@
 """The main file for testing."""
+import csv
 import sys
 
 import matplotlib.pyplot as plt
-import numpy as np
 
 import emailer as em
+from bandits import average_finder
 from strategies import *
 
 machine_no = 100
 trial_no = 100
+gaussian = False
 
 random_strategy_regret = []
 epsilon_first_strategy_regret = []
@@ -20,35 +22,39 @@ number_of_iterations = 1
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
-        random_strategy_calculator(machine_no, trial_no).regret)
+        random_strategy_calculator(machine_no, trial_no, gaussian).regret)
     epsilon_first_strategy_regret.append(
-        epsilon_first_strategy(machine_no, trial_no).regret)
+        epsilon_first_strategy(machine_no, trial_no, gaussian).regret)
     ucb_strategy_regret.append(
-        ucb_strategy(machine_no, trial_no, confidence_level=2).regret)
-    thompson.append((thompson_sampling_strategy(machine_no, trial_no)).regret)
+        ucb_strategy(machine_no, trial_no, confidence_level=2,
+                     gaussian=gaussian).regret)
+    thompson.append(
+        (thompson_sampling_strategy(machine_no, trial_no, gaussian)).regret)
 
+random_average = average_finder(random_strategy_regret, trial_no,
+                                number_of_iterations)
+epsilon_average = average_finder(epsilon_first_strategy_regret, trial_no,
+                                 number_of_iterations)
+ucb_average = average_finder(ucb_strategy_regret, trial_no,
+                             number_of_iterations)
+thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
-def average_finder(regret_list):
-    """Find the average of number of iterations."""
-    result = []
-
-    for j in range(0, trial_no):
-        list_of_numbers = []
-        for k in range(0, number_of_iterations):
-            list_of_numbers.append(regret_list[k][j])
-        result.append(np.average(list_of_numbers))
-    return result
-
-
-plt.plot(average_finder(random_strategy_regret), label="random")
-plt.plot(average_finder(epsilon_first_strategy_regret), label="epsilon")
-plt.plot(average_finder(ucb_strategy_regret), label="ucb")
-plt.plot(average_finder(thompson), label="thompson")
+plt.plot(random_average, label="random")
+plt.plot(epsilon_average, label="epsilon")
+plt.plot(ucb_average, label="ucb")
+plt.plot(thompson_average, label="thompson")
 plt.xlabel("Iteration")
-plt.ylabel("Cummulative Regret")
+plt.ylabel("Cumulative Regret")
 plt.grid()
 plt.legend()
 plt.savefig('test.png')
 
-em.send_email()
+averages_list = [random_average, epsilon_average, ucb_average,
+                 thompson_average]
+with open('data.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerows(averages_list)
+
+em.send_email('test.png')
+em.send_email('data.csv')
 sys.exit()

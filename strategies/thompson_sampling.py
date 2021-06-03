@@ -10,21 +10,23 @@ from random import randint, random
 from bandits import ThompsonMachine, random_argmax, Environment
 
 
-def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int):
+def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int,
+                               gaussian=False):
     """
     Return the total value of the thompson sampling strategy.
 
+    :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
     :return: thompson environment
     """
     # Initialise the environment
-    thompson_environment = Environment(number_of_machines, True)
+    thompson_environment = Environment(number_of_machines, gaussian)
     thompson_environment.machine_list = []
     for i in range(number_of_machines):
         thompson_environment.machine_list.append(
             ThompsonMachine(expectation=random(), name="Machine " + str(i),
-                            gaussian=True))
+                            gaussian=gaussian))
 
     random_machine_number = randint(0, number_of_machines - 1)
     thompson_environment.machine_list[random_machine_number].run()
