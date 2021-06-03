@@ -109,21 +109,11 @@ class UCBMachine(Machine):
 
 def regret_calculator(machine_list):
     """Calculate the regret from a list of machines."""
-    mean_machines = []
-    trial_numbers = []
-    for machine in machine_list:
-        expectation = machine.expectation
-        trial_numbers.append(len(machine.realisations))
-        mean_machines.append(expectation)
-
-    highest_mean = max(mean_machines)
-    number_of_trials = sum(trial_numbers)
-
-    return highest_mean * number_of_trials - total_value(machine_list)
 
 
 class Environment:
     def __init__(self, n: int, gaussian=False):
+        self.gaussian = gaussian
         self.machine_list = []
         for i in range(n):
             self.machine_list.append(
@@ -132,7 +122,22 @@ class Environment:
         self.regret = []
 
     def update(self):
-        self.regret.append(regret_calculator(self.machine_list))
+        if self.gaussian:
+            mean_machines = []
+            trial_numbers = []
+            for machine in self.machine_list:
+                trial_numbers.append(len(machine.realisations))
+                mean_machines.append(machine.expectation)
+
+            highest_mean = max(mean_machines)
+            number_of_trials = sum(trial_numbers)
+
+            regret = highest_mean * number_of_trials - total_value(
+                self.machine_list)
+        else:
+            regret = sum([len(machine.realisations) for machine in
+                          self.machine_list]) - total_value(self.machine_list)
+        self.regret.append(regret)
 
 
 def uncertainty(machine: Machine, confidence_level, t):
