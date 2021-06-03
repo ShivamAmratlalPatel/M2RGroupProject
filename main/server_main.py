@@ -9,7 +9,7 @@ from bandits import average_finder
 from strategies import *
 
 machine_no = 100
-trial_no = 100
+trial_no = 10000
 gaussian = False
 
 random_strategy_regret = []
@@ -18,7 +18,7 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 1
+number_of_iterations = 100
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
