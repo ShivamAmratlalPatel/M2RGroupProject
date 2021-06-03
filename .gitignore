@@ -5,3 +5,4 @@ project.egg-info
 bandits/__pycache__/
 strategies/__pycache__/
 main/test.png
+main/data.csv
