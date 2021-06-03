@@ -20,6 +20,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     Then runs the machine with the highest realised expectation for the rest
     of the trials.
 
+    :param epsilon: user defined value
     :type number_of_trials: int
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
