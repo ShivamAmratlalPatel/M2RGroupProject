@@ -1,5 +1,5 @@
 """This file creates the Machine class which emulates a slot machine."""
-from random import random
+from random import random, randrange
 
 import numpy as np
 from scipy.stats import norm, bernoulli
@@ -17,6 +17,8 @@ class Machine:
         """
         # Assigning values to class values.
         self.expectation = expectation
+        if gaussian:
+            self.expectation = randrange(1, 10)
         self.realisations = []
         self.name = name
         self.gaussian = gaussian
@@ -26,7 +28,7 @@ class Machine:
         """Return a  realisation of the machine if run."""
         # Running a bernoulli trial
         if self.gaussian:
-            realisation = norm.pdf(0, loc=self.expectation, scale=5)
+            realisation = norm.pdf(0, loc=self.expectation, scale=1)
             if realisation > 0:
                 self.realisations.append(realisation)
             else:
@@ -107,20 +109,17 @@ class UCBMachine(Machine):
 
 def regret_calculator(machine_list):
     """Calculate the regret from a list of machines."""
-    expectation_list = []
     mean_machines = []
     trial_numbers = []
     for machine in machine_list:
         expectation = machine.expectation
         trial_numbers.append(len(machine.realisations))
-        expectation_list.append(float(sum(machine.realisations)))
         mean_machines.append(expectation)
 
-    highest_mean: float = max(mean_machines)
-    number_of_trials: int = sum(trial_numbers)
-    sum_of_expectations_times_means: float = sum(expectation_list)
+    highest_mean = max(mean_machines)
+    number_of_trials = sum(trial_numbers)
 
-    return highest_mean * number_of_trials - sum_of_expectations_times_means
+    return highest_mean * number_of_trials - total_value(machine_list)
 
 
 class Environment:
