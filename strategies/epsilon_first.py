@@ -11,7 +11,8 @@ from random import randint
 from bandits import Environment, best_machine
 
 
-def epsilon_first_strategy(number_of_machines: int, number_of_trials: int):
+def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
+                           epsilon=0.06):
     """
     Calculate value gained using strategy1.
 
@@ -28,7 +29,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int):
     epsilon_environment = Environment(number_of_machines, False)
 
     # Do half the number of trials randomly.
-    for i in range(int(number_of_trials / 2)):
+    for i in range(int(number_of_trials * epsilon)):
         random_machine_number = randint(0, number_of_machines - 1)
         epsilon_environment.machine_list[random_machine_number].run()
         epsilon_environment.update()
@@ -37,7 +38,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int):
     best_machine_index = best_machine(epsilon_environment.machine_list)
 
     # Do the rest of the trials on the final half.
-    for i in range(int(number_of_trials / 2)):
+    for i in range(int(number_of_trials * (1 - epsilon))):
         epsilon_environment.machine_list[best_machine_index].run()
         epsilon_environment.update()
 
