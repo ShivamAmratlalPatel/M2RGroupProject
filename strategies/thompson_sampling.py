@@ -10,7 +10,7 @@ from random import randint, random
 from bandits import ThompsonMachine, random_argmax, Environment
 
 
-def thompson_sampling(number_of_machines: int, number_of_trials: int):
+def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int):
     """
     Return the total value of the thompson sampling strategy.
 

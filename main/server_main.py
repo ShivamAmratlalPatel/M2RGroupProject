@@ -3,8 +3,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from strategies import random_strategy, epsilon_first_strategy, ucb_strategy, \
-    thompson_sampling
+from strategies import random_strategy_calculator, epsilon_first_strategy, \
+    ucb_strategy, \
+    thompson_sampling_strategy
 
 machine_no = 100
 trial_no = 100000
@@ -18,12 +19,13 @@ strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 number_of_iterations = 100
 
 for i in range(number_of_iterations):
-    random_strategy_regret.append(random_strategy(machine_no, trial_no).regret)
+    random_strategy_regret.append(
+        random_strategy_calculator(machine_no, trial_no).regret)
     epsilon_first_strategy_regret.append(
         epsilon_first_strategy(machine_no, trial_no).regret)
     ucb_strategy_regret.append(
         ucb_strategy(machine_no, trial_no, confidence_level=2).regret)
-    thompson.append((thompson_sampling(machine_no, trial_no)).regret)
+    thompson.append((thompson_sampling_strategy(machine_no, trial_no)).regret)
 
 
 def average_finder(regret_list):

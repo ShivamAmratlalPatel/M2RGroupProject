@@ -4,7 +4,7 @@ from random import randint
 from bandits import Environment
 
 
-def random_strategy(number_of_machines: int, number_of_trials: int):
+def random_strategy_calculator(number_of_machines: int, number_of_trials: int):
     """
     Calculate value gained using random strategy.
 
