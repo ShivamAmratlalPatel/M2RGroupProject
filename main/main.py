@@ -1,8 +1,8 @@
 """The main file for testing."""
 
 import matplotlib.pyplot as plt
-import numpy as np
 
+from bandits import average_finder
 from strategies import *
 
 machine_no = 100
@@ -25,23 +25,18 @@ for i in range(number_of_iterations):
         ucb_strategy(machine_no, trial_no, confidence_level=2).regret)
     thompson.append((thompson_sampling_strategy(machine_no, trial_no)).regret)
 
+random_average = average_finder(random_strategy_regret, trial_no,
+                                number_of_iterations)
+epsilon_average = average_finder(epsilon_first_strategy_regret, trial_no,
+                                 number_of_iterations)
+ucb_average = average_finder(ucb_strategy_regret, trial_no,
+                             number_of_iterations)
+thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
-def average_finder(regret_list):
-    """Find the average of number of iterations."""
-    result = []
-
-    for j in range(0, trial_no):
-        list_of_numbers = []
-        for k in range(0, number_of_iterations):
-            list_of_numbers.append(regret_list[k][j])
-        result.append(np.average(list_of_numbers))
-    return result
-
-
-plt.plot(average_finder(random_strategy_regret), label="random")
-plt.plot(average_finder(epsilon_first_strategy_regret), label="epsilon")
-plt.plot(average_finder(ucb_strategy_regret), label="ucb")
-plt.plot(average_finder(thompson), label="thompson")
+plt.plot(random_average, label="random")
+plt.plot(epsilon_average, label="epsilon")
+plt.plot(ucb_average, label="ucb")
+plt.plot(thompson_average, label="thompson")
 plt.grid()
 plt.legend()
 plt.show()
