@@ -3,9 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from strategies import random_strategy_calculator, epsilon_first_strategy, \
-    ucb_strategy, \
-    thompson_sampling_strategy
+from strategies import *
 
 machine_no = 10
 trial_no = 1000
