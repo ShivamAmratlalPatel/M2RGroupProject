@@ -1,4 +1,4 @@
-"""This strategy randomly picks a slot machine to run."""
+"""Strategy randomly picks a slot machine to run."""
 from random import randint
 
 from bandits import Environment
@@ -13,7 +13,7 @@ def random_strategy_calculator(number_of_machines: int, number_of_trials: int):
     :return: random strategy environment
     """
     # Initialise the environment.
-    random_environment = Environment(number_of_machines, False)
+    random_environment = Environment(number_of_machines, True)
 
     # Randomly pick a machine for each trial.
     for i in range(number_of_trials):

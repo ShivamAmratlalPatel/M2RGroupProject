@@ -19,12 +19,12 @@ def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int):
     :return: thompson environment
     """
     # Initialise the environment
-    thompson_environment = Environment(number_of_machines, False)
+    thompson_environment = Environment(number_of_machines, True)
     thompson_environment.machine_list = []
     for i in range(number_of_machines):
         thompson_environment.machine_list.append(
             ThompsonMachine(expectation=random(), name="Machine " + str(i),
-                            gaussian=False))
+                            gaussian=True))
 
     random_machine_number = randint(0, number_of_machines - 1)
     thompson_environment.machine_list[random_machine_number].run()

@@ -5,7 +5,7 @@ import numpy as np
 
 from strategies import *
 
-machine_no = 10
+machine_no = 100
 trial_no = 1000
 
 random_strategy_regret = []
@@ -14,7 +14,7 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 1
+number_of_iterations = 10
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
@@ -27,6 +27,7 @@ for i in range(number_of_iterations):
 
 
 def average_finder(regret_list):
+    """Find the average of number of iterations."""
     result = []
 
     for j in range(0, trial_no):

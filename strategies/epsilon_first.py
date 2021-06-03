@@ -27,7 +27,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     :return: environment of testing
     """
     # Initialise the environment.
-    epsilon_environment = Environment(number_of_machines, False)
+    epsilon_environment = Environment(number_of_machines, True)
 
     # Do half the number of trials randomly.
     for i in range(int(number_of_trials * epsilon)):

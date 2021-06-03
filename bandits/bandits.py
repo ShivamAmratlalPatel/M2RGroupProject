@@ -85,30 +85,40 @@ class ThompsonMachine(Machine):
         return np.random.beta(self.alpha, self.beta)
 
     def realised_expectation(self):
+        """Return the realised expectation of the machine."""
         super(ThompsonMachine, self).realised_expectation()
 
 
 class UCBMachine(Machine):
+    """Creates a UCB machine which works like a normal machine but now has a confidence level property."""
+
     def __init__(self, confidence_level, expectation: float, name: str,
                  gaussian: bool):
+        """Intialise the machine."""
         super(UCBMachine, self).__init__(expectation, name, gaussian)
         self.confidence_level = confidence_level
         self.uncertainty = float('inf')
 
     def run(self):
+        """Run the machine."""
         super(UCBMachine, self).run()
         self.uncertainty = self.confidence_level * (np.sqrt(
             np.log(len(self.realisations) + 1) / len(self.realisations)))
 
     def realised_expectation(self):
+        """Return the realised expectation of the machine."""
         return super(UCBMachine, self).realised_expectation()
 
     def sample(self):
+        """Return a sample of the estimated distribution of the machine."""
         return self.realised_expectation() + self.uncertainty
 
 
 class Environment:
+    """Environment class which hosts the machines."""
+
     def __init__(self, n: int, gaussian=False):
+        """Initialise the environment."""
         self.gaussian = gaussian
         self.machine_list = []
         for i in range(n):
@@ -118,6 +128,7 @@ class Environment:
         self.regret = []
 
     def update(self):
+        """Update the machine by calculating the regret."""
         if self.gaussian:
             mean_machines = []
             trial_numbers = []

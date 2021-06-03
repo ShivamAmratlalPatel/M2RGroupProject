@@ -15,12 +15,12 @@ def ucb_strategy(number_of_machines: int, number_of_trials: int,
     :return: UCB environment
     """
     # Initialise the environment
-    ucb_environment = Environment(number_of_machines, False)
+    ucb_environment = Environment(number_of_machines, True)
     ucb_environment.machine_list = []
     for i in range(number_of_machines):
         ucb_environment.machine_list.append(
             UCBMachine(expectation=random(), name="Machine " + str(i),
-                       gaussian=False, confidence_level=confidence_level))
+                       gaussian=True, confidence_level=confidence_level))
 
     random_machine_number = randint(0, number_of_machines - 1)
     ucb_environment.machine_list[random_machine_number].run()
@@ -34,4 +34,3 @@ def ucb_strategy(number_of_machines: int, number_of_trials: int,
 
     # Return the environment.
     return ucb_environment
-

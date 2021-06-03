@@ -25,7 +25,7 @@ def strategy2(number_of_machines: int, number_of_trials: int):
     number_of_trials_per_round = int(number_of_trials / number_of_machines)
 
     # Initialise the environment
-    strategy2_environment = Environment(number_of_machines, False)
+    strategy2_environment = Environment(number_of_machines, True)
 
     # Initialise empty list for discarded machines.
     discarded_list = []
