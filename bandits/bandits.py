@@ -18,7 +18,7 @@ class Machine:
         # Assigning values to class values.
         self.expectation = expectation
         if gaussian:
-            self.expectation = randrange(1, 10)
+            self.expectation = randrange(1, 100)
         self.realisations = []
         self.name = name
         self.gaussian = gaussian
@@ -28,7 +28,7 @@ class Machine:
         """Return a  realisation of the machine if run."""
         # Running a bernoulli trial
         if self.gaussian:
-            realisation = norm.pdf(0, loc=self.expectation, scale=1)
+            realisation = norm.pdf(0, loc=self.expectation, scale=3)
             if realisation > 0:
                 self.realisations.append(realisation)
             else:
@@ -105,10 +105,6 @@ class UCBMachine(Machine):
 
     def sample(self):
         return self.realised_expectation() + self.uncertainty
-
-
-def regret_calculator(machine_list):
-    """Calculate the regret from a list of machines."""
 
 
 class Environment:
