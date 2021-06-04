@@ -19,7 +19,7 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 100
+number_of_iterations = 20
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
