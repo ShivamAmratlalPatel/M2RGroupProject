@@ -70,6 +70,7 @@ class ThompsonMachine(Machine):
         self.alpha = 1
         self.beta = 1
         self.n = 0
+        self.gaussian = gaussian
 
     def run(self):
         """Return a  realisation of the machine if run."""
@@ -82,7 +83,10 @@ class ThompsonMachine(Machine):
 
     def sample(self):
         """Return a value sampled from the beta distribution."""
-        return np.random.beta(self.alpha, self.beta)
+        if self.gaussian:
+        # return what should happen if we are using gaussian distribution
+        else:
+            return np.random.beta(self.alpha, self.beta)
 
     def realised_expectation(self):
         """Return the realised expectation of the machine."""
