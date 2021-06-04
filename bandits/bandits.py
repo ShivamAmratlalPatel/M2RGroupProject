@@ -1,8 +1,8 @@
 """This file creates the Machine class which emulates a slot machine."""
-from random import random, randrange
+from random import random
 
 import numpy as np
-from scipy.stats import norm, bernoulli
+from scipy.stats import bernoulli
 
 
 class Machine:
@@ -18,7 +18,7 @@ class Machine:
         # Assigning values to class values.
         self.expectation = expectation
         if gaussian:
-            self.expectation = randrange(1, 100)
+            self.expectation = expectation
         self.realisations = []
         self.name = name
         self.gaussian = gaussian
@@ -28,7 +28,7 @@ class Machine:
         """Return a  realisation of the machine if run."""
         # Running a bernoulli trial
         if self.gaussian:
-            realisation = norm.pdf(0, loc=self.expectation, scale=3)
+            realisation = np.random.randn() + self.expectation
             if realisation > 0:
                 self.realisations.append(realisation)
             else:
@@ -130,21 +130,23 @@ class Environment:
 
     def update(self):
         """Update the machine by calculating the regret."""
-        if self.gaussian:
-            mean_machines = []
-            trial_numbers = []
-            for machine in self.machine_list:
-                trial_numbers.append(len(machine.realisations))
-                mean_machines.append(machine.expectation)
+        mean_machines = []
+        trial_numbers = []
+        sum_of_realised_expectation = []
+        for machine in self.machine_list:
+            number_of_trials_for_machine = len(machine.realisations)
+            expectation_for_machine = machine.expectation
+            trial_numbers.append(number_of_trials_for_machine)
+            mean_machines.append(expectation_for_machine)
+            sum_of_realised_expectation.append(
+                number_of_trials_for_machine * expectation_for_machine)
 
-            highest_mean = max(mean_machines)
-            number_of_trials = sum(trial_numbers)
+        highest_mean = max(mean_machines)
+        number_of_trials = sum(trial_numbers)
 
-            regret = highest_mean * number_of_trials - total_value(
-                self.machine_list)
-        else:
-            regret = sum([len(machine.realisations) for machine in
-                          self.machine_list]) - total_value(self.machine_list)
+        regret = highest_mean * number_of_trials - sum(
+            sum_of_realised_expectation)
+
         self.regret.append(regret)
 
 
