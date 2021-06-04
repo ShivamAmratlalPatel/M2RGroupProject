@@ -28,7 +28,8 @@ class Machine:
         """Return a  realisation of the machine if run."""
         # Running a bernoulli trial
         if self.gaussian:
-            realisation = np.random.randn() + self.expectation
+            sigma = 1
+            realisation = sigma * np.random.randn() + self.expectation
             if realisation > 0:
                 self.realisations.append(realisation)
             else:
@@ -48,7 +49,6 @@ class Machine:
 
     def __repr__(self):
         """Return the name of the machine."""
-        # May need to be changed in future to give a more detailed response.
         return self.name
 
     def __str__(self):
@@ -84,13 +84,14 @@ class ThompsonMachine(Machine):
     def sample(self):
         """Return a value sampled from the beta distribution."""
         if self.gaussian:
-        # return what should happen if we are using gaussian distribution
+            sigma = 1
+            return sigma * np.random.randn() + self.realised_expectation()
         else:
             return np.random.beta(self.alpha, self.beta)
 
     def realised_expectation(self):
         """Return the realised expectation of the machine."""
-        super(ThompsonMachine, self).realised_expectation()
+        return super(ThompsonMachine, self).realised_expectation()
 
 
 class UCBMachine(Machine):
