@@ -1,6 +1,7 @@
 """The main file for testing."""
 import csv
 import sys
+from datetime import datetime
 
 import matplotlib.pyplot as plt
 
@@ -18,7 +19,7 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 1
+number_of_iterations = 100
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
@@ -30,6 +31,7 @@ for i in range(number_of_iterations):
                      gaussian=gaussian).regret)
     thompson.append(
         (thompson_sampling_strategy(machine_no, trial_no, gaussian)).regret)
+    print("number_of_iterations:", datetime.now())
 
 random_average = average_finder(random_strategy_regret, trial_no,
                                 number_of_iterations)
@@ -38,6 +40,8 @@ epsilon_average = average_finder(epsilon_first_strategy_regret, trial_no,
 ucb_average = average_finder(ucb_strategy_regret, trial_no,
                              number_of_iterations)
 thompson_average = average_finder(thompson, trial_no, number_of_iterations)
+
+print("averages_calculated:", datetime.now())
 
 plt.plot(random_average, label="random")
 plt.plot(epsilon_average, label="epsilon")
@@ -57,4 +61,5 @@ with open('data.csv', 'w', newline='') as f:
 
 em.send_email('test.png')
 em.send_email('data.csv')
+em.send_email('nohup.out')
 sys.exit()
