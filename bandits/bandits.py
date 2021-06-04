@@ -90,7 +90,8 @@ class ThompsonMachine(Machine):
 
 
 class UCBMachine(Machine):
-    """Creates a UCB machine which works like a normal machine but now has a confidence level property."""
+    """Creates a UCB machine which works like a normal machine but now has a
+    confidence level property. """
 
     def __init__(self, confidence_level, expectation: float, name: str,
                  gaussian: bool):
