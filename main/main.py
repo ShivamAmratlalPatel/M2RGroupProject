@@ -23,7 +23,7 @@ for i in range(number_of_iterations):
     epsilon_first_strategy_regret.append(
         epsilon_first_strategy(number_of_machines=machine_no,
                                number_of_trials=trial_no,
-                               epsilon=0.2, gaussian=gaussian).regret)
+                               epsilon=0.06, gaussian=gaussian).regret)
     ucb_strategy_regret.append(
         ucb_strategy(machine_no, trial_no, confidence_level=2,
                      gaussian=gaussian).regret)
@@ -38,7 +38,7 @@ ucb_average = average_finder(ucb_strategy_regret, trial_no,
                              number_of_iterations)
 thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
-plt.plot(random_average, label="random")
+# plt.plot(random_average, label="random")
 plt.plot(epsilon_average, label="epsilon")
 plt.plot(ucb_average, label="ucb")
 plt.plot(thompson_average, label="thompson")
