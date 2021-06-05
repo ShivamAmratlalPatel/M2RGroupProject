@@ -61,5 +61,4 @@ with open('data.csv', 'w', newline='') as f:
 
 em.send_email('test.png')
 em.send_email('data.csv')
-em.send_email('nohup.out')
 sys.exit()
