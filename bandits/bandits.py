@@ -71,21 +71,30 @@ class ThompsonMachine(Machine):
         self.beta = 1
         self.n = 0
         self.gaussian = gaussian
+        if self.gaussian:
+            self.variance = 1
+            self.tao_0 = 1 / self.variance
+            self.mean = 0
 
     def run(self):
         """Return a  realisation of the machine if run."""
         self.n += 1
         super(ThompsonMachine, self).run()
-        if self.realisations[-1] > 0:
-            self.alpha += 1
+        if self.gaussian:
+            self.tao_0 += self.n
+            self.mean = (self.tao_0 * self.mean + (1 / self.variance) * sum(
+                self.realisations)) / (
+                                self.tao_0 + self.n * (1 / self.variance))
         else:
-            self.beta += 1
+            if self.realisations[-1] > 0:
+                self.alpha += 1
+            else:
+                self.beta += 1
 
     def sample(self):
         """Return a value sampled from the beta distribution."""
         if self.gaussian:
-            sigma = 1
-            return sigma * np.random.randn() + self.realised_expectation()
+            return (np.random.randn() / np.sqrt(self.tao_0)) + self.mean
         else:
             return np.random.beta(self.alpha, self.beta)
 
@@ -100,7 +109,7 @@ class UCBMachine(Machine):
 
     def __init__(self, confidence_level, expectation: float, name: str,
                  gaussian: bool):
-        """Intialise the machine."""
+        """Initialise the machine."""
         super(UCBMachine, self).__init__(expectation, name, gaussian)
         self.confidence_level = confidence_level
         self.uncertainty = float('inf')
