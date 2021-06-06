@@ -32,7 +32,7 @@ for i in range(number_of_iterations):
                      gaussian=gaussian).regret)
     thompson.append(
         (thompson_sampling_strategy(machine_no, trial_no, gaussian)).regret)
-    print("number_of_iterations:", datetime.now())
+    print(str(number_of_iterations) + " completed at ", datetime.now())
 
 random_average = average_finder(random_strategy_regret, trial_no,
                                 number_of_iterations)
@@ -42,7 +42,7 @@ ucb_average = average_finder(ucb_strategy_regret, trial_no,
                              number_of_iterations)
 thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
-print("averages_calculated:", datetime.now())
+print("averages_calculated at ", datetime.now())
 
 plt.plot(random_average, label="random")
 plt.plot(epsilon_average, label="epsilon")
