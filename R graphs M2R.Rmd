@@ -1,0 +1,14 @@
+---
+title: "M2R graphs"
+output: html_document
+---
+```{r}
+ data <- read.csv("C:/Users/adhav/Downloads/data.csv", header=FALSE)
+ View(data)
+`data.(1)` <- read.csv("C:/Users/adhav/Downloads/data (1).csv", header=FALSE)
+View(`data.(1)`)
+rownames(data) = c("random", "epsilon-first", "ucb", "thompson")
+rownames(`data.(1)`) = c("random", "epsilon-first", "ucb", "thompson")
+x <- c(1:20000)
+library(ggplot2)
+```
