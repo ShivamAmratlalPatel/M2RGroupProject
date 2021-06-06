@@ -8,14 +8,13 @@ from strategies import *
 machine_no = 10
 trial_no = 20000
 gaussian = True
+number_of_iterations = 20
 
 random_strategy_regret = []
 epsilon_first_strategy_regret = []
 ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
-
-number_of_iterations = 20
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
