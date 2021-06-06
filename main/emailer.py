@@ -1,16 +1,23 @@
-def send_email(filename: str):
-    import smtplib
-    import ssl
-    from email import encoders
-    from email.mime.base import MIMEBase
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    from datetime import datetime
+import smtplib
+import ssl
+import sys
+from datetime import datetime
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
+
+def send_email(filename: str):
     subject = "Server output at " + str(datetime.now())
     body = "Result from server"
     sender_email = "math50002project@gmail.com"
-    receiver_email = "shivpatel1306@gmail.com"
+    if sys.argv[1] == "A":
+        receiver_email = "Adhavan's email"
+    elif sys.argv[1] == "S":
+        receiver_email = "shivpatel1306@gmail.com"
+    else:
+        receiver_email = "math50002project@gmail.com"
     password = "thisismypassword123!"
 
     # Create a multipart message and set headers
