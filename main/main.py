@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from bandits import average_finder
 from strategies import *
 
-machine_no = 100
-trial_no = 10000
+machine_no = 10
+trial_no = 20000
 gaussian = True
 
 random_strategy_regret = []
@@ -15,7 +15,7 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 5
+number_of_iterations = 20
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
@@ -39,10 +39,10 @@ ucb_average = average_finder(ucb_strategy_regret, trial_no,
 thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
 # plt.plot(random_average, label="random")
-plt.plot(epsilon_average, label="epsilon")
+plt.plot(epsilon_average, label="epsilon-first")
 plt.plot(ucb_average, label="ucb")
 plt.plot(thompson_average, label="thompson")
-plt.xlabel("Iteration")
+plt.xlabel("Round")
 plt.ylabel("Cumulative Regret")
 plt.grid()
 plt.legend()
