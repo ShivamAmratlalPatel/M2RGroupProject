@@ -9,17 +9,16 @@ import emailer as em
 from bandits import average_finder
 from strategies import *
 
-machine_no = 100
-trial_no = 10000
-gaussian = False
+machine_no = 10
+trial_no = 20000
+gaussian = True
+number_of_iterations = 1
 
 random_strategy_regret = []
 epsilon_first_strategy_regret = []
 ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
-
-number_of_iterations = 10
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
@@ -45,10 +44,10 @@ thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 print("averages_calculated at ", datetime.now())
 
 plt.plot(random_average, label="random")
-plt.plot(epsilon_average, label="epsilon")
+plt.plot(epsilon_average, label="epsilon-first")
 plt.plot(ucb_average, label="ucb")
 plt.plot(thompson_average, label="thompson")
-plt.xlabel("Iteration")
+plt.xlabel("Round")
 plt.ylabel("Cumulative Regret")
 plt.grid()
 plt.legend()
