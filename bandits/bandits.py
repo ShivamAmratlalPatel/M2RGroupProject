@@ -221,7 +221,7 @@ def worst_machine(machine_list: list):
 
 def random_argmax(value_list):
     """Return the maximum machine for Thompson strategy."""
-    values = np.asarray(value_list)
+    values = np.asarray(value_list, dtype=object)
     return np.argmax(
         np.random.random(values.shape) * (values == values.max(initial=1)))
 
