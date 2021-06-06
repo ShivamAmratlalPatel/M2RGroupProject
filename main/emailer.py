@@ -13,7 +13,7 @@ def send_email(filename: str):
     body = "Result from server"
     sender_email = "math50002project@gmail.com"
     if sys.argv[1] == "A":
-        receiver_email = "Adhavan's email"
+        receiver_email = "adhavan26@gmail.com"
     elif sys.argv[1] == "S":
         receiver_email = "shivpatel1306@gmail.com"
     else:
