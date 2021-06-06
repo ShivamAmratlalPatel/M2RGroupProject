@@ -6,3 +6,4 @@ bandits/__pycache__/
 strategies/__pycache__/
 main/test.png
 main/data.csv
+server/ssh -i math5008_key.pem ubuntu@ec2-18-130-8-95.eu-west-2.compute.amazonaws.com.txt
