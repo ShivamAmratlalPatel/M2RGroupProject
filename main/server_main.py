@@ -19,13 +19,14 @@ ucb_strategy_regret = []
 thompson = []
 strategy_list = ["random", "epsilon_first", "ucb", "thompson"]
 
-number_of_iterations = 20
+number_of_iterations = 10
 
 for i in range(number_of_iterations):
     random_strategy_regret.append(
         random_strategy_calculator(machine_no, trial_no, gaussian).regret)
     epsilon_first_strategy_regret.append(
-        epsilon_first_strategy(machine_no, trial_no, gaussian).regret)
+        epsilon_first_strategy(machine_no, trial_no, epsilon=0.2,
+                               gaussian=gaussian).regret)
     ucb_strategy_regret.append(
         ucb_strategy(machine_no, trial_no, confidence_level=2,
                      gaussian=gaussian).regret)
