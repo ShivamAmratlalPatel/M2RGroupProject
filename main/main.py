@@ -8,7 +8,7 @@ from strategies import *
 machine_no = 10
 trial_no = 20000
 gaussian = True
-number_of_iterations = 20
+number_of_iterations = 10
 
 random_strategy_regret = []
 epsilon_first_strategy_regret = []
@@ -37,12 +37,36 @@ ucb_average = average_finder(ucb_strategy_regret, trial_no,
                              number_of_iterations)
 thompson_average = average_finder(thompson, trial_no, number_of_iterations)
 
-# plt.plot(random_average, label="random")
-plt.plot(epsilon_average, label="epsilon-first")
-plt.plot(ucb_average, label="ucb")
-plt.plot(thompson_average, label="thompson")
-plt.xlabel("Round")
-plt.ylabel("Cumulative Regret")
-plt.grid()
-plt.legend()
+# plt.style.use('classic')
+# # plt.plot(random_average, label="random")
+# plt.plot(epsilon_average, label="epsilon-first")
+# plt.plot(ucb_average, label="ucb")
+# plt.plot(thompson_average, label="thompson")
+# plt.xlabel("Round")
+# plt.ylabel("Cumulative Regret")
+# plt.grid()
+# plt.legend(loc='upper left', frameon=True)
+# plt.show()
+
+fig = plt.figure(facecolor='w')
+ax = fig.add_subplot(111, facecolor='#dddddd', axisbelow=True)
+ax.plot(range(len(random_average)), random_average, 'p', alpha=0.5, lw=2,
+        label='random')
+ax.plot(range(len(epsilon_average)), epsilon_average, 'b', alpha=0.5, lw=2,
+        label='epsilon-first')
+ax.plot(range(len(ucb_average)), ucb_average, 'r', alpha=0.5, lw=2,
+        label='ucb')
+ax.plot(range(len(thompson_average)), thompson_average, 'g', alpha=0.5, lw=2,
+        label='thompson')
+ax.set_xlabel('Round')
+ax.set_ylabel('Cumulative Regret')
+ax.yaxis.set_tick_params(length=0)
+ax.xaxis.set_tick_params(length=0)
+ax.grid(b=True, which='both', c='w', lw=2, ls='-')
+# plt.title("GBR Modelling")
+legend = ax.legend()
+legend.get_frame().set_alpha(0.5)
+for spine in ('top', 'right', 'bottom', 'left'):
+    ax.spines[spine].set_visible(False)
+plt.savefig('plot.png', dpi=1000, transparent=False, bbox_inches='tight')
 plt.show()
