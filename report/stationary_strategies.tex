@@ -1,0 +1,95 @@
+\section{Stationary Strategies}
+Here, we define \emph{stationary} distributions for arms as those where the underlying distribution of each arm stays the same regardless of the round we are in - some strategies for this type of multi-armed bandit problem are described below.
+  
+\subsection{$\epsilon$-Greedy}
+The \emph{$\epsilon$-Greedy} strategy is defined as follows: 'The $\epsilon$-Greedy strategy consists of choosing a random lever with $\epsilon$ frequency, and otherwise choosing the lever with the highest estimated mean, the estimation being based on the rewards observed thus far.' \citep{vermorel} It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (finding out the effectiveness of new arms) and exploitation (using what we already know about the old arms).
+
+\subsubsection{Random strategy}
+The first (and most basic) of the $\epsilon$-Greedy strategies to analyse will be the random strategy, which will provide us basic insights into what is required of an optimal strategy. As the name implies, for each round, following this strategy, we choose to play one of the arms at random: here, this means that $\epsilon = 1$.
+
+\subsubsection{Epsilon-first Strategy}
+
+The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning. Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected, followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
+\newline
+\textbf{Pseudo Code for Epsilon-first Strategy}
+\newline
+	\begin{algorithm}[H]
+ \KwData{number of machines, number of trials, epsilon}
+ \KwResult{regret after using epsilon strategy\;}
+ \For{number of trials*epsilon}{
+    Pick random machine\;
+ }   
+ Calculate realised expectation of each machine\;
+ 
+ \For{number of trials*(1-epsilon)}{
+    Pick arm with highest realised expectation\;
+ }
+ Calculate and return regret
+ \caption{Epsilon first strategy}
+\end{algorithm}
+
+
+\subsection{Upper Confidence Bound}
+% This sentence does not make sense and needs further clarification. I would write something like. In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level. We then choose the arm which has the highest upper confidence bound to pull next. 
+We use assumption to construct an upper bound estimate on the mean of each arm at some fixed confidence level, and then choose the arm that looks best under this estimate. \citep{SVGarbar2012} In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level. We then choose the arm which has the highest upper confidence bound to pull next. 
+\\The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$. Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean
+and $ Q(a)$ is the true mean.
+\subsubsection{Hoeffding’s Inequality}
+% This sentence could be worded better. 'does help at all' does not make sense. I don't know what you are trying to say here so I don't have any suggestions for what you could write. It is that "at all" bit which does not make sense.
+Hoeffding's inequality is applicable at all bound distribution. Let $X_1, ..., X_n$ be independent and identically distributed random variables, then $ P(E[X]  \textgreater \overline  X_t + u) \leq e^{-2t u^2}$ with u being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
+\\Then $ P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$ , and we take $e^{-2t U_t(a)^2} $ to be the threshold here and represents by p. So we can get $U_t(a) = \sqrt{\frac{-log p}{2N_t (a)}}$.(threshold is used to distinguish ranges of values and here it is the upper bound of probability )
+% You should explain what the threshold then means. What is it Hoeffding's inequality tells us more about the problem and how it helps.
+We can use Hoeffding's inequality to get the confidence bounds of reward variance.
+
+\subsubsection{UCB1}
+% This sentence does not make gramamtical sense but I don't understand what it is and what you are trying to say so do not have any suggestions. Also make sure to use English (UK) spelling and not English (US) spelling. For example initialisation instead of initialization and maximises instead of maximizes. I think you should highlight more the difference between UCB and UCB1.
+UCB1 uses Hoeffding's inequality as the upper limit of the average reward distribution of the arm, where the true average is likely to be lower than the UCB allocated by the algorithm.
+UCB1, achieving logarithmic regret uniformly over n and without any preliminary knowledge about the reward distributions.The index of this policy is the sum of two terms. The first term is simply the current average reward. The second term is related to the size of the one-sided confidence interval for the average reward within which the true expected reward falls with overwhelming probability. With initialisation playing each machine once, we do the loop that play machine t which maximises $\overline X_t  + \sqrt{\frac{2log t}{N_t (a)}}$ . \citep{Auer2002}
+\\Under UCB1, logarithmic regret $O(logN)$  is achieved when the reward distributions are supported on [0,1].  \citep{Chan_2020} We can conclude that regret of UCB1 grows at a rate of $log N$.
+\newline
+\textbf{Pseudocode for Upper Confidence Bound Strategy}
+\newline
+\begin{algorithm}[H]
+ \KwData{number of machines, number of trials, confidence level}
+ \KwResult{regret after using UCB strategy\;}
+ \For{number of trials}{
+    Pick arm with highest upper confidence bound\;
+    arm uncertainty = confidence level $\times\sqrt{\frac{\ln{N+1}}{N}}$\;
+    arm upper confidence bound = arm realised expectation + arm uncertainty\;
+ }
+ Calculate and return regret
+ \caption{UCB Strategy}
+\end{algorithm}
+
+\subsection{Thompson Sampling (Bayesian)}
+The goal of Thompson sampling is to construct an accurate estimate of rewards by building a \emph{probability distribution} based on the rewards we have already received - this is an example of \emph{Bayesian inference}, where we update our models based on new knowledge. More specifically, we construct the \emph{conjugate prior} for the distributions of the arms allowing us to approximately predict our posterior reward distribution. Using these prior distributions, we choose the next arm to play by sampling from each prior distribution, selecting the best value from the samples, and playing the arm which gives this value; we repeat this method after each round, changing our conjugate prior distributions for the following round based on new information we gain. These upper bounds will continue to change as we gain more information (and therefore confidence) about each arm's distribution.  In this section, we shall go through the Thompson sampling methods where the distribution of the arms is different in each case. \citep{agrawal2012analysis} 
+
+\subsubsection{Bernoulli Thompson Sampling}
+As the name suggests, in this case, all the arms have a Bernoulli distribution: therefore we can model our conjugate prior distribution as a Beta($\alpha$,$\beta$) distribution, where $\alpha$ corresponds to the number of successes (rounds where the arm gives one), and $\beta$ corresponds to the number of failures (rounds where the arm gives zero). As we have no previous successes or failures in the first round, we shall set both $\alpha$ and $\beta$ to 1, and after this, we sample using the constructed Beta distribution for each arm, with $\alpha$ and $\beta$ being updated for each arm the more we play. As we go on, this results in the distributions with higher $\alpha$ values and lower $\beta$ values being selected more often, maximizing our reward. 
+
+\subsubsection{Gaussian Thompson Sampling}
+In this case, the arms have a Gaussian (Normal) distribution \emph{with known variance}: this means we can model our conjugate prior distribution as a Normal distribution. However, the parameters are now changed. We shall use the \emph{precision} ($\tau$), which is just 1/variance and therefore known, to make the expression to update the parameters after each round easier to manipulate. We name our modelling parameters before the round $\mu_0$ and $\tau_0$ for the mean and precision respectively. Therefore, the updated precision for the socket after the round is given by 
+$$\tau_0\xleftarrow{}\tau_0 + n\tau$$
+and the updated mean for the arm after the round is given by
+$$\mu_0\xleftarrow{}\frac{\tau_0\mu_0 + \tau\sum_{t=1}^T\widehat{r}_t}{\tau_0 + n\tau} $$
+where $\widehat{r}_t$ is the reward at time t \citep{agrawal2013further}, which was defined in section 1.3. This means the posterior distribution in this case is a normal distribution using the updated parameters above for the precision and mean respectively. Similar to our Bernoulli Thompson sampling model above, as the rounds progress, the precision for each arm increases, and the variance for each arm therefore decreases, meaning that the arms with the highest estimated mean are chosen more often.
+
+\subsubsection{Regret for Thompson Sampling}
+The expected regret for both our Thompson sampling models above has order
+$$O(\sqrt{NT\ln{T}})$$
+where T is the number of rounds and N is the number of arms. \citep{agrawal2013further} This means that Thompson sampling is a \emph{zero regret} strategy, as the order of the expected regret is such that its gradient becomes flatter as time progresses. This is because $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases.
+\newline
+\textbf{Pseudocode for Thompson Sampling Strategy}
+\newline
+\begin{algorithm}[H]
+ \KwData{number of machines, number of trials, confidence level}
+ \KwResult{regret after using Thompson Sampling strategy\;}
+ Set all arms with prior distribution with a uniform distribution\;
+ \For{number of trials}{
+    Sample distributions for all arms\;
+    Select arm with highest arg max of sample
+    Update success and failure numbers of arm
+ }
+ Calculate and return regret
+ \caption{Thompson Strategy}
+\end{algorithm}

@@ -1,0 +1,36 @@
+\section{Strengths and Weaknesses}
+In this section, we explore which strategies work best and worst in different scenarios, whilst also comparing them to each other.
+
+\subsection{Comparing algorithms}
+
+
+\subsection{$\epsilon$-Greedy}
+\subsubsection{Strengths}
+The largest strength of epsilon-greedy is it is quite easy to understand and it is not computationally expensive at all compared with UCB and Thompson Sampling. After an initial period of exploration (for example 10,000 trials), the algorithm greedily exploits the best option k, $\epsilon$ percent of the time. For example, if we set $\epsilon$=0.05, the algorithm will exploit the best variant 95\% of the time and will explore random alternatives 5\% of the time. This is actually quite effective in practice.
+\subsubsection{Weaknesses}
+Epsilon-Greedy is a pretty powerful algorithm capable of exploring the variant space and making close to optimal decisions within it. However, the algorithm did not identify the absolute best variant. Certainly we can increase the learning trails, but then we are wasting more trials by randomly searching, which will further hurt the total reward. Also, there is inherent randomness in this process, so if we were to run the algorithm again it is possible that epsilon-greedy will identify and exploit the best variant. This means that epsilon-greedy can get stuck exploiting a suboptimal variant.
+
+\subsection{Upper Confidence Bound}
+\subsubsection{Strengths}
+The UCB method quickly finds the optimal action and continuously uses it, while the greedy algorithm finds the optimal action relatively quickly, but it has too much randomness.
+The UCB algorithm does not perform exploration by simply choosing any action selected with a constant probability, but changes its exploration-exploitation balance when collecting more environmental knowledge. 
+\\The UCB-1 results from a single simulation are very stable and similar to the average results. This demonstrates the fact that the algorithm can balance exploration and exploitation in a single experiment, optimize contact allocation to discover the true winning variant, and then use it.
+\subsubsection{Weaknesses}
+There are many variants need to be considered, for example, the non-stochastic bandit which makes no assumptions about the reward distribution cannot be estimated under UCB. 
+\\UCB methods for example, handle bandits with small numbers of arms and high reward variances very well, but their performance deteriorates much more quickly than that of other algorithms when K becomes large.\citep{Kuleshov}
+\\The choice of confidence interval will effect the precision. If we choose 95 percent rather than 99 percent, it will generate less specific results.
+\\UCB1 converges to a solution much more slowly than the other algorithms, although that final solution appears to be very good, which is consistent with the results reported by Auer et al. Reinforcement comparison generates good average regret per turn towards the end of 1000 turns for small numbers of arms (K = 2,5), but starts trailing the other algorithms at larger values of K (K = 10, 50). Its total regret is relatively high because it is slower in the beginning (due to the need to estimate the average reward). Overall, our results suggest that there is no advantage to using pursuit and reinforcement comparison in practice. \citep{Kuleshov}
+\subsection{Thompson Sampling}
+Similar to the Upper Confidence Bound (UCB) algorithm above, Thompson Sampling chooses an arm to play based on the highest estimated reward. Unlike the UCB algorithm, however, the 'highest estimates' in this case depend on the best \emph{sample} from the conjugate prior distributions (explained in section 2.3) for each arm, rather than the upper bound of the confidence interval around the estimated value for each arm, as the UCB does. 
+
+\subsubsection{Strengths}
+By sampling from the prior distributions of each arm, rather than picking the best estimate like $\epsilon$-greedy or the best potential estimate like UCB, we get a better proportion of draws, with which we can model our new prior distributions - this gives us a very good exploration-exploitation balance. In addition, unlike the UCB (which sets a confidence value to control the level of exploration) and $\epsilon$-greedy (which sets an exploration value $\epsilon$) algorithms, a parameter doesn't need to be set for Thompson sampling, meaning that Thompson sampling doesn't depend on how well we choose our parameters. 
+
+Furthermore, (although the algorithms are beyond the scope of this paper), Gaussian Thompson sampling does not necessarily need to have known precision - if both the mean and precision are unknown, we construct our conjugate priors using the \emph{Normal-Gamma} distribution, with four parameters. This demonstrates that even with very little information about the underlying distribution, Thompson sampling still manages to find optimal arms and a zero regret strategy. 
+
+\subsubsection{Weaknesses}
+By trying to estimate the underlying distribution for each arm, and continuously updating prior distributions using posterior results, Thompson sampling ends up being very computationally expensive compared to algorithms like $\epsilon$-Greedy. \citep{mazumdar2020thompson} Although the computational cost can be decreased using algorithms such as Markov Chain Monte Carlo methods, these will be less accurate as they are numerical approximations. \citep{mazumdar2020thompson} In addition, for a smaller number of arms with means close to each other, we see that a strategy such as $\epsilon$-first would work better, as Thompson sampling could still choose to play arms using samples from inferior prior distributions, whereas the $\epsilon$-first strategy will locate the arm with the highest expectation far more quickly. It should also be noted that the arm which actually has the highest expectation could also give a really low reward for the first round, meaning that the algorithm may not exploit it for many of the following rounds, which is especially bad with a low number of arms and rounds. Furthermore, in this project, we have only considered arm distributions where the prior and posterior are \emph{conjugate distributions} - when this is not the case, 
+
+\subsubsection{Best conditions for Thompson sampling algorithm}
+From this, we can say that Thompson sampling works best when there are a large number of machines and a large number of rounds, as this would result in more accurate prior distributions for each round over the long run. As Thompson sampling is a zero-regret strategy, we can also say that after a large number of rounds, the cumulative regret will cease to increase. 
+

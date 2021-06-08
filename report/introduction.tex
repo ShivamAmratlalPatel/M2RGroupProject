@@ -1,0 +1,15 @@
+\section{Introduction}
+\subsection{The Problem}
+The multi armed bandit problem for a gambler is best expressed as a gambler with a row of slot machines, all with unknown expected returns. What is the optimal method of playing each machine to maximise returns \citep{vermorel}? This is a problem where there are multiple options and one must choose options to maximise one's gain, however not all the information of such options are known until tried.
+\newline
+\newline
+This problem could be simplified down to 2 coins of unknown bias. Suppose we are allowed to make $n$ tosses, with the promise of getting \$1 for for each head but nothing for tails \citep{robbins1952some}. What is the best way to choose which coin to toss to maximise earnings? The problem has many variations, with known or unknown distributions and/or means.
+
+\subsection{Applications}
+The applications of the multi armed bandit problem are extensive. In healthcare, statisticians collect data for assessing treatment effectiveness \citep{bouneffouf2019survey}. The world of financial services uses the solutions to this problem for portfolio selection to maximise returns on investments.
+\newline
+\newline
+A more modern application is in social media \citep{chen2013combinatorial}. Influence maximisation is a huge problem in today's world. This particular problem exposes seeds of users to some information and then tracks the spread of said information, with the aim being to find which seed of users will result in the greatest spread of information.
+
+\subsection{Regret}
+Before analysing strategies, there is one very important measure that we must define. The \emph{regret} ($\rho$) after T rounds of the multi-armed bandit is defined as $$\rho = T\mu\mbox{*} - \sum_{t=1}^T\hat{r}_t$$ where $\mu\mbox{*}$ is the \emph{maximal reward mean} and $\hat{r}_t$ is the reward at time t \citep{vermorel}. (The maximal reward mean is just the mean of all the maximums across arms for each round) We can rewrite this as $$\rho = \sum_{t=1}^T\hat{r}_t$$ The reason this is of utmost importance is because minimizing it will give us our most optimal strategies. The 'holy grail' we are searching for is known as a \emph{zero regret strategy}, which is a strategy whose average regret per round tends to zero with probability 1 as the number of rounds T tends to infinity \citep{vermorel}; in all the strategies below, we shall therefore analyse how close they get to a zero regret strategy.
