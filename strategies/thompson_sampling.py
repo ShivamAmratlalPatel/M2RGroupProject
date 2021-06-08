@@ -11,7 +11,7 @@ from bandits import ThompsonMachine, random_argmax, Environment
 
 
 def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int,
-                               gaussian=False):
+                               gaussian: bool):
     """
     Return the total value of the thompson sampling strategy.
 
