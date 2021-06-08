@@ -94,7 +94,10 @@ class ThompsonMachine(Machine):
     def sample(self):
         """Return a value sampled from the beta distribution."""
         if self.gaussian:
-            return (np.random.randn() / np.sqrt(self.tao_0)) + self.mean
+            if len(self.realisations) == 0:
+                return 0
+            else:
+                return (np.random.randn() / np.sqrt(self.tao_0)) + self.mean
         else:
             return np.random.beta(self.alpha, self.beta)
 
@@ -229,10 +232,19 @@ def random_argmax(value_list):
 def average_finder(regret_list, trial_no, its_number):
     """Find the average of number of iterations."""
     result = []
-
+    ci_list = []
     for j in range(0, trial_no):
         list_of_numbers = []
         for k in range(0, its_number):
             list_of_numbers.append(regret_list[k][j])
         result.append(np.average(list_of_numbers))
-    return result
+
+        ci = 1.96 * np.std(list_of_numbers) / np.sqrt(its_number)
+        ci_list.append(ci)
+
+    result = np.array(result)
+    ci_array = np.array(ci_list)
+    ci_plus = result + ci_array
+    ci_minus = result - ci_array
+
+    return result, ci_minus, ci_plus
