@@ -11,3 +11,9 @@ server/ssh -i math50008.pem ubuntu@ec2-18-133-175-161.eu-west-2.compute.amazonaw
 main/__pycache/
 server/math50008.pem
 main/plot.png
+math50002project.egg-info
+main/plot.png
+main/test.png
+main/thompson_plot.png
+main/epsilon_plot.png
+main/ucb_plot.png
