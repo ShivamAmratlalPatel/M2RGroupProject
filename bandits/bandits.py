@@ -73,18 +73,18 @@ class ThompsonMachine(Machine):
         self.gaussian = gaussian
         if self.gaussian:
             self.variance = 1
-            self.tao_0 = 1 / self.variance
-            self.mean = 0
+            self.tao_0 = 0.0001  # the posterior precision
+            self.mu_0 = 1
 
     def run(self):
         """Return a  realisation of the machine if run."""
         self.n += 1
         super(ThompsonMachine, self).run()
         if self.gaussian:
-            self.tao_0 += self.n
-            self.mean = (self.tao_0 * self.mean + (1 / self.variance) * sum(
-                self.realisations)) / (
-                                self.tao_0 + self.n * (1 / self.variance))
+            self.mu_0 = ((self.tao_0 * self.mu_0) + (
+                        self.n * self.realised_expectation())) / (
+                                    self.tao_0 + self.n)
+            self.tao_0 += 1
         else:
             if self.realisations[-1] > 0:
                 self.alpha += 1
@@ -94,10 +94,7 @@ class ThompsonMachine(Machine):
     def sample(self):
         """Return a value sampled from the beta distribution."""
         if self.gaussian:
-            if len(self.realisations) == 0:
-                return 0
-            else:
-                return (np.random.randn() / np.sqrt(self.tao_0)) + self.mean
+            return (np.random.randn() / np.sqrt(self.tao_0)) + self.mu_0
         else:
             return np.random.beta(self.alpha, self.beta)
 
