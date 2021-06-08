@@ -226,13 +226,13 @@ def random_argmax(value_list):
         np.random.random(values.shape) * (values == values.max(initial=1)))
 
 
-def average_finder(regret_list, trial_no, number_of_iterations):
+def average_finder(regret_list, trial_no, its_number):
     """Find the average of number of iterations."""
     result = []
 
     for j in range(0, trial_no):
         list_of_numbers = []
-        for k in range(0, number_of_iterations):
+        for k in range(0, its_number):
             list_of_numbers.append(regret_list[k][j])
         result.append(np.average(list_of_numbers))
     return result
