@@ -68,5 +68,5 @@ legend = ax.legend()
 legend.get_frame().set_alpha(0.5)
 for spine in ('top', 'right', 'bottom', 'left'):
     ax.spines[spine].set_visible(False)
-plt.savefig('plot.png', dpi=1000, transparent=False, bbox_inches='tight')
+plt.savefig('plot1.png', dpi=1000, transparent=False, bbox_inches='tight')
 plt.show()
