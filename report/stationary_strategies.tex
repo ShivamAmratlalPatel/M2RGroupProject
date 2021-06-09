@@ -37,7 +37,7 @@ and $ Q(a)$ is the true mean.
 \subsubsection{Hoeffding’s Inequality}
 % This sentence could be worded better. 'does help at all' does not make sense. I don't know what you are trying to say here so I don't have any suggestions for what you could write. It is that "at all" bit which does not make sense.
 Hoeffding's inequality is applicable at all bound distribution. Let $X_1, ..., X_n$ be independent and identically distributed random variables, then $ P(E[X]  \textgreater \overline  X_t + u) \leq e^{-2t u^2}$ with u being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
-\\Then $ P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$ , and we take $e^{-2t U_t(a)^2} $ to be the threshold here and represents by p. So we can get $U_t(a) = \sqrt{\frac{-log p}{2N_t (a)}}$.(threshold is used to distinguish ranges of values and here it is the upper bound of probability )
+\\Then $ P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$ , and we take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by p. So we can get $U_t(a) = \sqrt{\frac{-log p}{2N_t (a)}}$. Threshold is used to distinguish ranges of values and here it is the upper bound of probability.
 % You should explain what the threshold then means. What is it Hoeffding's inequality tells us more about the problem and how it helps.
 We can use Hoeffding's inequality to get the confidence bounds of reward variance.
 
