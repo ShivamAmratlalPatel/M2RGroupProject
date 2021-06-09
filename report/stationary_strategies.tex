@@ -12,36 +12,36 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     \subsubsection{Epsilon-first Strategy}
 
     The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning\citep{vermorel}.
-Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected, followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
-\newline
-\textbf{Pseudo Code for Epsilon-first Strategy}
-\newline
-\begin{algorithm}[H]
-    \KwData{number of arms, number of arms, epsilon}
-    \KwResult{regret after using epsilon strategy\;}
-    \For{number of arms*epsilon}{
-        Pick random arm\;
-    }
-    Calculate realised expectation of each arm\;
+    Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected, followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
+    \newline
+    \textbf{Pseudo Code for Epsilon-first Strategy}
+    \newline
+    \begin{algorithm}[H]
+        \KwData{number of arms, number of arms, epsilon}
+        \KwResult{regret after using epsilon strategy\;}
+        \For{number of arms*epsilon}{
+            Pick random arm\;
+        }
+        Calculate realised expectation of each arm\;
 
-    \For{number of arms*(1-epsilon)}{
-        Pick arm with highest realised expectation\;
-    }
-    Calculate and return regret
-    \caption{Epsilon first strategy}\label{alg:epsilon_algorithm}
-\end{algorithm}
+        \For{number of arms*(1-epsilon)}{
+            Pick arm with highest realised expectation\;
+        }
+        Calculate and return regret
+        \caption{Epsilon first strategy}\label{alg:epsilon_algorithm}
+    \end{algorithm}
 
-\subsection{Upper Confidence Bound}\label{subsec:upper-confidence-bound}
+    \subsection{Upper Confidence Bound}\label{subsec:upper-confidence-bound}
 % This sentence does not make sense and needs further clarification. I would write something like. In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level. We then choose the arm which has the highest upper confidence bound to pull next. 
-We use assumption to construct an upper bound estimate on the mean of each arm at some fixed confidence level, and then choose the arm that looks best under this estimate. \citep{SVGarbar2012} In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level.
-We then choose the arm which has the highest upper confidence bound to pull next.
-\\The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$.
-Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean.
+    We use assumption to construct an upper bound estimate on the mean of each arm at some fixed confidence level, and then choose the arm that looks best under this estimate. \citep{SVGarbar2012} In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level.
+    We then choose the arm which has the highest upper confidence bound to pull next.
+    \\The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$.
+    Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean.
 
-\subsubsection{Hoeffding’s Inequality}
+    \subsubsection{Hoeffding’s Inequality}
 % This sentence could be worded better. 'does help at all' does not make sense. I don't know what you are trying to say here so I don't have any suggestions for what you could write. It is that "at all" bit which does not make sense.
-Hoeffding's inequality is applicable at all bound distribution.
-Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X]  \textgreater \overline  X_t + u) \leq e^{-2t u^2}$ with u being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
+    Hoeffding's inequality is applicable at all bound distribution.
+    Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X]  \textgreater \overline  X_t + u) \leq e^{-2t u^2}$ with u being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
     \\Then $ P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$ , and we take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by p.
     So we can get $U_t(a) = \sqrt{\frac{-log p}{2N_t (a)}}$.
     Threshold is used to distinguish ranges of values and here it is the upper bound of probability.
@@ -69,12 +69,12 @@ Let $X_1, \dots, X_n$ be independent and identically distributed random variable
             arm upper confidence bound = arm realised expectation + arm uncertainty\;
         }
         Calculate and return regret
-    \caption{UCB Strategy}\label{alg:ucb_algorithm}
-\end{algorithm}
+        \caption{UCB Strategy}\label{alg:ucb_algorithm}
+    \end{algorithm}
 
-\subsection{Thompson Sampling (Bayesian)}\label{subsec:thompson-sampling-(bayesian)}
-The goal of Thompson sampling is to construct an accurate estimate of rewards by building a \textbf{probability distribution} based on the rewards we have already received - this is an example of \textbf{Bayesian inference}, where we update our models based on new knowledge.
-More specifically, we construct the \textbf{conjugate prior} for the distributions of the arms allowing us to approximately predict our posterior reward distribution.
+    \subsection{Thompson Sampling (Bayesian)}\label{subsec:thompson-sampling-(bayesian)}
+    The goal of Thompson sampling is to construct an accurate estimate of rewards by building a \textbf{probability distribution} based on the rewards we have already received - this is an example of \textbf{Bayesian inference}, where we update our models based on new knowledge.
+    More specifically, we construct the \textbf{conjugate prior} for the distributions of the arms allowing us to approximately predict our posterior reward distribution.
     Using these prior distributions, we choose the next arm to play by sampling from each prior distribution, selecting the best value from the samples, and playing the arm which gives this value;
     we repeat this method after each round, changing our conjugate prior distributions for the following round based on new information we gain.
     These conjugate prior distributions will continue to change as we gain more information (and therefore confidence) about each arm's distribution.
@@ -97,20 +97,20 @@ More specifically, we construct the \textbf{conjugate prior} for the distributio
 
     \subsubsection{Regret for Thompson Sampling}
     The expected regret for both our Thompson sampling models above has order
-$$O(\sqrt{NT\ln{T}})$$
-where T is the number of rounds and N is the number of arms. \citep{agrawal2013further} This means that Thompson sampling is a \textbf{zero regret} strategy, as the order of the expected regret is such that its gradient becomes flatter as time progresses. This is because $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases.
-\newline
-\textbf{Pseudocode for Thompson Sampling Strategy}
-\newline
-\begin{algorithm}[H]
-    \KwData{number of arms, number of arms, confidence level}
-    \KwResult{regret after using Thompson Sampling strategy\;}
-    Set all arms with prior distribution with a uniform distribution\;
-    \For{number of arms}{
-        Sample distributions for all arms\;
-        Select arm with highest arg max of sample
-        Update success and failure numbers of arm
-    }
-    Calculate and return regret
-    \caption{Thompson Strategy}\label{alg:thompson_algorithm}
-\end{algorithm}\label{subsubsec:epsilon-first-strategy}
+    $$O(\sqrt{NT\ln{T}})$$
+    where T is the number of rounds and N is the number of arms. \citep{agrawal2013further} This means that Thompson sampling is a \textbf{zero regret} strategy, as the order of the expected regret is such that its gradient becomes flatter as time progresses. This is because $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases.
+    \newline
+    \textbf{Pseudocode for Thompson Sampling Strategy}
+    \newline
+    \begin{algorithm}[H]
+        \KwData{number of arms, number of arms, confidence level}
+        \KwResult{regret after using Thompson Sampling strategy\;}
+        Set all arms with prior distribution with a uniform distribution\;
+        \For{number of arms}{
+            Sample distributions for all arms\;
+            Select arm with highest arg max of sample
+            Update success and failure numbers of arm
+        }
+        Calculate and return regret
+        \caption{Thompson Strategy}\label{alg:thompson_algorithm}
+    \end{algorithm}\label{subsubsec:epsilon-first-strategy}
