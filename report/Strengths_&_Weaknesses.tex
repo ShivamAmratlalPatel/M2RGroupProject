@@ -1,15 +1,13 @@
 \section{Strengths and Weaknesses}
 In this section, we explore which strategies work best and worst in different scenarios, whilst also comparing them to each other.
 
-\subsection{Comparing algorithms}
-
 \subsection{$\epsilon$-Greedy}
 
 \subsubsection{Strengths}
 The largest strength of epsilon-greedy is it is quite easy to understand and it is not computationally expensive at all compared with UCB and Thompson Sampling. After an initial period of exploration (for example 10,000 trials), the algorithm greedily exploits the best option k, $\epsilon$ percent of the time. For example, if we set $\epsilon$=0.05, the algorithm will exploit the best variant 95\% of the time and will explore random alternatives 5\% of the time. This is actually quite effective in practice.
 
 \subsubsection{Weaknesses}
-Epsilon-Greedy is a pretty powerful algorithm capable of exploring the variant space and making close to optimal decisions within it. However, the algorithm did not identify the absolute best variant. Certainly we can increase the learning trails, but then we are wasting more trials by randomly searching, which will further hurt the total reward. Also, there is inherent randomness in this process, so if we were to run the algorithm again it is possible that epsilon-greedy will identify and exploit the best variant. This means that epsilon-greedy can get stuck exploiting a suboptimal variant.
+Epsilon-Greedy is a pretty powerful algorithm capable of exploring the variant space and making close to optimal decisions within it. However, the algorithm does not always identify the absolute best arm. Certainly we can increase the rounds for exploration, but then we are wasting more rounds randomly searching, which will further hurt the total reward. Also, there is inherent randomness in this process, so if we were to run the algorithm again it is possible that epsilon-greedy will identify and exploit the best arm. This means that epsilon-greedy can get stuck exploiting a sub-optimal arm.
 
 \subsection{Upper Confidence Bound}
 
