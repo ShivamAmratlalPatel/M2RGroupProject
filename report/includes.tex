@@ -67,12 +67,12 @@
 \else
 \usepackage[pdftex,pagebackref,hypertexnames=false,colorlinks]{hyperref} % provide links in pdf
 \hypersetup{pdftitle={},
-  pdfsubject={}, 
-  pdfauthor={\reportauthor},
-  pdfkeywords={}, 
-  pdfstartview=FitH,
-  pdfpagemode={UseOutlines},% None, FullScreen, UseOutlines
-  bookmarksnumbered=true, bookmarksopen=true, colorlinks,
+    pdfsubject={},
+    pdfauthor={\reportauthor},
+    pdfkeywords={},
+    pdfstartview=FitH,
+    pdfpagemode={UseOutlines},% None, FullScreen, UseOutlines
+    bookmarksnumbered=true, bookmarksopen=true, colorlinks,
     citecolor=blue,%
     filecolor=black,%
     linkcolor=black,%
@@ -93,13 +93,13 @@
 
 % example-environment
 \newenvironment{example}[1][]
-{ 
-\vspace{4mm}
-\noindent\makebox[\linewidth]{\rule{\hsize}{1.5pt}}
-\textbf{Example #1}\\
-}
-{ 
-\noindent\newline\makebox[\linewidth]{\rule{\hsize}{1.0pt}}
+{
+    \vspace{4mm}
+    \noindent\makebox[\linewidth]{\rule{\hsize}{1.5pt}}
+    \textbf{Example #1}\\
+    }
+    {
+    \noindent\newline\makebox[\linewidth]{\rule{\hsize}{1.0pt}}
 }
 
 
@@ -119,7 +119,7 @@
 \setlength{\headheight}{14.5pt}
 \pagestyle{fancy}
 \fancyfoot[ER,OL]{\thepage}%Page no. in the left on
-                                %odd pages and on right on even pages
+%odd pages and on right on even pages
 \fancyfoot[OC,EC]{\sffamily }
 \renewcommand{\headrulewidth}{0.1pt}
 \renewcommand{\footrulewidth}{0.1pt}
@@ -129,51 +129,49 @@
 %--- chapter heading
 
 \def\@makechapterhead#1{%
-  \vspace*{10\p@}%
-  {\parindent \z@ \raggedright %\sffamily
-        %{\Large \MakeUppercase{\@chapapp} \space \thechapter}
-        %\\
-        %\hrulefill
-        %\par\nobreak
-        %\vskip 10\p@
+    \vspace*{10\p@}%
+    {\parindent \z@ \raggedright %\sffamily
+    %{\Large \MakeUppercase{\@chapapp} \space \thechapter}
+    %\\
+    %\hrulefill
+    %\par\nobreak
+    %\vskip 10\p@
     \interlinepenalty\@M
-    \Huge \bfseries 
+    \Huge \bfseries
     \thechapter \space\space #1\par\nobreak
     \vskip 30\p@
-  }}
+    }}
 
 %---chapter heading for \chapter*  
 \def\@makeschapterhead#1{%
-  \vspace*{10\p@}%
-  {\parindent \z@ \raggedright
+    \vspace*{10\p@}%
+    {\parindent \z@ \raggedright
     \sffamily
     \interlinepenalty\@M
-    \Huge \bfseries  
+    \Huge \bfseries
     #1\par\nobreak
     \vskip 30\p@
-  }}
-  
-
+    }}
 
 
 % %%%%%%%%%%%%% boxit
 \def\Beginboxit
-   {\par
-    \vbox\bgroup
-	   \hrule
-	   \hbox\bgroup
-		  \vrule \kern1.2pt %
-		  \vbox\bgroup\kern1.2pt
-   }
+{\par
+\vbox\bgroup
+\hrule
+\hbox\bgroup
+\vrule \kern1.2pt %
+\vbox\bgroup\kern1.2pt
+}
 
 \def\Endboxit{%
-			      \kern1.2pt
-		       \egroup
-		  \kern1.2pt\vrule
-		\egroup
-	   \hrule
-	 \egroup
-   }	
+    \kern1.2pt
+    \egroup
+    \kern1.2pt\vrule
+    \egroup
+    \hrule
+    \egroup
+}
 
 \newenvironment{boxit}{\Beginboxit}{\Endboxit}
 \newenvironment{boxit*}{\Beginboxit\hbox to\hsize{}}{\Endboxit}
@@ -196,8 +194,8 @@
     \def\elimination@col@width{#3}
     \renewcommand{\arraystretch}{#4}
     \start@align\@ne\st@rredtrue\m@ne
-}
-{
+    }
+    {
     \endalign
     \ignorespacesafterend
 }
@@ -205,46 +203,60 @@
 {
     \ifnum\value{elimination@steps}>0\leadsto\quad\fi
     \left[
-        \ifnum\elimination@num@rights>0
-            \begin{array}
-            {@{}*{\elimination@num@variables}{R{\elimination@col@width}}
-            |@{}*{\elimination@num@rights}{R{\elimination@col@width}}}
+    \ifnum\elimination@num@rights>0
+    \begin{array}
+    {@{}*{\elimination@num@variables}{R{\elimination@col@width}}
+        |@{}*{\elimination@num@rights}{R{\elimination@col@width}}}
         \else
-            \begin{array}
-            {@{}*{\elimination@num@variables}{R{\elimination@col@width}}}
-        \fi
+        \begin{array}
+        {@{}*{\elimination@num@variables}{R{\elimination@col@width}}}
+            \fi
             #1
         \end{array}
-    \right]
-    & 
-    \begin{array}{l}
-        #2
-    \end{array}
-    &%                                    moved second & here
-    \addtocounter{elimination@steps}{1}
+        \right]
+        &
+        \begin{array}{l}
+            #2
+        \end{array}
+        &%                                    moved second & here
+        \addtocounter{elimination@steps}{1}
 }
 \makeatother
 
 %% Fast macro for column vectors
-\makeatletter  
+\makeatletter
 \def\colvec#1{\expandafter\colvec@i#1,,,,,,,,,\@nil}
 \def\colvec@i#1,#2,#3,#4,#5,#6,#7,#8,#9\@nil{% 
-  \ifx$#2$ \begin{bmatrix}#1\end{bmatrix} \else
-    \ifx$#3$ \begin{bmatrix}#1\\#2\end{bmatrix} \else
-      \ifx$#4$ \begin{bmatrix}#1\\#2\\#3\end{bmatrix}\else
-        \ifx$#5$ \begin{bmatrix}#1\\#2\\#3\\#4\end{bmatrix}\else
-          \ifx$#6$ \begin{bmatrix}#1\\#2\\#3\\#4\\#5\end{bmatrix}\else
-            \ifx$#7$ \begin{bmatrix}#1\\#2\\#3\\#4\\#5\\#6\end{bmatrix}\else
-              \ifx$#8$ \begin{bmatrix}#1\\#2\\#3\\#4\\#5\\#6\\#7\end{bmatrix}\else
-                 \PackageError{Column Vector}{The vector you tried to write is too big, use bmatrix instead}{Try using the bmatrix environment}
-              \fi
-            \fi
-          \fi
-        \fi
-      \fi
+    \ifx$#2$ \begin{bmatrix}
+                 #1
+    \end{bmatrix} \else
+    \ifx$#3$ \begin{bmatrix}
+                 #1\\#2
+    \end{bmatrix} \else
+    \ifx$#4$ \begin{bmatrix}
+                 #1\\#2\\#3
+    \end{bmatrix}\else
+    \ifx$#5$ \begin{bmatrix}
+                 #1\\#2\\#3\\#4
+    \end{bmatrix}\else
+    \ifx$#6$ \begin{bmatrix}
+                 #1\\#2\\#3\\#4\\#5
+    \end{bmatrix}\else
+    \ifx$#7$ \begin{bmatrix}
+                 #1\\#2\\#3\\#4\\#5\\#6
+    \end{bmatrix}\else
+    \ifx$#8$ \begin{bmatrix}
+                 #1\\#2\\#3\\#4\\#5\\#6\\#7
+    \end{bmatrix}\else
+    \PackageError{Column Vector}{The vector you tried to write is too big, use bmatrix instead}{Try using the bmatrix environment}
     \fi
-  \fi 
-}  
+    \fi
+    \fi
+    \fi
+    \fi
+    \fi
+    \fi
+}
 \makeatother
 
 \robustify{\colvec}

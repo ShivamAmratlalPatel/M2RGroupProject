@@ -1,8 +1,8 @@
 % quick way of adding a figure
 \newcommand{\fig}[3]{
- \begin{center}
- \scalebox{#3}{\includegraphics[#2]{#1}}
- \end{center}
+    \begin{center}
+        \scalebox{#3}{\includegraphics[#2]{#1}}
+    \end{center}
 }
 
 %\newcommand*{\point}[1]{\vec{\mkern0mu#1}}
@@ -46,13 +46,12 @@
 \fi
 % matrix determinant
 \newcommand{\matdet}[1]{
-\left|
-\begin{matrix}
-#1
-\end{matrix}
-\right|
+    \left|
+    \begin{matrix}
+        #1
+    \end{matrix}
+    \right|
 }
-
 
 
 %%% various color definitions
@@ -71,7 +70,7 @@
 
 % place a colored box around a character
 \gdef\colchar#1#2{%
-  \tikz[baseline]{%
-  \node[anchor=base,inner sep=2pt,outer sep=0pt,fill = #2!20] {#1};
+    \tikz[baseline]{%
+        \node[anchor=base,inner sep=2pt,outer sep=0pt,fill = #2!20] {#1};
     }%
 }%

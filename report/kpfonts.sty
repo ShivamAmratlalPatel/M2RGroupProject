@@ -1,16 +1,16 @@
 \NeedsTeXFormat{LaTeX2e}
 %
 \ProvidesPackage{kpfonts}
-	[ 2010/08/20 v3.31]
-	
-\newif\ifkp@math	  \kp@mathtrue
-\newif\ifkp@text  	\kp@texttrue
+[ 2010/08/20 v3.31]
+
+\newif\ifkp@math      \kp@mathtrue
+\newif\ifkp@text    \kp@texttrue
 \newif\ifkp@sf      \kp@sftrue
 \newif\ifkp@tt      \kp@tttrue
 \newif\ifkp@upgrk
 \newif\ifkp@slGrk
 \newif\ifkp@upRm
-\newif\ifkp@mathscr	\kp@mathscrtrue
+\newif\ifkp@mathscr    \kp@mathscrtrue
 \newif\ifkp@calasscr
 \newif\ifkp@oldReIm
 \newif\ifkp@osn
@@ -37,39 +37,39 @@
 \newif\ifkp@rmmathbb
 \newif\ifkp@easyscsl
 
-\DeclareOption{nomath}         		{\kp@mathfalse}
-\DeclareOption{notext}         		{\kp@textfalse}
-\DeclareOption{nosf}           		{\kp@sffalse}
-\DeclareOption{nott}           		{\kp@ttfalse}
-\DeclareOption{onlyrm}						{\kp@ttfalse\kp@sffalse}
-\DeclareOption{uprightgreeks}  		{\kp@upgrktrue}
-\DeclareOption{slantedGreeks}  		{\kp@slGrktrue}
-\DeclareOption{uprightRoman}   		{\kp@upRmtrue}
-\DeclareOption{upright}        		{\kp@upRmtrue\kp@upgrktrue}
-\DeclareOption{frenchstyle}    		{\kp@upRmtrue\kp@upgrktrue}
-\DeclareOption{nomathscript}  	  {\kp@mathscrfalse}
-\DeclareOption{mathcalasscript}		{\kp@calasscrtrue}
-\DeclareOption{classicReIm}    		{\kp@oldReImtrue}
+\DeclareOption{nomath}                {\kp@mathfalse}
+\DeclareOption{notext}                {\kp@textfalse}
+\DeclareOption{nosf}                {\kp@sffalse}
+\DeclareOption{nott}                {\kp@ttfalse}
+\DeclareOption{onlyrm}                        {\kp@ttfalse\kp@sffalse}
+\DeclareOption{uprightgreeks}        {\kp@upgrktrue}
+\DeclareOption{slantedGreeks}        {\kp@slGrktrue}
+\DeclareOption{uprightRoman}        {\kp@upRmtrue}
+\DeclareOption{upright}                {\kp@upRmtrue\kp@upgrktrue}
+\DeclareOption{frenchstyle}            {\kp@upRmtrue\kp@upgrktrue}
+\DeclareOption{nomathscript}      {\kp@mathscrfalse}
+\DeclareOption{mathcalasscript}        {\kp@calasscrtrue}
+\DeclareOption{classicReIm}            {\kp@oldReImtrue}
 \DeclareOption{oldstylenums}      {\kp@osntrue}
-\DeclareOption{oldstyle}       		{\kp@ostrue\kp@Qtailtrue}
-\DeclareOption{oldstylemath}   		{\kp@osmtrue}
+\DeclareOption{oldstyle}            {\kp@ostrue\kp@Qtailtrue}
+\DeclareOption{oldstylemath}        {\kp@osmtrue}
 \DeclareOption{oldstylenumsmath}  {\kp@osnmtrue}
 \DeclareOption{fulloldstylenums}  {\kp@osntrue\kp@osnmtrue}
-\DeclareOption{fulloldstyle}   		{\kp@ostrue\kp@osmtrue\kp@Qtailtrue}
+\DeclareOption{fulloldstyle}        {\kp@ostrue\kp@osmtrue\kp@Qtailtrue}
 \DeclareOption{veryoldstyle}      {\kp@vostrue\kp@Qtailtrue}
 \DeclareOption{veryoldstylemath}  {\kp@vosmtrue}
 \DeclareOption{fullveryoldstyle}  {\kp@vostrue\kp@vosmtrue\kp@Qtailtrue}
-\DeclareOption{light}          		{\kp@lighttexttrue\kp@lightmathtrue}
-\DeclareOption{lighttext}      		{\kp@lighttexttrue}
-\DeclareOption{lightmath}      		{\kp@lightmathtrue}
-\DeclareOption{rmx}            		{\kp@rmxtrue}
+\DeclareOption{light}                {\kp@lighttexttrue\kp@lightmathtrue}
+\DeclareOption{lighttext}            {\kp@lighttexttrue}
+\DeclareOption{lightmath}            {\kp@lightmathtrue}
+\DeclareOption{rmx}                    {\kp@rmxtrue}
 \DeclareOption{nowarning}         {\kp@warningfalse}
 \DeclareOption{noamsmath}         {\kp@amsmathfalse}
 \DeclareOption{notextcomp}        {\kp@textcompfalse}
 \DeclareOption{narrowiints}       {\kp@narrowiintstrue}
 \DeclareOption{partialup}         {\kp@partialuptrue}
 \DeclareOption{largesmallcaps}    {\kp@largesmallcapstrue}
-\DeclareOption{easyscsl}  			  {\kp@easyscsltrue}
+\DeclareOption{easyscsl}              {\kp@easyscsltrue}
 \DeclareOption{noDcommand}        {\kp@Dcommandfalse}
 \DeclareOption{nofligatures}      {\kp@nofligaturestrue}
 \DeclareOption{widermath}         {\kp@widermathtrue}
@@ -119,9 +119,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifkp@sfmathbb\ifkp@rmmathbb
-  \kp@sfmathbbfalse\kp@rmmathbbfalse
-  \PackageError{kpfonts}%
-  {'sfmathbb' and 'rmmathbb' options are incompatible and ignored}
+\kp@sfmathbbfalse\kp@rmmathbbfalse
+\PackageError{kpfonts}%
+{'sfmathbb' and 'rmmathbb' options are incompatible and ignored}
 \fi\fi
 
 %%%%%%%%
@@ -129,107 +129,107 @@
 %%%%%%%%
 
 \ifkp@text
-	\ifkp@warning
-		\ifkp@os
+\ifkp@warning
+\ifkp@os
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
- 			   				\PackageWarning{kpfonts}%
-         			  {With 'oldstyle' or 'fulloldstyle' option and T1 encoding,\MessageBreak
-         			  'Thorn' and 'thorn' are unavailable.}
+\PackageWarning{kpfonts}%
+{With 'oldstyle' or 'fulloldstyle' option and T1 encoding,\MessageBreak
+'Thorn' and 'thorn' are unavailable.}
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
-		\fi % end os
-		\ifkp@vos
+\fi % end os
+\ifkp@vos
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
- 			   				\PackageWarning{kpfonts}%
-         			  {With 'veryoldstyle' or 'fullveryoldstyle' option and T1 encoding,\MessageBreak
-         			  'Ng', 'Thorn', 'thorn' and 'eth' are unavailable.}
+\PackageWarning{kpfonts}%
+{With 'veryoldstyle' or 'fullveryoldstyle' option and T1 encoding,\MessageBreak
+'Ng', 'Thorn', 'thorn' and 'eth' are unavailable.}
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
-		\fi % end vos
-		\ifkp@easyscsl
+\fi % end vos
+\ifkp@easyscsl
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
- 			   				\PackageWarning{kpfonts}%
-         			  {With 'easyscsl' option, don't fit together\MessageBreak
-         			  \textsl or \slshape and \textsc or \scshape\MessageBreak
-         			  with non 'kpfonts' fonts.}
+\PackageWarning{kpfonts}%
+{With 'easyscsl' option, don't fit together\MessageBreak
+\textsl or \slshape and \textsc or \scshape\MessageBreak
+with non 'kpfonts' fonts.}
 %%%    					To prevent this warning, use the 'nowarning' option    %%%
-		\fi % end vos
-	\fi % end warning
+\fi % end vos
+\fi % end warning
 %
 %%% easyscsl, courtesy from François Pétiard
 %
-	\ifkp@easyscsl 
-		\renewcommand{\itshape}{\not@math@alphabet\itshape\mathit%
-			\ifthenelse{\equal{\f@shape}{\scdefault}}{\fontshape{scsl}}{%
-			\fontshape\itdefault}\selectfont}
-		\renewcommand{\scshape}{\not@math@alphabet\scshape\relax%
-			\ifthenelse{\equal{\f@shape}{\sldefault}}{\fontshape{scsl}}{%
-			\ifthenelse{\equal{\f@shape}{\itdefault}}{\fontshape{scsl}}{\fontshape\scdefault}}\selectfont}
-		\renewcommand{\slshape}{\not@math@alphabet\slshape\relax%
-			\ifthenelse{\equal{\f@shape}{\scdefault}}{\fontshape{scsl}}{%
-			\fontshape\sldefault}\selectfont} 
-	\fi
+\ifkp@easyscsl
+\renewcommand{\itshape}{\not@math@alphabet\itshape\mathit%
+\ifthenelse{\equal{\f@shape}{\scdefault}}{\fontshape{scsl}}{%
+    \fontshape\itdefault}\selectfont}
+\renewcommand{\scshape}{\not@math@alphabet\scshape\relax%
+\ifthenelse{\equal{\f@shape}{\sldefault}}{\fontshape{scsl}}{%
+    \ifthenelse{\equal{\f@shape}{\itdefault}}{\fontshape{scsl}}{\fontshape\scdefault}}\selectfont}
+\renewcommand{\slshape}{\not@math@alphabet\slshape\relax%
+\ifthenelse{\equal{\f@shape}{\scdefault}}{\fontshape{scsl}}{%
+    \fontshape\sldefault}\selectfont}
+\fi
 %
 %%% famille, petitesmajuscules, style, f-ligatures and Q tail
 %
-		\ifkp@rmx\def\kp@famille{x}
-			\else
-				\ifkp@lighttext\def\kp@famille{l}
-					\else\def\kp@famille{}
-						\fi\fi
-		\ifkp@vos\def\kp@style{vos}
-			\else\ifkp@os\def\kp@style{os}
-				\else\ifkp@osn\def\kp@style{osn}
-					\else\def\kp@style{}
-						\fi\fi\fi
-    \ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}
-      \else\def\kp@petitesmajuscules{}\def\kp@othersc{k}
-        \fi
-    \ifkp@nofligatures\def\kp@flig{f}
-      \else\def\kp@flig{}
-        \fi
-    \ifkp@Qtail\def\kp@othertail{}
-      \else\def\kp@othertail{os}
-        \fi
-    \ifkp@vos\def\kp@otherctst{}
-      \else\ifkp@os\def\kp@otherctst{}
-        \else\def\kp@otherctst{os}
-          \fi\fi
+\ifkp@rmx\def\kp@famille{x}
+\else
+\ifkp@lighttext\def\kp@famille{l}
+\else\def\kp@famille{}
+\fi\fi
+\ifkp@vos\def\kp@style{vos}
+\else\ifkp@os\def\kp@style{os}
+\else\ifkp@osn\def\kp@style{osn}
+\else\def\kp@style{}
+\fi\fi\fi
+\ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}
+\else\def\kp@petitesmajuscules{}\def\kp@othersc{k}
+\fi
+\ifkp@nofligatures\def\kp@flig{f}
+\else\def\kp@flig{}
+\fi
+\ifkp@Qtail\def\kp@othertail{}
+\else\def\kp@othertail{os}
+\fi
+\ifkp@vos\def\kp@otherctst{}
+\else\ifkp@os\def\kp@otherctst{}
+\else\def\kp@otherctst{os}
+\fi\fi
 %
 %%% start rm
 %
-		\renewcommand{\rmdefault}{jkp\kp@famille\kp@petitesmajuscules\kp@flig\kp@style}
+\renewcommand{\rmdefault}{jkp\kp@famille\kp@petitesmajuscules\kp@flig\kp@style}
 %
 %%% start sf
 %
-    \ifkp@sf
-		\renewcommand{\sfdefault}{jkpss\kp@petitesmajuscules\kp@flig\kp@style}
-		\fi
+\ifkp@sf
+\renewcommand{\sfdefault}{jkpss\kp@petitesmajuscules\kp@flig\kp@style}
+\fi
 %
 %%% start tt
 %
-    \ifkp@tt
-		\renewcommand{\ttdefault}{jkptt\kp@style}
-		\fi
+\ifkp@tt
+\renewcommand{\ttdefault}{jkptt\kp@style}
+\fi
 %
 %%% New slanted small-caps shape
 %
-    \newcommand{\textscsl}[1]{%
-		  \begingroup%
-        \fontshape{scsl}\selectfont#1%
-          \endgroup}
-    \newcommand{\scslshape}{\fontshape{scsl}\selectfont}
+\newcommand{\textscsl}[1]{%
+    \begingroup%
+    \fontshape{scsl}\selectfont#1%
+    \endgroup}
+\newcommand{\scslshape}{\fontshape{scsl}\selectfont}
 %
 %%% Courtesy from Christian Tellechea, package xstring
 %
 \def\SiFonteContient#1#2{%
     \begingroup
-        \edef\temp@@a{#1}\edef\temp@@a{\detokenize\expandafter{\temp@@a}}%
-        \edef\temp@@b{#2}\edef\temp@@b{\detokenize\expandafter{\temp@@b}}%
-        \expandafter\expandafter\expandafter
+    \edef\temp@@a{#1}\edef\temp@@a{\detokenize\expandafter{\temp@@a}}%
+    \edef\temp@@b{#2}\edef\temp@@b{\detokenize\expandafter{\temp@@b}}%
+    \expandafter\expandafter\expandafter
     \endgroup
     \expandafter\expandafter\expandafter
-        \@SiFonteContient
-            \expandafter\expandafter\expandafter
-        {\expandafter\temp@@a\expandafter}\expandafter{\temp@@b}}
+    \@SiFonteContient
+    \expandafter\expandafter\expandafter
+    {\expandafter\temp@@a\expandafter}\expandafter{\temp@@b}}
 
 \def\@SiFonteContient#1#2#3#4{%
     \def\@@SiFonteContient##1#2##2\@nil{\ifx\@empty##2\@empty#4\else#3\fi}%
@@ -237,60 +237,60 @@
 %
 %%% Other sc, other scsl
 %
-    
-    \newcommand{\otherscshape}{%
-        \SiFonteContient{\fontname\the\font}{tt}{}{%
-          \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othersc\kp@flig\kp@style}}{%
+
+\newcommand{\otherscshape}{%
+    \SiFonteContient{\fontname\the\font}{tt}{}{%
+        \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othersc\kp@flig\kp@style}}{%
             \fontfamily{jkp\kp@famille\kp@othersc\kp@flig\kp@style}}}%
-        \fontshape{sc}\selectfont%
-          \ifkp@largesmallcaps\kp@largesmallcapsfalse\else\kp@largesmallcapstrue\fi%
-          \ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}%
-            \else\def\kp@petitesmajuscules{}\def\kp@othersc{k}\fi}%
-    \newcommand{\textothersc}[1]{%
-      \begingroup%
-        \otherscshape#1%
-      \endgroup}
-    \newcommand{\otherscslshape}{%
-        \SiFonteContient{\fontname\the\font}{tt}{}{%
-          \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othersc\kp@flig\kp@style}}{%
+    \fontshape{sc}\selectfont%
+    \ifkp@largesmallcaps\kp@largesmallcapsfalse\else\kp@largesmallcapstrue\fi%
+    \ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}%
+    \else\def\kp@petitesmajuscules{}\def\kp@othersc{k}\fi}%
+\newcommand{\textothersc}[1]{%
+    \begingroup%
+    \otherscshape#1%
+    \endgroup}
+\newcommand{\otherscslshape}{%
+    \SiFonteContient{\fontname\the\font}{tt}{}{%
+        \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othersc\kp@flig\kp@style}}{%
             \fontfamily{jkp\kp@famille\kp@othersc\kp@flig\kp@style}}}%
-        \fontshape{scsl}\selectfont%
-          \ifkp@largesmallcaps\kp@largesmallcapsfalse\else\kp@largesmallcapstrue\fi%
-          \ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}%
-            \else\def\kp@petitesmajuscules{}\def\kp@othersc{k}\fi}%
-    \newcommand{\textotherscsl}[1]{%
-      \begingroup%
-        \otherscslshape#1%
-      \endgroup}
+    \fontshape{scsl}\selectfont%
+    \ifkp@largesmallcaps\kp@largesmallcapsfalse\else\kp@largesmallcapstrue\fi%
+    \ifkp@largesmallcaps\def\kp@petitesmajuscules{k}\def\kp@othersc{}%
+    \else\def\kp@petitesmajuscules{}\def\kp@othersc{k}\fi}%
+\newcommand{\textotherscsl}[1]{%
+    \begingroup%
+    \otherscslshape#1%
+    \endgroup}
 %
 %%% Other Q and other smallcap q tails
 %
-		\newcommand{\othertailQ}{%
-		  \begingroup%
-        \SiFonteContient{\fontname\the\font}{tt}{}{%
-          \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othertail}}{%
+\newcommand{\othertailQ}{%
+    \begingroup%
+    \SiFonteContient{\fontname\the\font}{tt}{}{%
+        \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@othertail}}{%
             \fontfamily{jkp\kp@famille\kp@othertail}}}%
-            \selectfont{}Q%
-		      \endgroup}
+    \selectfont{}Q%
+    \endgroup}
 %
-		\newcommand{\othertailscq}{%
-		  \begingroup%
-        \SiFonteContient{\fontname\the\font}{tt}{}{%
-          \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@petitesmajuscules\kp@othertail}}{%
+\newcommand{\othertailscq}{%
+    \begingroup%
+    \SiFonteContient{\fontname\the\font}{tt}{}{%
+        \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@petitesmajuscules\kp@othertail}}{%
             \fontfamily{jkp\kp@famille\kp@petitesmajuscules\kp@othertail}}}%
-            \fontshape{sc}\selectfont{}q%
-		      \endgroup}
+    \fontshape{sc}\selectfont{}q%
+    \endgroup}
 %
-		\newcommand{\othertailscslq}{%
-		  \begingroup%
-        \SiFonteContient{\fontname\the\font}{tt}{}{%
-          \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@petitesmajuscules\kp@othertail}}{%
+\newcommand{\othertailscslq}{%
+    \begingroup%
+    \SiFonteContient{\fontname\the\font}{tt}{}{%
+        \SiFonteContient{\fontname\the\font}{ss}{\fontfamily{jkpss\kp@petitesmajuscules\kp@othertail}}{%
             \fontfamily{jkp\kp@famille\kp@petitesmajuscules\kp@othertail}}}%
-            \fontshape{scsl}\selectfont{}q%
-		      \endgroup}
+    \fontshape{scsl}\selectfont{}q%
+    \endgroup}
 
 %
-\fi	% end text
+\fi    % end text
 %
 
 
@@ -304,38 +304,38 @@
 %
 %%% \kp@famillem \kp@stylem and \kp@widerm
 %
-		
-		\ifkp@lightmath\def\kp@famillem{l}
-			\else\def\kp@famillem{}
-				\fi
-				
-		\ifkp@vosm\def\kp@stylem{vos}
-			\else\ifkp@osm\def\kp@stylem{os}
-				\else\ifkp@osnm\def\kp@stylem{osn}
-					\else\def\kp@stylem{}
-						\fi\fi\fi
-    \ifkp@nofligatures\def\kp@fligm{f}
-      \else\def\kp@fligm{}
-        \fi
-        
-    \ifkp@widermath\def\kp@widerm{w}
-      \else\def\kp@widerm{}
-        \fi
-	  \ifkp@sfmath\def\kp@widerm{}\fi
+
+\ifkp@lightmath\def\kp@famillem{l}
+\else\def\kp@famillem{}
+\fi
+
+\ifkp@vosm\def\kp@stylem{vos}
+\else\ifkp@osm\def\kp@stylem{os}
+\else\ifkp@osnm\def\kp@stylem{osn}
+\else\def\kp@stylem{}
+\fi\fi\fi
+\ifkp@nofligatures\def\kp@fligm{f}
+\else\def\kp@fligm{}
+\fi
+
+\ifkp@widermath\def\kp@widerm{w}
+\else\def\kp@widerm{}
+\fi
+\ifkp@sfmath\def\kp@widerm{}\fi
 
 %
 %%% \kp@stylemi et \kp@stylemath
 %
-		
-		\ifkp@vosm\def\kp@stylemi{vos}
-			\else\def\kp@stylemi{}\fi
-		
-		\ifkp@sfmath
-		    \def\kp@stylemath{ss}
-			\else
-			  \def\kp@stylemath{}
-			\fi
-			
+
+\ifkp@vosm\def\kp@stylemi{vos}
+\else\def\kp@stylemi{}\fi
+
+\ifkp@sfmath
+\def\kp@stylemath{ss}
+\else
+\def\kp@stylemath{}
+\fi
+
 %
 %%% New math Versions
 %
@@ -347,278 +347,278 @@
 
 % Roman
 
-			\ifkp@sfmath
-			  \DeclareSymbolFont{operators}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
-				\SetSymbolFont{operators}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			\else	
-			  \DeclareSymbolFont{operators}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
-				\SetSymbolFont{operators}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-			\fi
-				\SetSymbolFont{operators}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
-				\SetSymbolFont{operators}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetSymbolFont{operators}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
-				\SetSymbolFont{operators}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			
-			\def\operator@font{\mathgroup\symoperators}
-			
-			\DeclareMathAlphabet{\mathrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
-				\SetMathAlphabet{\mathrm}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathrm}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
-				\SetMathAlphabet{\mathrm}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathrm}{sf}{OT1}{jkp\kp@fligm\kp@stylem}{m}{n}
-				\SetMathAlphabet{\mathrm}{boldsf}{OT1}{jkp\kp@fligm\kp@stylem}{b}{n}
-		
-			\DeclareSymbolFontAlphabet{\mathupright}{operators}
-			\let\mathup\mathupright
-			
-			\ifkp@sfmath
-			  \DeclareMathAlphabet{\mathbf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathbf}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			\else
-			  \DeclareMathAlphabet{\mathbf}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathbf}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-			\fi
-				\SetMathAlphabet{\mathbf}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathbf}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathbf}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-				\SetMathAlphabet{\mathbf}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			      
-			\ifkp@sfmath
-			  \DeclareMathAlphabet{\mathit}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{it}
-				  \SetMathAlphabet{\mathit}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{it}
-			\else
-				\DeclareMathAlphabet{\mathit}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{it}
-				  \SetMathAlphabet{\mathit}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{it}
-		  \fi
-				\SetMathAlphabet{\mathit}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{it}
-				\SetMathAlphabet{\mathit}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{it}
-				\SetMathAlphabet{\mathit}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{it}
-				\SetMathAlphabet{\mathit}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{it}
+\ifkp@sfmath
+\DeclareSymbolFont{operators}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
+\SetSymbolFont{operators}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\else
+\DeclareSymbolFont{operators}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
+\SetSymbolFont{operators}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\fi
+\SetSymbolFont{operators}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
+\SetSymbolFont{operators}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetSymbolFont{operators}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
+\SetSymbolFont{operators}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+
+\def\operator@font{\mathgroup\symoperators}
+
+\DeclareMathAlphabet{\mathrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathrm}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathrm}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathrm}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathrm}{sf}{OT1}{jkp\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathrm}{boldsf}{OT1}{jkp\kp@fligm\kp@stylem}{b}{n}
+
+\DeclareSymbolFontAlphabet{\mathupright}{operators}
+\let\mathup\mathupright
+
+\ifkp@sfmath
+\DeclareMathAlphabet{\mathbf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathbf}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\else
+\DeclareMathAlphabet{\mathbf}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathbf}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\fi
+\SetMathAlphabet{\mathbf}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathbf}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathbf}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathbf}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+
+\ifkp@sfmath
+\DeclareMathAlphabet{\mathit}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{it}
+\SetMathAlphabet{\mathit}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{it}
+\else
+\DeclareMathAlphabet{\mathit}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{it}
+\SetMathAlphabet{\mathit}{bold}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{it}
+\fi
+\SetMathAlphabet{\mathit}{rm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{m}{it}
+\SetMathAlphabet{\mathit}{boldrm}{OT1}{jkp\kp@famillem\kp@fligm\kp@stylem}{b}{it}
+\SetMathAlphabet{\mathit}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{it}
+\SetMathAlphabet{\mathit}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{it}
 
 
 % Sans Serif
 
-		\DeclareMathAlphabet{\mathsf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathsf}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			\SetMathAlphabet{\mathsf}{rm}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathsf}{boldrm}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
-			\SetMathAlphabet{\mathsf}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathsf}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\DeclareMathAlphabet{\mathsf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathsf}{bold}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathsf}{rm}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathsf}{boldrm}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathsf}{sf}{OT1}{jkpss\kp@fligm\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathsf}{boldsf}{OT1}{jkpss\kp@fligm\kp@stylem}{b}{n}
 
 % Typewriter
 
-		\DeclareMathAlphabet{\mathtt}{OT1}{jkptt\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathtt}{bold}{OT1}{jkptt\kp@stylem}{b}{n}
-			\SetMathAlphabet{\mathtt}{rm}{OT1}{jkptt\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathtt}{boldrm}{OT1}{jkptt\kp@stylem}{b}{n}
-			\SetMathAlphabet{\mathtt}{sf}{OT1}{jkptt\kp@stylem}{m}{n}
-			\SetMathAlphabet{\mathtt}{boldsf}{OT1}{jkptt\kp@stylem}{b}{n}
+\DeclareMathAlphabet{\mathtt}{OT1}{jkptt\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathtt}{bold}{OT1}{jkptt\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathtt}{rm}{OT1}{jkptt\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathtt}{boldrm}{OT1}{jkptt\kp@stylem}{b}{n}
+\SetMathAlphabet{\mathtt}{sf}{OT1}{jkptt\kp@stylem}{m}{n}
+\SetMathAlphabet{\mathtt}{boldsf}{OT1}{jkptt\kp@stylem}{b}{n}
 
 % Math Italic
 
-      \ifkp@sfmath
-			  \DeclareSymbolFont{letters}{OML}{jkpss\kp@stylemi}{m}{it}
-				\SetSymbolFont{letters}{bold}{OML}{jkpss\kp@stylemi}{bx}{it}
-			\else	
-			  \DeclareSymbolFont{letters}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
-				\SetSymbolFont{letters}{bold}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{bx}{it}
-			\fi
-			\SetSymbolFont{letters}{rm}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
-			\SetSymbolFont{letters}{boldrm}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{bx}{it}
-			\SetSymbolFont{letters}{sf}{OML}{jkpss\kp@stylemi}{m}{it}
-			\SetSymbolFont{letters}{boldsf}{OML}{jkpss\kp@stylemi}{bx}{it}
-			\DeclareFontSubstitution{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
+\ifkp@sfmath
+\DeclareSymbolFont{letters}{OML}{jkpss\kp@stylemi}{m}{it}
+\SetSymbolFont{letters}{bold}{OML}{jkpss\kp@stylemi}{bx}{it}
+\else
+\DeclareSymbolFont{letters}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
+\SetSymbolFont{letters}{bold}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{bx}{it}
+\fi
+\SetSymbolFont{letters}{rm}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
+\SetSymbolFont{letters}{boldrm}{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{bx}{it}
+\SetSymbolFont{letters}{sf}{OML}{jkpss\kp@stylemi}{m}{it}
+\SetSymbolFont{letters}{boldsf}{OML}{jkpss\kp@stylemi}{bx}{it}
+\DeclareFontSubstitution{OML}{jkp\kp@famillem\kp@stylemi\kp@widerm}{m}{it}
 
 % Math Italic A
 
-      \ifkp@sfmath
-		    \DeclareSymbolFont{lettersA}{U}{jkpssmia}{m}{it}
-			  \SetSymbolFont{lettersA}{bold}{U}{jkpssmia}{bx}{it}
-			\else	
-		    \DeclareSymbolFont{lettersA}{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
-			  \SetSymbolFont{lettersA}{bold}{U}{jkp\kp@famillem mia\kp@widerm}{bx}{it}
-			\fi	
-			\SetSymbolFont{lettersA}{rm}{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
-			\SetSymbolFont{lettersA}{boldrm}{U}{jkp\kp@famillem mia\kp@widerm}{bx}{it}
-			\SetSymbolFont{lettersA}{sf}{U}{jkpssmia}{m}{it}
-			\SetSymbolFont{lettersA}{boldsf}{U}{jkpssmia}{bx}{it}
-			\DeclareFontSubstitution{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
+\ifkp@sfmath
+\DeclareSymbolFont{lettersA}{U}{jkpssmia}{m}{it}
+\SetSymbolFont{lettersA}{bold}{U}{jkpssmia}{bx}{it}
+\else
+\DeclareSymbolFont{lettersA}{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
+\SetSymbolFont{lettersA}{bold}{U}{jkp\kp@famillem mia\kp@widerm}{bx}{it}
+\fi
+\SetSymbolFont{lettersA}{rm}{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
+\SetSymbolFont{lettersA}{boldrm}{U}{jkp\kp@famillem mia\kp@widerm}{bx}{it}
+\SetSymbolFont{lettersA}{sf}{U}{jkpssmia}{m}{it}
+\SetSymbolFont{lettersA}{boldsf}{U}{jkpssmia}{bx}{it}
+\DeclareFontSubstitution{U}{jkp\kp@famillem mia\kp@widerm}{m}{it}
 
-		\DeclareSymbolFontAlphabet{\mathfrak}{lettersA}
+\DeclareSymbolFontAlphabet{\mathfrak}{lettersA}
 
 
 % Math Symbol
 
-      \ifkp@sfmath
-		    \DeclareSymbolFont{symbols}{OMS}{jkp}{m}{n}
-			  \SetSymbolFont{symbols}{bold}{OMS}{jkp}{bx}{n}
-			\else
-		    \DeclareSymbolFont{symbols}{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
-			  \SetSymbolFont{symbols}{bold}{OMS}{jkp\kp@famillem\kp@widerm}{bx}{n}
-			\fi
-			\SetSymbolFont{symbols}{rm}{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
-			\SetSymbolFont{symbols}{boldrm}{OMS}{jkp\kp@famillem\kp@widerm}{bx}{n}
-			\SetSymbolFont{symbols}{sf}{OMS}{jkp}{m}{n}
-			\SetSymbolFont{symbols}{boldsf}{OMS}{jkp}{bx}{n}
-			\DeclareFontSubstitution{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
-			
-\ifkp@amsmath{
-		\renewcommand{\AmSfont}{%
-			\usefont{OMS}{jkp\kp@famillem\kp@widerm}{\if\@xp\@car\f@series\@nil bb\else m\fi}{n}}}\fi
+\ifkp@sfmath
+\DeclareSymbolFont{symbols}{OMS}{jkp}{m}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{jkp}{bx}{n}
+\else
+\DeclareSymbolFont{symbols}{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
+\SetSymbolFont{symbols}{bold}{OMS}{jkp\kp@famillem\kp@widerm}{bx}{n}
+\fi
+\SetSymbolFont{symbols}{rm}{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
+\SetSymbolFont{symbols}{boldrm}{OMS}{jkp\kp@famillem\kp@widerm}{bx}{n}
+\SetSymbolFont{symbols}{sf}{OMS}{jkp}{m}{n}
+\SetSymbolFont{symbols}{boldsf}{OMS}{jkp}{bx}{n}
+\DeclareFontSubstitution{OMS}{jkp\kp@famillem\kp@widerm}{m}{n}
 
-		\DeclareSymbolFontAlphabet{\symb@ls@lph@}{symbols}
+\ifkp@amsmath{
+    \renewcommand{\AmSfont}{%
+        \usefont{OMS}{jkp\kp@famillem\kp@widerm}{\if\@xp\@car\f@series\@nil bb\else m\fi}{n}}}\fi
+
+\DeclareSymbolFontAlphabet{\symb@ls@lph@}{symbols}
 
 
 % Math Symbols A (AMSa)
 
 
-   \DeclareSymbolFont{AMSa}{U}{jkpsya}{m}{n}
-     \SetSymbolFont{AMSa}{bold}{U}{jkpsya}{bx}{n}
-     \SetSymbolFont{AMSa}{rm}{U}{jkpsya}{m}{n}
-     \SetSymbolFont{AMSa}{boldrm}{U}{jkpsya}{bx}{n}
-     \SetSymbolFont{AMSa}{sf}{U}{jkpsya}{m}{n}
-     \SetSymbolFont{AMSa}{boldsf}{U}{jkpsya}{bx}{n}
-     \DeclareFontSubstitution{U}{jkpsya}{m}{n}
+\DeclareSymbolFont{AMSa}{U}{jkpsya}{m}{n}
+\SetSymbolFont{AMSa}{bold}{U}{jkpsya}{bx}{n}
+\SetSymbolFont{AMSa}{rm}{U}{jkpsya}{m}{n}
+\SetSymbolFont{AMSa}{boldrm}{U}{jkpsya}{bx}{n}
+\SetSymbolFont{AMSa}{sf}{U}{jkpsya}{m}{n}
+\SetSymbolFont{AMSa}{boldsf}{U}{jkpsya}{bx}{n}
+\DeclareFontSubstitution{U}{jkpsya}{m}{n}
 
 
 % Math Symbols B (AMSb)
 
 \ifkp@rmmathbb
-    \ifkp@sfmath
-		  \DeclareSymbolFont{AMSb}{U}{jkpsyb}{m}{n}% rmmathbb, sfmath
-		  \SetSymbolFont{AMSb}{bold}{U}{jkpsyb}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsyb}{bx}{n}
-		\else
-		  \DeclareSymbolFont{AMSb}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}% rmmathbb
-		  \SetSymbolFont{AMSb}{bold}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsyb}{bx}{n}
-		\fi
+\ifkp@sfmath
+\DeclareSymbolFont{AMSb}{U}{jkpsyb}{m}{n}% rmmathbb, sfmath
+\SetSymbolFont{AMSb}{bold}{U}{jkpsyb}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsyb}{bx}{n}
 \else
-	\ifkp@sfmathbb
-    \ifkp@sfmath
-		  \DeclareSymbolFont{AMSb}{U}{jkpsssyb}{m}{n}% sfmathbb, sfmath
-		  \SetSymbolFont{AMSb}{bold}{U}{jkpsssyb}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
-	  \else
-		  \DeclareSymbolFont{AMSb}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}% sfmathbb
-		  \SetSymbolFont{AMSb}{bold}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
-	  \fi
-	\else
-    \ifkp@sfmath
-		  \DeclareSymbolFont{AMSb}{U}{jkpsssyb}{m}{n}% sfmath
-			\SetSymbolFont{AMSb}{bold}{U}{jkpsssyb}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
-		\else
-		  \DeclareSymbolFont{AMSb}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}% default
-			\SetSymbolFont{AMSb}{bold}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}			
-			\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
-			\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
-			\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
-			\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
-		\fi
-	\fi
-\fi	
+\DeclareSymbolFont{AMSb}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}% rmmathbb
+\SetSymbolFont{AMSb}{bold}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsyb}{bx}{n}
+\fi
+\else
+\ifkp@sfmathbb
+\ifkp@sfmath
+\DeclareSymbolFont{AMSb}{U}{jkpsssyb}{m}{n}% sfmathbb, sfmath
+\SetSymbolFont{AMSb}{bold}{U}{jkpsssyb}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
+\else
+\DeclareSymbolFont{AMSb}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}% sfmathbb
+\SetSymbolFont{AMSb}{bold}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkpss\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkpss\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
+\fi
+\else
+\ifkp@sfmath
+\DeclareSymbolFont{AMSb}{U}{jkpsssyb}{m}{n}% sfmath
+\SetSymbolFont{AMSb}{bold}{U}{jkpsssyb}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
+\else
+\DeclareSymbolFont{AMSb}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}% default
+\SetSymbolFont{AMSb}{bold}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{rm}{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
+\SetSymbolFont{AMSb}{boldrm}{U}{jkp\kp@famillem syb\kp@widerm}{bx}{n}
+\SetSymbolFont{AMSb}{sf}{U}{jkpsssyb}{m}{n}
+\SetSymbolFont{AMSb}{boldsf}{U}{jkpsssyb}{bx}{n}
+\fi
+\fi
+\fi
 
-		\DeclareFontSubstitution{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
-		\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareFontSubstitution{U}{jkp\kp@famillem syb\kp@widerm}{m}{n}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
 
 
 % Math Symbols C
 
-    \ifkp@sfmath
-		  \DeclareSymbolFont{symbolsC}{U}{jkpsyc}{m}{n}
-		  \SetSymbolFont{symbolsC}{bold}{U}{jkpsyc}{bx}{n}
-	  \else
-		  \DeclareSymbolFont{symbolsC}{U}{jkp\kp@famillem syc}{m}{n}
-		  \SetSymbolFont{symbolsC}{bold}{U}{jkp\kp@famillem syc}{bx}{n}
-		\fi
-		\SetSymbolFont{symbolsC}{rm}{U}{jkp\kp@famillem syc}{m}{n}
-		\SetSymbolFont{symbolsC}{boldrm}{U}{jkp\kp@famillem syc}{bx}{n}
-		\SetSymbolFont{symbolsC}{sf}{U}{jkpsyc}{m}{n}
-		\SetSymbolFont{symbolsC}{boldsf}{U}{jkpsyc}{bx}{n}
-		\DeclareFontSubstitution{U}{jkp\kp@famillem syc}{m}{n}
+\ifkp@sfmath
+\DeclareSymbolFont{symbolsC}{U}{jkpsyc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{jkpsyc}{bx}{n}
+\else
+\DeclareSymbolFont{symbolsC}{U}{jkp\kp@famillem syc}{m}{n}
+\SetSymbolFont{symbolsC}{bold}{U}{jkp\kp@famillem syc}{bx}{n}
+\fi
+\SetSymbolFont{symbolsC}{rm}{U}{jkp\kp@famillem syc}{m}{n}
+\SetSymbolFont{symbolsC}{boldrm}{U}{jkp\kp@famillem syc}{bx}{n}
+\SetSymbolFont{symbolsC}{sf}{U}{jkpsyc}{m}{n}
+\SetSymbolFont{symbolsC}{boldsf}{U}{jkpsyc}{bx}{n}
+\DeclareFontSubstitution{U}{jkp\kp@famillem syc}{m}{n}
 
 
 % Math Symbols D
 
 \ifkp@calasscr
-	\let\mathcal\undefined
-    \ifkp@sfmath
-			\DeclareMathAlphabet{\mathcal}{U}{jkpsyd}{m}{n}
-			\SetMathAlphabet{\mathcal}{bold}{U}{jkpsyd}{bx}{n}
-	  \else
-			\DeclareMathAlphabet{\mathcal}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
-			\SetMathAlphabet{\mathcal}{bold}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
-		\fi
-			\SetMathAlphabet{\mathcal}{rm}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
-			\SetMathAlphabet{\mathcal}{boldrm}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
-			\SetMathAlphabet{\mathcal}{sf}{U}{jkpsyd}{m}{n}
-			\SetMathAlphabet{\mathcal}{boldsf}{U}{jkpsyd}{bx}{n}
-		\ifkp@mathscr
-			\DeclareSymbolFontAlphabet{\mathscr}{symbols}
-		\fi
+\let\mathcal\undefined
+\ifkp@sfmath
+\DeclareMathAlphabet{\mathcal}{U}{jkpsyd}{m}{n}
+\SetMathAlphabet{\mathcal}{bold}{U}{jkpsyd}{bx}{n}
 \else
-		\ifkp@mathscr
-      \ifkp@sfmath
-		  	\DeclareMathAlphabet{\mathscr}{U}{jkpsyd}{m}{n}
-	  		\SetMathAlphabet{\mathscr}{bold}{U}{jkpsyd}{bx}{n}
-	    \else
-	  		\DeclareMathAlphabet{\mathscr}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
-	  		\SetMathAlphabet{\mathscr}{bold}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
-	  	\fi
-	  		\SetMathAlphabet{\mathscr}{rm}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
-	  		\SetMathAlphabet{\mathscr}{boldrm}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
-	  		\SetMathAlphabet{\mathscr}{sf}{U}{jkpsyd}{m}{n}
-	  		\SetMathAlphabet{\mathscr}{boldsf}{U}{jkpsyd}{bx}{n}
-		\fi
+\DeclareMathAlphabet{\mathcal}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
+\SetMathAlphabet{\mathcal}{bold}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
+\fi
+\SetMathAlphabet{\mathcal}{rm}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
+\SetMathAlphabet{\mathcal}{boldrm}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
+\SetMathAlphabet{\mathcal}{sf}{U}{jkpsyd}{m}{n}
+\SetMathAlphabet{\mathcal}{boldsf}{U}{jkpsyd}{bx}{n}
+\ifkp@mathscr
+\DeclareSymbolFontAlphabet{\mathscr}{symbols}
+\fi
+\else
+\ifkp@mathscr
+\ifkp@sfmath
+\DeclareMathAlphabet{\mathscr}{U}{jkpsyd}{m}{n}
+\SetMathAlphabet{\mathscr}{bold}{U}{jkpsyd}{bx}{n}
+\else
+\DeclareMathAlphabet{\mathscr}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
+\SetMathAlphabet{\mathscr}{bold}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
+\fi
+\SetMathAlphabet{\mathscr}{rm}{U}{jkp\kp@famillem syd\kp@widerm}{m}{n}
+\SetMathAlphabet{\mathscr}{boldrm}{U}{jkp\kp@famillem syd\kp@widerm}{bx}{n}
+\SetMathAlphabet{\mathscr}{sf}{U}{jkpsyd}{m}{n}
+\SetMathAlphabet{\mathscr}{boldsf}{U}{jkpsyd}{bx}{n}
+\fi
 \fi
 
 % Math Extension
 
-    \ifkp@sfmath
-		  \DeclareSymbolFont{largesymbols}{OMX}{jkpss}{m}{n}
-			\SetSymbolFont{largesymbols}{bold}{OMX}{jkpss}{bx}{n}
-	  \else
-		  \DeclareSymbolFont{largesymbols}{OMX}{jkp\kp@famillem}{m}{n}
-			\SetSymbolFont{largesymbols}{bold}{OMX}{jkp\kp@famillem}{bx}{n}
-		\fi
-			\SetSymbolFont{largesymbols}{rm}{OMX}{jkp\kp@famillem}{m}{n}
-			\SetSymbolFont{largesymbols}{boldrm}{OMX}{jkp\kp@famillem}{bx}{n}
-			\SetSymbolFont{largesymbols}{sf}{OMX}{jkpss}{m}{n}
-			\SetSymbolFont{largesymbols}{boldsf}{OMX}{jkpss}{bx}{n}
-			\DeclareFontSubstitution{OMX}{jkp\kp@famillem}{m}{n}
+\ifkp@sfmath
+\DeclareSymbolFont{largesymbols}{OMX}{jkpss}{m}{n}
+\SetSymbolFont{largesymbols}{bold}{OMX}{jkpss}{bx}{n}
+\else
+\DeclareSymbolFont{largesymbols}{OMX}{jkp\kp@famillem}{m}{n}
+\SetSymbolFont{largesymbols}{bold}{OMX}{jkp\kp@famillem}{bx}{n}
+\fi
+\SetSymbolFont{largesymbols}{rm}{OMX}{jkp\kp@famillem}{m}{n}
+\SetSymbolFont{largesymbols}{boldrm}{OMX}{jkp\kp@famillem}{bx}{n}
+\SetSymbolFont{largesymbols}{sf}{OMX}{jkpss}{m}{n}
+\SetSymbolFont{largesymbols}{boldsf}{OMX}{jkpss}{bx}{n}
+\DeclareFontSubstitution{OMX}{jkp\kp@famillem}{m}{n}
 
 
 % Math Extension A
 
-    \ifkp@sfmath
-		  \DeclareSymbolFont{largesymbolsA}{U}{jkpexa}{m}{n}
-			\SetSymbolFont{largesymbolsA}{bold}{U}{jkpexa}{bx}{n}
-	  \else
-		  \DeclareSymbolFont{largesymbolsA}{U}{jkp\kp@famillem exa}{m}{n}
-			\SetSymbolFont{largesymbolsA}{bold}{U}{jkp\kp@famillem exa}{bx}{n}
-		\fi
-			\SetSymbolFont{largesymbolsA}{rm}{U}{jkp\kp@famillem exa}{m}{n}
-			\SetSymbolFont{largesymbolsA}{boldrm}{U}{jkp\kp@famillem exa}{bx}{n}
-			\SetSymbolFont{largesymbolsA}{sf}{U}{jkpexa}{m}{n}
-			\SetSymbolFont{largesymbolsA}{boldsf}{U}{jkpexa}{bx}{n}
-			\DeclareFontSubstitution{U}{jkp\kp@famillem exa}{m}{n}
+\ifkp@sfmath
+\DeclareSymbolFont{largesymbolsA}{U}{jkpexa}{m}{n}
+\SetSymbolFont{largesymbolsA}{bold}{U}{jkpexa}{bx}{n}
+\else
+\DeclareSymbolFont{largesymbolsA}{U}{jkp\kp@famillem exa}{m}{n}
+\SetSymbolFont{largesymbolsA}{bold}{U}{jkp\kp@famillem exa}{bx}{n}
+\fi
+\SetSymbolFont{largesymbolsA}{rm}{U}{jkp\kp@famillem exa}{m}{n}
+\SetSymbolFont{largesymbolsA}{boldrm}{U}{jkp\kp@famillem exa}{bx}{n}
+\SetSymbolFont{largesymbolsA}{sf}{U}{jkpexa}{m}{n}
+\SetSymbolFont{largesymbolsA}{boldsf}{U}{jkpexa}{bx}{n}
+\DeclareFontSubstitution{U}{jkp\kp@famillem exa}{m}{n}
 
 
 % Math fonts Sizes and Additional Math Spaces
@@ -641,13 +641,13 @@
 \DeclareMathSizes{24.88}{24.88}{17.28}{12}
 
 \ifkp@widermath
-    \thinmuskip=3mu
-    \medmuskip=4mu plus 1.5mu minus 3mu
-    \thickmuskip=5mu plus 4mu
+\thinmuskip=3mu
+\medmuskip=4mu plus 1.5mu minus 3mu
+\thickmuskip=5mu plus 4mu
 \else
-    \thinmuskip=2mu
-    \medmuskip=3mu plus 1.5mu minus 3mu
-    \thickmuskip=4mu plus 3mu
+\thinmuskip=2mu
+\medmuskip=3mu plus 1.5mu minus 3mu
+\thickmuskip=4mu plus 3mu
 \fi
 
 % Common Macros
@@ -676,13 +676,13 @@
 
 \let\oldpounds\pounds%   
 \def\pounds{%
-	\relax\ifmmode\kppounds%
-		\else\oldpounds\fi}
+    \relax\ifmmode\kppounds%
+    \else\oldpounds\fi}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Math Italic (jkpmi) Definition %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
+
 \ifkp@partialup\re@DeclareMathSymbol{\partial}{\mathord}{letters}{128}\fi
 \re@DeclareMathSymbol{\partialup}{\mathord}{letters}{128}
 \re@DeclareMathSymbol{\partialsl}{\mathord}{letters}{64}
@@ -690,15 +690,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Math Symbol (jkpsy) Definition % synomymes and \Re, \Im
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   \let\circledplus\oplus
-   \let\circledminus\ominus
-   \let\circledtimes\otimes
-   \let\circledslash\oslash
-   \let\circleddot\odot
-   
+\let\circledplus\oplus
+\let\circledminus\ominus
+\let\circledtimes\otimes
+\let\circledslash\oslash
+\let\circleddot\odot
+
 \ifkp@oldReIm
-	\re@DeclareMathSymbol{\Re}{\mathord}{lettersA}{82}
-	\re@DeclareMathSymbol{\Im}{\mathord}{lettersA}{73}
+\re@DeclareMathSymbol{\Re}{\mathord}{lettersA}{82}
+\re@DeclareMathSymbol{\Im}{\mathord}{lettersA}{73}
 \fi
 
 
@@ -731,7 +731,7 @@
 \re@DeclareMathSymbol{\upuparrows}{\mathrel}{AMSa}{20}
 \re@DeclareMathSymbol{\downdownarrows}{\mathrel}{AMSa}{21}
 \re@DeclareMathSymbol{\upharpoonright}{\mathrel}{AMSa}{22}
-   \let\restriction\upharpoonright
+\let\restriction\upharpoonright
 \re@DeclareMathSymbol{\downharpoonright}{\mathrel}{AMSa}{23}
 \re@DeclareMathSymbol{\upharpoonleft}{\mathrel}{AMSa}{24}
 \re@DeclareMathSymbol{\downharpoonleft}{\mathrel}{AMSa}{25}
@@ -753,7 +753,7 @@
 \re@DeclareMathSymbol{\therefore}{\mathrel}{AMSa}{41}
 \re@DeclareMathSymbol{\because}{\mathrel}{AMSa}{42}
 \re@DeclareMathSymbol{\doteqdot}{\mathrel}{AMSa}{43}
-   \let\Doteq\doteqdot
+\let\Doteq\doteqdot
 \re@DeclareMathSymbol{\triangleq}{\mathrel}{AMSa}{44}
 \re@DeclareMathSymbol{\precsim}{\mathrel}{AMSa}{45}
 \re@DeclareMathSymbol{\lesssim}{\mathrel}{AMSa}{46}
@@ -806,9 +806,9 @@
 \re@DeclareMathSymbol{\Subset}{\mathrel}{AMSa}{98}
 \re@DeclareMathSymbol{\Supset}{\mathrel}{AMSa}{99}
 \re@DeclareMathSymbol{\Cup}{\mathbin}{AMSa}{100}
-   \let\doublecup\Cup
+\let\doublecup\Cup
 \re@DeclareMathSymbol{\Cap}{\mathbin}{AMSa}{101}
-   \let\doublecap\Cap
+\let\doublecap\Cap
 \re@DeclareMathSymbol{\curlywedge}{\mathbin}{AMSa}{102}
 \re@DeclareMathSymbol{\curlyvee}{\mathbin}{AMSa}{103}
 \re@DeclareMathSymbol{\leftthreetimes}{\mathbin}{AMSa}{104}
@@ -818,9 +818,9 @@
 \re@DeclareMathSymbol{\bumpeq}{\mathrel}{AMSa}{108}
 \re@DeclareMathSymbol{\Bumpeq}{\mathrel}{AMSa}{109}
 \re@DeclareMathSymbol{\lll}{\mathrel}{AMSa}{110}
-   \let\llless\lll
+\let\llless\lll
 \re@DeclareMathSymbol{\ggg}{\mathrel}{AMSa}{111}
-   \let\gggtr\ggg
+\let\gggtr\ggg
 \re@DeclareMathDelimiter\ulcorner{\mathopen}{AMSa}{112}{AMSa}{112}
 \re@DeclareMathDelimiter\urcorner{\mathclose}{AMSa}{113}{AMSa}{113}
 \re@DeclareMathSymbol{\circledS}{\mathord}{AMSa}{115}
@@ -945,26 +945,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \re@DeclareMathSymbol{\mappedfromchar}{\mathrel}{symbolsC}{0}
-   \def\mappedfrom{\leftarrow\mappedfromchar}
-   \def\longmappedfrom{\longleftarrow\mappedfromchar}
+\def\mappedfrom{\leftarrow\mappedfromchar}
+\def\longmappedfrom{\longleftarrow\mappedfromchar}
 \re@DeclareMathSymbol{\Mapstochar}{\mathrel}{symbolsC}{1}
-   \def\Mapsto{\Mapstochar\Rightarrow}
-   \def\Longmapsto{\Mapstochar\Longrightarrow}
+\def\Mapsto{\Mapstochar\Rightarrow}
+\def\Longmapsto{\Mapstochar\Longrightarrow}
 \re@DeclareMathSymbol{\Mappedfromchar}{\mathrel}{symbolsC}{2}
-   \def\Mappedfrom{\Leftarrow\Mappedfromchar}
-   \def\Longmappedfrom{\Longleftarrow\Mappedfromchar}
+\def\Mappedfrom{\Leftarrow\Mappedfromchar}
+\def\Longmappedfrom{\Longleftarrow\Mappedfromchar}
 \re@DeclareMathSymbol{\mmapstochar}{\mathrel}{symbolsC}{3}
-   \def\mmapsto{\mmapstochar\rightarrow}
-   \def\longmmapsto{\mmapstochar\longrightarrow}
+\def\mmapsto{\mmapstochar\rightarrow}
+\def\longmmapsto{\mmapstochar\longrightarrow}
 \re@DeclareMathSymbol{\mmappedfromchar}{\mathrel}{symbolsC}{4}
-   \def\mmappedfrom{\leftarrow\mmappedfromchar}
-   \def\longmmappedfrom{\longleftarrow\mmappedfromchar}
+\def\mmappedfrom{\leftarrow\mmappedfromchar}
+\def\longmmappedfrom{\longleftarrow\mmappedfromchar}
 \re@DeclareMathSymbol{\Mmapstochar}{\mathrel}{symbolsC}{5}
-   \def\Mmapsto{\Mmapstochar\Rightarrow}
-   \def\Longmmapsto{\Mmapstochar\Longrightarrow}
+\def\Mmapsto{\Mmapstochar\Rightarrow}
+\def\Longmmapsto{\Mmapstochar\Longrightarrow}
 \re@DeclareMathSymbol{\Mmappedfromchar}{\mathrel}{symbolsC}{6}
-   \def\Mmappedfrom{\Leftarrow\Mmappedfromchar}
-   \def\Longmmappedfrom{\Longleftarrow\Mmappedfromchar}
+\def\Mmappedfrom{\Leftarrow\Mmappedfromchar}
+\def\Longmmappedfrom{\Longleftarrow\Mmappedfromchar}
 \re@DeclareMathSymbol{\medcirc}{\mathbin}{symbolsC}{7}
 \re@DeclareMathSymbol{\medbullet}{\mathbin}{symbolsC}{8}
 \re@DeclareMathSymbol{\varparallel}{\mathrel}{symbolsC}{9}
@@ -1003,7 +1003,7 @@
 \re@DeclareMathSymbol{\nbacksim}{\mathrel}{symbolsC}{42}
 \re@DeclareMathSymbol{\nbacksimeq}{\mathrel}{symbolsC}{43}
 \re@DeclareMathSymbol{\neq}{\mathrel}{symbolsC}{44}
-   \let\ne=\neq
+\let\ne=\neq
 \re@DeclareMathSymbol{\nasymp}{\mathrel}{symbolsC}{45}
 \re@DeclareMathSymbol{\nequiv}{\mathrel}{symbolsC}{46}
 \re@DeclareMathSymbol{\nsim}{\mathrel}{symbolsC}{47}
@@ -1021,7 +1021,7 @@
 \re@DeclareMathSymbol{\nsimeq}{\mathrel}{symbolsC}{59}
 \re@DeclareMathSymbol{\notin}{\mathrel}{symbolsC}{60}
 \re@DeclareMathSymbol{\notni}{\mathrel}{symbolsC}{61}
-   \let\notowns=\notni
+\let\notowns=\notni
 \re@DeclareMathSymbol{\nSubset}{\mathrel}{symbolsC}{62}
 \re@DeclareMathSymbol{\nSupset}{\mathrel}{symbolsC}{63}
 \re@DeclareMathSymbol{\nsqsubseteq}{\mathrel}{symbolsC}{64}
@@ -1051,7 +1051,7 @@
 \re@DeclareMathSymbol{\lJoin}{\mathrel}{symbolsC}{88}
 \re@DeclareMathSymbol{\rJoin}{\mathrel}{symbolsC}{89}
 \re@DeclareMathSymbol{\Join}{\mathrel}{symbolsC}{90}
-   \let\lrJoin=\Join
+\let\lrJoin=\Join
 \re@DeclareMathSymbol{\openJoin}{\mathrel}{symbolsC}{91}
 \re@DeclareMathSymbol{\lrtimes}{\mathrel}{symbolsC}{92}
 %   \let\bowtie\lrtimes
@@ -1063,7 +1063,7 @@
 \re@DeclareMathSymbol{\nsqsupset}{\mathrel}{symbolsC}{98}
 \re@DeclareMathSymbol{\dashleftarrow}{\mathrel}{symbolsC}{99}
 \re@DeclareMathSymbol{\dashrightarrow}{\mathrel}{symbolsC}{100}
-   \let\dasharrow\dashrightarrow
+\let\dasharrow\dashrightarrow
 \re@DeclareMathSymbol{\dashleftrightarrow}{\mathrel}{symbolsC}{101}
 \re@DeclareMathSymbol{\leftsquigarrow}{\mathrel}{symbolsC}{102}
 \re@DeclareMathSymbol{\ntwoheadrightarrow}{\mathrel}{symbolsC}{103}
@@ -1112,9 +1112,9 @@
 \re@DeclareMathSymbol{\circleright}{\mathrel}{symbolsC}{145}
 \re@DeclareMathSymbol{\circleleft}{\mathrel}{symbolsC}{146}
 \re@DeclareMathSymbol{\circleddotright}{\mathrel}{symbolsC}{147}
-   \let\circledotright\circleddotright
+\let\circledotright\circleddotright
 \re@DeclareMathSymbol{\circleddotleft}{\mathrel}{symbolsC}{148}
-   \let\circledotleft\circleddotleft
+\let\circledotleft\circleddotleft
 \re@DeclareMathSymbol{\multimapbothvert}{\mathrel}{symbolsC}{149}
 \re@DeclareMathSymbol{\multimapdotbothvert}{\mathrel}{symbolsC}{150}
 \re@DeclareMathSymbol{\multimapdotbothBvert}{\mathrel}{symbolsC}{151}
@@ -1220,129 +1220,129 @@
 % Relative reference
 
 \ifkp@upgrk % lowercase
-		
-	\re@DeclareMathSymbol{\alpha}{\mathord}{lettersA}{11}
-	\re@DeclareMathSymbol{\beta}{\mathord}{lettersA}{12}
-	\re@DeclareMathSymbol{\gamma}{\mathord}{lettersA}{13}
-	\re@DeclareMathSymbol{\delta}{\mathord}{lettersA}{14}
-	\re@DeclareMathSymbol{\epsilon}{\mathord}{lettersA}{15}
-	\re@DeclareMathSymbol{\zeta}{\mathord}{lettersA}{16}
-	\re@DeclareMathSymbol{\eta}{\mathord}{lettersA}{17}
-	\re@DeclareMathSymbol{\theta}{\mathord}{lettersA}{18}
-	\re@DeclareMathSymbol{\iota}{\mathord}{lettersA}{19}
-	\re@DeclareMathSymbol{\kappa}{\mathord}{lettersA}{20}
-	\re@DeclareMathSymbol{\lambda}{\mathord}{lettersA}{21}
-	\re@DeclareMathSymbol{\mu}{\mathord}{lettersA}{22}
-	\re@DeclareMathSymbol{\nu}{\mathord}{lettersA}{23}
-	\re@DeclareMathSymbol{\xi}{\mathord}{lettersA}{24}
-	\re@DeclareMathSymbol{\pi}{\mathord}{lettersA}{25}
-	\re@DeclareMathSymbol{\rho}{\mathord}{lettersA}{26}
-	\re@DeclareMathSymbol{\sigma}{\mathord}{lettersA}{27}
-	\re@DeclareMathSymbol{\tau}{\mathord}{lettersA}{28}
-	\re@DeclareMathSymbol{\upsilon}{\mathord}{lettersA}{29}
-	\re@DeclareMathSymbol{\phi}{\mathord}{lettersA}{30}
-	\re@DeclareMathSymbol{\chi}{\mathord}{lettersA}{31}
-	\re@DeclareMathSymbol{\psi}{\mathord}{lettersA}{32}
-	\re@DeclareMathSymbol{\omega}{\mathord}{lettersA}{33}
-	\re@DeclareMathSymbol{\varepsilon}{\mathord}{lettersA}{34}
-	\re@DeclareMathSymbol{\vartheta}{\mathord}{lettersA}{35}
-	\re@DeclareMathSymbol{\varpi}{\mathord}{lettersA}{36}
-	\re@DeclareMathSymbol{\varrho}{\mathord}{lettersA}{37}
-	\re@DeclareMathSymbol{\varsigma}{\mathord}{lettersA}{38}
-	\re@DeclareMathSymbol{\varphi}{\mathord}{lettersA}{39}
 
-	\re@DeclareMathSymbol{\otheralpha}{\mathord}{letters}{11}
-	\re@DeclareMathSymbol{\otherbeta}{\mathord}{letters}{12}
-	\re@DeclareMathSymbol{\othergamma}{\mathord}{letters}{13}
-	\re@DeclareMathSymbol{\otherdelta}{\mathord}{letters}{14}
-	\re@DeclareMathSymbol{\otherepsilon}{\mathord}{letters}{15}
-	\re@DeclareMathSymbol{\otherzeta}{\mathord}{letters}{16}
-	\re@DeclareMathSymbol{\othereta}{\mathord}{letters}{17}
-	\re@DeclareMathSymbol{\othertheta}{\mathord}{letters}{18}
-	\re@DeclareMathSymbol{\otheriota}{\mathord}{letters}{19}
-	\re@DeclareMathSymbol{\otherkappa}{\mathord}{letters}{20}
-	\re@DeclareMathSymbol{\otherlambda}{\mathord}{letters}{21}
-	\re@DeclareMathSymbol{\othermu}{\mathord}{letters}{22}
-	\re@DeclareMathSymbol{\othernu}{\mathord}{letters}{23}
-	\re@DeclareMathSymbol{\otherxi}{\mathord}{letters}{24}
-	\re@DeclareMathSymbol{\otherpi}{\mathord}{letters}{25}
-	\re@DeclareMathSymbol{\otherrho}{\mathord}{letters}{26}
-	\re@DeclareMathSymbol{\othersigma}{\mathord}{letters}{27}
-	\re@DeclareMathSymbol{\othertau}{\mathord}{letters}{28}
-	\re@DeclareMathSymbol{\otherupsilon}{\mathord}{letters}{29}
-	\re@DeclareMathSymbol{\otherphi}{\mathord}{letters}{30}
-	\re@DeclareMathSymbol{\otherchi}{\mathord}{letters}{31}
-	\re@DeclareMathSymbol{\otherpsi}{\mathord}{letters}{32}
-	\re@DeclareMathSymbol{\otheromega}{\mathord}{letters}{33}
-	\re@DeclareMathSymbol{\othervarepsilon}{\mathord}{letters}{34}
-	\re@DeclareMathSymbol{\othervartheta}{\mathord}{letters}{35}
-	\re@DeclareMathSymbol{\othervarpi}{\mathord}{letters}{36}
-	\re@DeclareMathSymbol{\othervarrho}{\mathord}{letters}{37}
-	\re@DeclareMathSymbol{\othervarsigma}{\mathord}{letters}{38}
-	\re@DeclareMathSymbol{\othervarphi}{\mathord}{letters}{39}
+\re@DeclareMathSymbol{\alpha}{\mathord}{lettersA}{11}
+\re@DeclareMathSymbol{\beta}{\mathord}{lettersA}{12}
+\re@DeclareMathSymbol{\gamma}{\mathord}{lettersA}{13}
+\re@DeclareMathSymbol{\delta}{\mathord}{lettersA}{14}
+\re@DeclareMathSymbol{\epsilon}{\mathord}{lettersA}{15}
+\re@DeclareMathSymbol{\zeta}{\mathord}{lettersA}{16}
+\re@DeclareMathSymbol{\eta}{\mathord}{lettersA}{17}
+\re@DeclareMathSymbol{\theta}{\mathord}{lettersA}{18}
+\re@DeclareMathSymbol{\iota}{\mathord}{lettersA}{19}
+\re@DeclareMathSymbol{\kappa}{\mathord}{lettersA}{20}
+\re@DeclareMathSymbol{\lambda}{\mathord}{lettersA}{21}
+\re@DeclareMathSymbol{\mu}{\mathord}{lettersA}{22}
+\re@DeclareMathSymbol{\nu}{\mathord}{lettersA}{23}
+\re@DeclareMathSymbol{\xi}{\mathord}{lettersA}{24}
+\re@DeclareMathSymbol{\pi}{\mathord}{lettersA}{25}
+\re@DeclareMathSymbol{\rho}{\mathord}{lettersA}{26}
+\re@DeclareMathSymbol{\sigma}{\mathord}{lettersA}{27}
+\re@DeclareMathSymbol{\tau}{\mathord}{lettersA}{28}
+\re@DeclareMathSymbol{\upsilon}{\mathord}{lettersA}{29}
+\re@DeclareMathSymbol{\phi}{\mathord}{lettersA}{30}
+\re@DeclareMathSymbol{\chi}{\mathord}{lettersA}{31}
+\re@DeclareMathSymbol{\psi}{\mathord}{lettersA}{32}
+\re@DeclareMathSymbol{\omega}{\mathord}{lettersA}{33}
+\re@DeclareMathSymbol{\varepsilon}{\mathord}{lettersA}{34}
+\re@DeclareMathSymbol{\vartheta}{\mathord}{lettersA}{35}
+\re@DeclareMathSymbol{\varpi}{\mathord}{lettersA}{36}
+\re@DeclareMathSymbol{\varrho}{\mathord}{lettersA}{37}
+\re@DeclareMathSymbol{\varsigma}{\mathord}{lettersA}{38}
+\re@DeclareMathSymbol{\varphi}{\mathord}{lettersA}{39}
+
+\re@DeclareMathSymbol{\otheralpha}{\mathord}{letters}{11}
+\re@DeclareMathSymbol{\otherbeta}{\mathord}{letters}{12}
+\re@DeclareMathSymbol{\othergamma}{\mathord}{letters}{13}
+\re@DeclareMathSymbol{\otherdelta}{\mathord}{letters}{14}
+\re@DeclareMathSymbol{\otherepsilon}{\mathord}{letters}{15}
+\re@DeclareMathSymbol{\otherzeta}{\mathord}{letters}{16}
+\re@DeclareMathSymbol{\othereta}{\mathord}{letters}{17}
+\re@DeclareMathSymbol{\othertheta}{\mathord}{letters}{18}
+\re@DeclareMathSymbol{\otheriota}{\mathord}{letters}{19}
+\re@DeclareMathSymbol{\otherkappa}{\mathord}{letters}{20}
+\re@DeclareMathSymbol{\otherlambda}{\mathord}{letters}{21}
+\re@DeclareMathSymbol{\othermu}{\mathord}{letters}{22}
+\re@DeclareMathSymbol{\othernu}{\mathord}{letters}{23}
+\re@DeclareMathSymbol{\otherxi}{\mathord}{letters}{24}
+\re@DeclareMathSymbol{\otherpi}{\mathord}{letters}{25}
+\re@DeclareMathSymbol{\otherrho}{\mathord}{letters}{26}
+\re@DeclareMathSymbol{\othersigma}{\mathord}{letters}{27}
+\re@DeclareMathSymbol{\othertau}{\mathord}{letters}{28}
+\re@DeclareMathSymbol{\otherupsilon}{\mathord}{letters}{29}
+\re@DeclareMathSymbol{\otherphi}{\mathord}{letters}{30}
+\re@DeclareMathSymbol{\otherchi}{\mathord}{letters}{31}
+\re@DeclareMathSymbol{\otherpsi}{\mathord}{letters}{32}
+\re@DeclareMathSymbol{\otheromega}{\mathord}{letters}{33}
+\re@DeclareMathSymbol{\othervarepsilon}{\mathord}{letters}{34}
+\re@DeclareMathSymbol{\othervartheta}{\mathord}{letters}{35}
+\re@DeclareMathSymbol{\othervarpi}{\mathord}{letters}{36}
+\re@DeclareMathSymbol{\othervarrho}{\mathord}{letters}{37}
+\re@DeclareMathSymbol{\othervarsigma}{\mathord}{letters}{38}
+\re@DeclareMathSymbol{\othervarphi}{\mathord}{letters}{39}
 
 \else
-	
-	\re@DeclareMathSymbol{\alpha}{\mathord}{letters}{11}
-	\re@DeclareMathSymbol{\beta}{\mathord}{letters}{12}
-	\re@DeclareMathSymbol{\gamma}{\mathord}{letters}{13}
-	\re@DeclareMathSymbol{\delta}{\mathord}{letters}{14}
-	\re@DeclareMathSymbol{\epsilon}{\mathord}{letters}{15}
-	\re@DeclareMathSymbol{\zeta}{\mathord}{letters}{16}
-	\re@DeclareMathSymbol{\eta}{\mathord}{letters}{17}
-	\re@DeclareMathSymbol{\theta}{\mathord}{letters}{18}
-	\re@DeclareMathSymbol{\iota}{\mathord}{letters}{19}
-	\re@DeclareMathSymbol{\kappa}{\mathord}{letters}{20}
-	\re@DeclareMathSymbol{\lambda}{\mathord}{letters}{21}
-	\re@DeclareMathSymbol{\mu}{\mathord}{letters}{22}
-	\re@DeclareMathSymbol{\nu}{\mathord}{letters}{23}
-	\re@DeclareMathSymbol{\xi}{\mathord}{letters}{24}
-	\re@DeclareMathSymbol{\pi}{\mathord}{letters}{25}
-	\re@DeclareMathSymbol{\rho}{\mathord}{letters}{26}
-	\re@DeclareMathSymbol{\sigma}{\mathord}{letters}{27}
-	\re@DeclareMathSymbol{\tau}{\mathord}{letters}{28}
-	\re@DeclareMathSymbol{\upsilon}{\mathord}{letters}{29}
-	\re@DeclareMathSymbol{\phi}{\mathord}{letters}{30}
-	\re@DeclareMathSymbol{\chi}{\mathord}{letters}{31}
-	\re@DeclareMathSymbol{\psi}{\mathord}{letters}{32}
-	\re@DeclareMathSymbol{\omega}{\mathord}{letters}{33}
-	\re@DeclareMathSymbol{\varepsilon}{\mathord}{letters}{34}
-	\re@DeclareMathSymbol{\vartheta}{\mathord}{letters}{35}
-	\re@DeclareMathSymbol{\varpi}{\mathord}{letters}{36}
-	\re@DeclareMathSymbol{\varrho}{\mathord}{letters}{37}
-	\re@DeclareMathSymbol{\varsigma}{\mathord}{letters}{38}
-	\re@DeclareMathSymbol{\varphi}{\mathord}{letters}{39}
 
-	\re@DeclareMathSymbol{\otheralpha}{\mathord}{lettersA}{11}
-	\re@DeclareMathSymbol{\otherbeta}{\mathord}{lettersA}{12}
-	\re@DeclareMathSymbol{\othergamma}{\mathord}{lettersA}{13}
-	\re@DeclareMathSymbol{\otherdelta}{\mathord}{lettersA}{14}
-	\re@DeclareMathSymbol{\otherepsilon}{\mathord}{lettersA}{15}
-	\re@DeclareMathSymbol{\otherzeta}{\mathord}{lettersA}{16}
-	\re@DeclareMathSymbol{\othereta}{\mathord}{lettersA}{17}
-	\re@DeclareMathSymbol{\othertheta}{\mathord}{lettersA}{18}
-	\re@DeclareMathSymbol{\otheriota}{\mathord}{lettersA}{19}
-	\re@DeclareMathSymbol{\otherkappa}{\mathord}{lettersA}{20}
-	\re@DeclareMathSymbol{\otherlambda}{\mathord}{lettersA}{21}
-	\re@DeclareMathSymbol{\othermu}{\mathord}{lettersA}{22}
-	\re@DeclareMathSymbol{\othernu}{\mathord}{lettersA}{23}
-	\re@DeclareMathSymbol{\otherxi}{\mathord}{lettersA}{24}
-	\re@DeclareMathSymbol{\otherpi}{\mathord}{lettersA}{25}
-	\re@DeclareMathSymbol{\otherrho}{\mathord}{lettersA}{26}
-	\re@DeclareMathSymbol{\othersigma}{\mathord}{lettersA}{27}
-	\re@DeclareMathSymbol{\othertau}{\mathord}{lettersA}{28}
-	\re@DeclareMathSymbol{\otherupsilon}{\mathord}{lettersA}{29}
-	\re@DeclareMathSymbol{\otherphi}{\mathord}{lettersA}{30}
-	\re@DeclareMathSymbol{\otherchi}{\mathord}{lettersA}{31}
-	\re@DeclareMathSymbol{\otherpsi}{\mathord}{lettersA}{32}
-	\re@DeclareMathSymbol{\otheromega}{\mathord}{lettersA}{33}
-	\re@DeclareMathSymbol{\othervarepsilon}{\mathord}{lettersA}{34}
-	\re@DeclareMathSymbol{\othervartheta}{\mathord}{lettersA}{35}
-	\re@DeclareMathSymbol{\othervarpi}{\mathord}{lettersA}{36}
-	\re@DeclareMathSymbol{\othervarrho}{\mathord}{lettersA}{37}
-	\re@DeclareMathSymbol{\othervarsigma}{\mathord}{lettersA}{38}
-	\re@DeclareMathSymbol{\othervarphi}{\mathord}{lettersA}{39}
-	
+\re@DeclareMathSymbol{\alpha}{\mathord}{letters}{11}
+\re@DeclareMathSymbol{\beta}{\mathord}{letters}{12}
+\re@DeclareMathSymbol{\gamma}{\mathord}{letters}{13}
+\re@DeclareMathSymbol{\delta}{\mathord}{letters}{14}
+\re@DeclareMathSymbol{\epsilon}{\mathord}{letters}{15}
+\re@DeclareMathSymbol{\zeta}{\mathord}{letters}{16}
+\re@DeclareMathSymbol{\eta}{\mathord}{letters}{17}
+\re@DeclareMathSymbol{\theta}{\mathord}{letters}{18}
+\re@DeclareMathSymbol{\iota}{\mathord}{letters}{19}
+\re@DeclareMathSymbol{\kappa}{\mathord}{letters}{20}
+\re@DeclareMathSymbol{\lambda}{\mathord}{letters}{21}
+\re@DeclareMathSymbol{\mu}{\mathord}{letters}{22}
+\re@DeclareMathSymbol{\nu}{\mathord}{letters}{23}
+\re@DeclareMathSymbol{\xi}{\mathord}{letters}{24}
+\re@DeclareMathSymbol{\pi}{\mathord}{letters}{25}
+\re@DeclareMathSymbol{\rho}{\mathord}{letters}{26}
+\re@DeclareMathSymbol{\sigma}{\mathord}{letters}{27}
+\re@DeclareMathSymbol{\tau}{\mathord}{letters}{28}
+\re@DeclareMathSymbol{\upsilon}{\mathord}{letters}{29}
+\re@DeclareMathSymbol{\phi}{\mathord}{letters}{30}
+\re@DeclareMathSymbol{\chi}{\mathord}{letters}{31}
+\re@DeclareMathSymbol{\psi}{\mathord}{letters}{32}
+\re@DeclareMathSymbol{\omega}{\mathord}{letters}{33}
+\re@DeclareMathSymbol{\varepsilon}{\mathord}{letters}{34}
+\re@DeclareMathSymbol{\vartheta}{\mathord}{letters}{35}
+\re@DeclareMathSymbol{\varpi}{\mathord}{letters}{36}
+\re@DeclareMathSymbol{\varrho}{\mathord}{letters}{37}
+\re@DeclareMathSymbol{\varsigma}{\mathord}{letters}{38}
+\re@DeclareMathSymbol{\varphi}{\mathord}{letters}{39}
+
+\re@DeclareMathSymbol{\otheralpha}{\mathord}{lettersA}{11}
+\re@DeclareMathSymbol{\otherbeta}{\mathord}{lettersA}{12}
+\re@DeclareMathSymbol{\othergamma}{\mathord}{lettersA}{13}
+\re@DeclareMathSymbol{\otherdelta}{\mathord}{lettersA}{14}
+\re@DeclareMathSymbol{\otherepsilon}{\mathord}{lettersA}{15}
+\re@DeclareMathSymbol{\otherzeta}{\mathord}{lettersA}{16}
+\re@DeclareMathSymbol{\othereta}{\mathord}{lettersA}{17}
+\re@DeclareMathSymbol{\othertheta}{\mathord}{lettersA}{18}
+\re@DeclareMathSymbol{\otheriota}{\mathord}{lettersA}{19}
+\re@DeclareMathSymbol{\otherkappa}{\mathord}{lettersA}{20}
+\re@DeclareMathSymbol{\otherlambda}{\mathord}{lettersA}{21}
+\re@DeclareMathSymbol{\othermu}{\mathord}{lettersA}{22}
+\re@DeclareMathSymbol{\othernu}{\mathord}{lettersA}{23}
+\re@DeclareMathSymbol{\otherxi}{\mathord}{lettersA}{24}
+\re@DeclareMathSymbol{\otherpi}{\mathord}{lettersA}{25}
+\re@DeclareMathSymbol{\otherrho}{\mathord}{lettersA}{26}
+\re@DeclareMathSymbol{\othersigma}{\mathord}{lettersA}{27}
+\re@DeclareMathSymbol{\othertau}{\mathord}{lettersA}{28}
+\re@DeclareMathSymbol{\otherupsilon}{\mathord}{lettersA}{29}
+\re@DeclareMathSymbol{\otherphi}{\mathord}{lettersA}{30}
+\re@DeclareMathSymbol{\otherchi}{\mathord}{lettersA}{31}
+\re@DeclareMathSymbol{\otherpsi}{\mathord}{lettersA}{32}
+\re@DeclareMathSymbol{\otheromega}{\mathord}{lettersA}{33}
+\re@DeclareMathSymbol{\othervarepsilon}{\mathord}{lettersA}{34}
+\re@DeclareMathSymbol{\othervartheta}{\mathord}{lettersA}{35}
+\re@DeclareMathSymbol{\othervarpi}{\mathord}{lettersA}{36}
+\re@DeclareMathSymbol{\othervarrho}{\mathord}{lettersA}{37}
+\re@DeclareMathSymbol{\othervarsigma}{\mathord}{lettersA}{38}
+\re@DeclareMathSymbol{\othervarphi}{\mathord}{lettersA}{39}
+
 \fi
 
 \let\othervarkappa\varkappa
@@ -1350,80 +1350,80 @@
 
 \ifkp@slGrk % uppercase
 
-	\re@DeclareMathSymbol{\Gamma}{\mathord}{letters}{0}
-	\re@DeclareMathSymbol{\Delta}{\mathord}{letters}{1}
-	\re@DeclareMathSymbol{\Theta}{\mathord}{letters}{2}
-	\re@DeclareMathSymbol{\Lambda}{\mathord}{letters}{3}
-	\re@DeclareMathSymbol{\Xi}{\mathord}{letters}{4}
-	\re@DeclareMathSymbol{\Pi}{\mathord}{letters}{5}
-	\re@DeclareMathSymbol{\Sigma}{\mathord}{letters}{6}
-	\re@DeclareMathSymbol{\Upsilon}{\mathord}{letters}{7}
-	\re@DeclareMathSymbol{\Phi}{\mathord}{letters}{8}
-	\re@DeclareMathSymbol{\Psi}{\mathord}{letters}{9}
-	\re@DeclareMathSymbol{\Omega}{\mathord}{letters}{10}
-	
-	\re@DeclareMathSymbol{\otherGamma}{\mathord}{lettersA}{00}
-	\re@DeclareMathSymbol{\otherDelta}{\mathord}{lettersA}{01}
-	\re@DeclareMathSymbol{\otherTheta}{\mathord}{lettersA}{02}
-	\re@DeclareMathSymbol{\otherLambda}{\mathord}{lettersA}{03}
-	\re@DeclareMathSymbol{\otherXi}{\mathord}{lettersA}{04}
-	\re@DeclareMathSymbol{\otherPi}{\mathord}{lettersA}{05}
-	\re@DeclareMathSymbol{\otherSigma}{\mathord}{lettersA}{06}
-	\re@DeclareMathSymbol{\otherUpsilon}{\mathord}{lettersA}{07}
-	\re@DeclareMathSymbol{\otherPhi}{\mathord}{lettersA}{08}
-	\re@DeclareMathSymbol{\otherPsi}{\mathord}{lettersA}{09}
-	\re@DeclareMathSymbol{\otherOmega}{\mathord}{lettersA}{10}	
-	
-	\re@DeclareMathSymbol{\varGamma}{\mathord}{lettersA}{00}
-	\re@DeclareMathSymbol{\varDelta}{\mathord}{lettersA}{01}
-	\re@DeclareMathSymbol{\varTheta}{\mathord}{lettersA}{02}
-	\re@DeclareMathSymbol{\varLambda}{\mathord}{lettersA}{03}
-	\re@DeclareMathSymbol{\varXi}{\mathord}{lettersA}{04}
-	\re@DeclareMathSymbol{\varPi}{\mathord}{lettersA}{05}
-	\re@DeclareMathSymbol{\varSigma}{\mathord}{lettersA}{06}
-	\re@DeclareMathSymbol{\varUpsilon}{\mathord}{lettersA}{07}
-	\re@DeclareMathSymbol{\varPhi}{\mathord}{lettersA}{08}
-	\re@DeclareMathSymbol{\varPsi}{\mathord}{lettersA}{09}
-	\re@DeclareMathSymbol{\varOmega}{\mathord}{lettersA}{10}	
+\re@DeclareMathSymbol{\Gamma}{\mathord}{letters}{0}
+\re@DeclareMathSymbol{\Delta}{\mathord}{letters}{1}
+\re@DeclareMathSymbol{\Theta}{\mathord}{letters}{2}
+\re@DeclareMathSymbol{\Lambda}{\mathord}{letters}{3}
+\re@DeclareMathSymbol{\Xi}{\mathord}{letters}{4}
+\re@DeclareMathSymbol{\Pi}{\mathord}{letters}{5}
+\re@DeclareMathSymbol{\Sigma}{\mathord}{letters}{6}
+\re@DeclareMathSymbol{\Upsilon}{\mathord}{letters}{7}
+\re@DeclareMathSymbol{\Phi}{\mathord}{letters}{8}
+\re@DeclareMathSymbol{\Psi}{\mathord}{letters}{9}
+\re@DeclareMathSymbol{\Omega}{\mathord}{letters}{10}
+
+\re@DeclareMathSymbol{\otherGamma}{\mathord}{lettersA}{00}
+\re@DeclareMathSymbol{\otherDelta}{\mathord}{lettersA}{01}
+\re@DeclareMathSymbol{\otherTheta}{\mathord}{lettersA}{02}
+\re@DeclareMathSymbol{\otherLambda}{\mathord}{lettersA}{03}
+\re@DeclareMathSymbol{\otherXi}{\mathord}{lettersA}{04}
+\re@DeclareMathSymbol{\otherPi}{\mathord}{lettersA}{05}
+\re@DeclareMathSymbol{\otherSigma}{\mathord}{lettersA}{06}
+\re@DeclareMathSymbol{\otherUpsilon}{\mathord}{lettersA}{07}
+\re@DeclareMathSymbol{\otherPhi}{\mathord}{lettersA}{08}
+\re@DeclareMathSymbol{\otherPsi}{\mathord}{lettersA}{09}
+\re@DeclareMathSymbol{\otherOmega}{\mathord}{lettersA}{10}
+
+\re@DeclareMathSymbol{\varGamma}{\mathord}{lettersA}{00}
+\re@DeclareMathSymbol{\varDelta}{\mathord}{lettersA}{01}
+\re@DeclareMathSymbol{\varTheta}{\mathord}{lettersA}{02}
+\re@DeclareMathSymbol{\varLambda}{\mathord}{lettersA}{03}
+\re@DeclareMathSymbol{\varXi}{\mathord}{lettersA}{04}
+\re@DeclareMathSymbol{\varPi}{\mathord}{lettersA}{05}
+\re@DeclareMathSymbol{\varSigma}{\mathord}{lettersA}{06}
+\re@DeclareMathSymbol{\varUpsilon}{\mathord}{lettersA}{07}
+\re@DeclareMathSymbol{\varPhi}{\mathord}{lettersA}{08}
+\re@DeclareMathSymbol{\varPsi}{\mathord}{lettersA}{09}
+\re@DeclareMathSymbol{\varOmega}{\mathord}{lettersA}{10}
 
 \else
-	
-	\re@DeclareMathSymbol{\Gamma}{\mathalpha}{lettersA}{00}
-	\re@DeclareMathSymbol{\Delta}{\mathalpha}{lettersA}{01}
-	\re@DeclareMathSymbol{\Theta}{\mathalpha}{lettersA}{02}
-	\re@DeclareMathSymbol{\Lambda}{\mathalpha}{lettersA}{03}
-	\re@DeclareMathSymbol{\Xi}{\mathalpha}{lettersA}{04}
-	\re@DeclareMathSymbol{\Pi}{\mathalpha}{lettersA}{05}
-	\re@DeclareMathSymbol{\Sigma}{\mathalpha}{lettersA}{06}
-	\re@DeclareMathSymbol{\Upsilon}{\mathalpha}{lettersA}{07}
-	\re@DeclareMathSymbol{\Phi}{\mathalpha}{lettersA}{08}
-	\re@DeclareMathSymbol{\Psi}{\mathalpha}{lettersA}{09}
-	\re@DeclareMathSymbol{\Omega}{\mathalpha}{lettersA}{10}
 
-	\re@DeclareMathSymbol{\otherGamma}{\mathord}{letters}{0}
-	\re@DeclareMathSymbol{\otherDelta}{\mathord}{letters}{1}
-	\re@DeclareMathSymbol{\otherTheta}{\mathord}{letters}{2}
-	\re@DeclareMathSymbol{\otherLambda}{\mathord}{letters}{3}
-	\re@DeclareMathSymbol{\otherXi}{\mathord}{letters}{4}
-	\re@DeclareMathSymbol{\otherPi}{\mathord}{letters}{5}
-	\re@DeclareMathSymbol{\otherSigma}{\mathord}{letters}{6}
-	\re@DeclareMathSymbol{\otherUpsilon}{\mathord}{letters}{7}
-	\re@DeclareMathSymbol{\otherPhi}{\mathord}{letters}{8}
-	\re@DeclareMathSymbol{\otherPsi}{\mathord}{letters}{9}
-	\re@DeclareMathSymbol{\otherOmega}{\mathord}{letters}{10}
+\re@DeclareMathSymbol{\Gamma}{\mathalpha}{lettersA}{00}
+\re@DeclareMathSymbol{\Delta}{\mathalpha}{lettersA}{01}
+\re@DeclareMathSymbol{\Theta}{\mathalpha}{lettersA}{02}
+\re@DeclareMathSymbol{\Lambda}{\mathalpha}{lettersA}{03}
+\re@DeclareMathSymbol{\Xi}{\mathalpha}{lettersA}{04}
+\re@DeclareMathSymbol{\Pi}{\mathalpha}{lettersA}{05}
+\re@DeclareMathSymbol{\Sigma}{\mathalpha}{lettersA}{06}
+\re@DeclareMathSymbol{\Upsilon}{\mathalpha}{lettersA}{07}
+\re@DeclareMathSymbol{\Phi}{\mathalpha}{lettersA}{08}
+\re@DeclareMathSymbol{\Psi}{\mathalpha}{lettersA}{09}
+\re@DeclareMathSymbol{\Omega}{\mathalpha}{lettersA}{10}
 
-	\re@DeclareMathSymbol{\varGamma}{\mathord}{letters}{0}
-	\re@DeclareMathSymbol{\varDelta}{\mathord}{letters}{1}
-	\re@DeclareMathSymbol{\varTheta}{\mathord}{letters}{2}
-	\re@DeclareMathSymbol{\varLambda}{\mathord}{letters}{3}
-	\re@DeclareMathSymbol{\varXi}{\mathord}{letters}{4}
-	\re@DeclareMathSymbol{\varPi}{\mathord}{letters}{5}
-	\re@DeclareMathSymbol{\varSigma}{\mathord}{letters}{6}
-	\re@DeclareMathSymbol{\varUpsilon}{\mathord}{letters}{7}
-	\re@DeclareMathSymbol{\varPhi}{\mathord}{letters}{8}
-	\re@DeclareMathSymbol{\varPsi}{\mathord}{letters}{9}
-	\re@DeclareMathSymbol{\varOmega}{\mathord}{letters}{10}
-	
+\re@DeclareMathSymbol{\otherGamma}{\mathord}{letters}{0}
+\re@DeclareMathSymbol{\otherDelta}{\mathord}{letters}{1}
+\re@DeclareMathSymbol{\otherTheta}{\mathord}{letters}{2}
+\re@DeclareMathSymbol{\otherLambda}{\mathord}{letters}{3}
+\re@DeclareMathSymbol{\otherXi}{\mathord}{letters}{4}
+\re@DeclareMathSymbol{\otherPi}{\mathord}{letters}{5}
+\re@DeclareMathSymbol{\otherSigma}{\mathord}{letters}{6}
+\re@DeclareMathSymbol{\otherUpsilon}{\mathord}{letters}{7}
+\re@DeclareMathSymbol{\otherPhi}{\mathord}{letters}{8}
+\re@DeclareMathSymbol{\otherPsi}{\mathord}{letters}{9}
+\re@DeclareMathSymbol{\otherOmega}{\mathord}{letters}{10}
+
+\re@DeclareMathSymbol{\varGamma}{\mathord}{letters}{0}
+\re@DeclareMathSymbol{\varDelta}{\mathord}{letters}{1}
+\re@DeclareMathSymbol{\varTheta}{\mathord}{letters}{2}
+\re@DeclareMathSymbol{\varLambda}{\mathord}{letters}{3}
+\re@DeclareMathSymbol{\varXi}{\mathord}{letters}{4}
+\re@DeclareMathSymbol{\varPi}{\mathord}{letters}{5}
+\re@DeclareMathSymbol{\varSigma}{\mathord}{letters}{6}
+\re@DeclareMathSymbol{\varUpsilon}{\mathord}{letters}{7}
+\re@DeclareMathSymbol{\varPhi}{\mathord}{letters}{8}
+\re@DeclareMathSymbol{\varPsi}{\mathord}{letters}{9}
+\re@DeclareMathSymbol{\varOmega}{\mathord}{letters}{10}
+
 \fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1436,112 +1436,112 @@
 \DeclareMathAccent{\wideparen}{\mathord}{largesymbols}{146}
 
 \newcommand{\widering}[1]{\overset{\smash{\vbox to .2ex{%
-   \hbox{$\mathring{}$}}}}{\wideparen{#1}}}
-   
+    \hbox{$\mathring{}$}}}}{\wideparen{#1}}}
+
 \renewcommand{\int}{\intop\kp@ilimits}
 \renewcommand{\oint}{\ointop\kp@ilimits}
 
 \re@DeclareMathSymbol{\coprodop}{\mathop}{largesymbols}{96}
-    \def\coprod{\coprodop\kp@slimits}
+\def\coprod{\coprodop\kp@slimits}
 \re@DeclareMathSymbol{\bigveeop}{\mathop}{largesymbols}{87}
-    \def\bigvee{\bigveeop\kp@slimits}
+\def\bigvee{\bigveeop\kp@slimits}
 \re@DeclareMathSymbol{\bigwedgeop}{\mathop}{largesymbols}{86}
-    \def\bigwedge{\bigwedgeop\kp@slimits}
+\def\bigwedge{\bigwedgeop\kp@slimits}
 \re@DeclareMathSymbol{\biguplusop}{\mathop}{largesymbols}{85}
-    \def\biguplus{\biguplusop\kp@slimits}
+\def\biguplus{\biguplusop\kp@slimits}
 \re@DeclareMathSymbol{\bigcapop}{\mathop}{largesymbols}{84}
-    \def\bigcap{\bigcapop\kp@slimits}
+\def\bigcap{\bigcapop\kp@slimits}
 \re@DeclareMathSymbol{\bigcupop}{\mathop}{largesymbols}{83}
-    \def\bigcup{\bigcupop\kp@slimits}
+\def\bigcup{\bigcupop\kp@slimits}
 \re@DeclareMathSymbol{\prodop}{\mathop}{largesymbols}{81}
-    \def\prod{\prodop\kp@slimits}
+\def\prod{\prodop\kp@slimits}
 \re@DeclareMathSymbol{\sumop}{\mathop}{largesymbols}{80}
-    \def\sum{\sumop\kp@slimits}
+\def\sum{\sumop\kp@slimits}
 \re@DeclareMathSymbol{\bigotimesop}{\mathop}{largesymbols}{78}
-    \def\bigotimes{\bigotimesop\kp@slimits}
+\def\bigotimes{\bigotimesop\kp@slimits}
 \re@DeclareMathSymbol{\bigoplusop}{\mathop}{largesymbols}{76}
-    \def\bigoplus{\bigoplusop\kp@slimits}
+\def\bigoplus{\bigoplusop\kp@slimits}
 \re@DeclareMathSymbol{\bigodotop}{\mathop}{largesymbols}{74}
-    \def\bigodot{\bigodotop\kp@slimits}
+\def\bigodot{\bigodotop\kp@slimits}
 \re@DeclareMathSymbol{\bigsqcupop}{\mathop}{largesymbols}{70}
-    \def\bigsqcup{\bigsqcupop\kp@slimits}
+\def\bigsqcup{\bigsqcupop\kp@slimits}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Math Extension A (jkpexa) Definition % largesymbolsA
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \re@DeclareMathSymbol{\bignplusop}{\mathop}{largesymbolsA}{0}
-    \def\bignplus{\bignplusop\kp@slimits}
+\def\bignplus{\bignplusop\kp@slimits}
 \re@DeclareMathSymbol{\bigsqcupplusop}{\mathop}{largesymbolsA}{2}
-    \def\bigsqcupplus{\bigsqcupplusop\kp@slimits}
+\def\bigsqcupplus{\bigsqcupplusop\kp@slimits}
 \re@DeclareMathSymbol{\bigsqcapplusop}{\mathop}{largesymbolsA}{4}
-    \def\bigsqcapplus{\bigsqcapplusop\kp@slimits}
+\def\bigsqcapplus{\bigsqcapplusop\kp@slimits}
 \re@DeclareMathSymbol{\bigsqcapop}{\mathop}{largesymbolsA}{6}
-    \def\bigsqcap{\bigsqcapop\kp@slimits}
+\def\bigsqcap{\bigsqcapop\kp@slimits}
 
 \def\narrowiints{\ifkp@narrowiints10\else0\fi}
 
 \re@DeclareMathSymbol{\oiintop}{\mathop}{largesymbolsA}{\narrowiints8}
-   \def\oiint{\oiintop\kp@ilimits}
+\def\oiint{\oiintop\kp@ilimits}
 
-\def\narrowiints{\ifkp@narrowiints1\else0\fi}   
-   
+\def\narrowiints{\ifkp@narrowiints1\else0\fi}
+
 \re@DeclareMathSymbol{\ointctrclockwiseop}{\mathop}{largesymbolsA}{10}
-   \def\ointctrclockwise{\ointctrclockwiseop\kp@ilimits}
+\def\ointctrclockwise{\ointctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\ointclockwiseop}{\mathop}{largesymbolsA}{12}
-   \def\ointclockwise{\ointclockwiseop\kp@ilimits}
+\def\ointclockwise{\ointclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\sqintop}{\mathop}{largesymbolsA}{14}
-   \def\sqint{\sqintop\kp@ilimits}
+\def\sqint{\sqintop\kp@ilimits}
 \re@DeclareMathSymbol{\varprod}{\mathop}{largesymbolsA}{16}
 %\re@DeclareMathDelimiter{\llbracket}{\mathopen}{symbolsC}{126}{largesymbolsA}{18}
 %\re@DeclareMathDelimiter{\rrbracket}{\mathclose}{symbolsC}{127}{largesymbolsA}{19}
 \re@DeclareMathSymbol{\br@cext}{\mathord}{largesymbolsA}{32}
 \re@DeclareMathSymbol{\iintop}{\mathop}{largesymbolsA}{\narrowiints33}
-   \def\iint{\iintop\kp@ilimits}
+\def\iint{\iintop\kp@ilimits}
 \re@DeclareMathSymbol{\iiintop}{\mathop}{largesymbolsA}{\narrowiints35}
-   \def\iiint{\iiintop\kp@ilimits}
+\def\iiint{\iiintop\kp@ilimits}
 \re@DeclareMathSymbol{\iiiintop}{\mathop}{largesymbolsA}{\narrowiints37}
-   \def\iiiint{\iiiintop\kp@ilimits}
+\def\iiiint{\iiiintop\kp@ilimits}
 \re@DeclareMathSymbol{\idotsintop}{\mathop}{largesymbolsA}{\narrowiints39}
-   \def\idotsint{\idotsintop\kp@ilimits}
+\def\idotsint{\idotsintop\kp@ilimits}
 \re@DeclareMathSymbol{\oiiintop}{\mathop}{largesymbolsA}{\narrowiints41}
-   \def\oiiint{\oiiintop\kp@ilimits}
+\def\oiiint{\oiiintop\kp@ilimits}
 \re@DeclareMathSymbol{\varointctrclockwiseop}{\mathop}{largesymbolsA}{43}
-   \def\varointctrclockwise{\varointctrclockwiseop\kp@ilimits}
+\def\varointctrclockwise{\varointctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\varointclockwiseop}{\mathop}{largesymbolsA}{45}
-   \def\varointclockwise{\varointclockwiseop\kp@ilimits}
+\def\varointclockwise{\varointclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\fintop}{\mathop}{largesymbolsA}{62}
-   \def\fint{\fintop\kp@ilimits}
+\def\fint{\fintop\kp@ilimits}
 \re@DeclareMathSymbol{\oiintctrclockwiseop}{\mathop}{largesymbolsA}{\narrowiints64}
-   \def\oiintctrclockwise{\oiintctrclockwiseop\kp@ilimits}
+\def\oiintctrclockwise{\oiintctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\varoiintclockwiseop}{\mathop}{largesymbolsA}{\narrowiints66}
-   \def\varoiintclockwise{\varoiintclockwiseop\kp@ilimits}
+\def\varoiintclockwise{\varoiintclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\oiiintctrclockwiseop}{\mathop}{largesymbolsA}{\narrowiints68}
-   \def\oiiintctrclockwise{\oiiintctrclockwiseop\kp@ilimits}
+\def\oiiintctrclockwise{\oiiintctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\varoiiintclockwiseop}{\mathop}{largesymbolsA}{\narrowiints70}
-   \def\varoiiintclockwise{\varoiiintclockwiseop\kp@ilimits}
+\def\varoiiintclockwise{\varoiiintclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\oiintclockwiseop}{\mathop}{largesymbolsA}{\narrowiints72}
-   \def\oiintclockwise{\oiintclockwiseop\kp@ilimits}
+\def\oiintclockwise{\oiintclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\varoiintctrclockwiseop}{\mathop}{largesymbolsA}{\narrowiints74}
-   \def\varoiintctrclockwise{\varoiintctrclockwiseop\kp@ilimits}
+\def\varoiintctrclockwise{\varoiintctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\oiiintclockwiseop}{\mathop}{largesymbolsA}{\narrowiints76}
-   \def\oiiintclockwise{\oiiintclockwiseop\kp@ilimits}
+\def\oiiintclockwise{\oiiintclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\varoiiintctrclockwiseop}{\mathop}{largesymbolsA}{\narrowiints78}
-   \def\varoiiintctrclockwise{\varoiiintctrclockwiseop\kp@ilimits}
+\def\varoiiintctrclockwise{\varoiiintctrclockwiseop\kp@ilimits}
 \re@DeclareMathSymbol{\sqiintop}{\mathop}{largesymbolsA}{\narrowiints80}
-   \def\sqiint{\sqiintop\kp@ilimits}
+\def\sqiint{\sqiintop\kp@ilimits}
 \re@DeclareMathSymbol{\sqiiintop}{\mathop}{largesymbolsA}{\narrowiints82}
-   \def\sqiiint{\sqiiintop\kp@ilimits}
+\def\sqiiint{\sqiiintop\kp@ilimits}
 \re@DeclareMathSymbol{\varintop}{\mathop}{largesymbolsA}{84}
-   \def\varint{\varintop\kp@ilimits}
+\def\varint{\varintop\kp@ilimits}
 \re@DeclareMathSymbol{\variintop}{\mathop}{largesymbolsA}{\narrowiints86}
-   \def\variint{\variintop\kp@ilimits}
+\def\variint{\variintop\kp@ilimits}
 \re@DeclareMathSymbol{\variiintop}{\mathop}{largesymbolsA}{\narrowiints88}
-   \def\variiint{\variiintop\kp@ilimits}
+\def\variiint{\variiintop\kp@ilimits}
 \re@DeclareMathSymbol{\variiiintop}{\mathop}{largesymbolsA}{\narrowiints90}
-   \def\variiiint{\variiiintop\kp@ilimits}
+\def\variiiint{\variiiintop\kp@ilimits}
 \re@DeclareMathSymbol{\varidotsintop}{\mathop}{largesymbolsA}{\narrowiints92}
-   \def\varidotsint{\varidotsintop\kp@ilimits}
+\def\varidotsint{\varidotsintop\kp@ilimits}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1550,23 +1550,23 @@
 
 %%% Use math italic, not text, version of dot, in \vdots and \ddots definitions
 \def\vdots{\vbox{\baselineskip4\p@ \lineskiplimit\z@
-    \kern6\p@\hbox{$\m@th.$}\hbox{$\m@th.$}\hbox{$\m@th.$}}}
+\kern6\p@\hbox{$\m@th.$}\hbox{$\m@th.$}\hbox{$\m@th.$}}}
 \def\ddots{\mathinner{\mkern1mu\raise7\p@
-    \vbox{\kern7\p@\hbox{$\m@th.$}}\mkern2mu
-    \raise4\p@\hbox{$\m@th.$}\mkern2mu\raise\p@\hbox{$\m@th.$}\mkern1mu}}
+\vbox{\kern7\p@\hbox{$\m@th.$}}\mkern2mu
+\raise4\p@\hbox{$\m@th.$}\mkern2mu\raise\p@\hbox{$\m@th.$}\mkern1mu}}
 
 
 %%% For \underbrace and \overbrace:
 %%% use brace extenstion bar (in "20 of jkpexa) instead of vrule (Acroread Bug...)
 \re@DeclareMathSymbol{\br@cext}{\mathord}{largesymbolsA}{32}
 \def\downbracefill{$\m@th%
-   \braceld\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu%
-   \braceru\bracelu%
-   \mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu\bracerd$}
+\braceld\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu%
+\braceru\bracelu%
+\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu\bracerd$}
 \def\upbracefill{$\m@th%
-   \bracelu\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu%
-   \bracerd\braceld%
-   \mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu\braceru$}
+\bracelu\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu%
+\bracerd\braceld%
+\mkern-1mu\cleaders\hbox{$\mkern-.5mu\br@cext\mkern-.5mu$}\hfill\mkern-1mu\braceru$}
 
 %%% \not redefined:
 %%%    \not= becomes \ne
@@ -1578,31 +1578,31 @@
 \DeclareMathSymbol{\n@tch@r}{\mathrel}{symbols}{54}
 
 \DeclareRobustCommand*{\not}[1]{%
-   \ifx #1=\ne\else
-   \ifx #1<\nless\else
-   \ifx #1>\ngtr\else
-   \n@t@@n{#1}\fi\fi\fi}
+\ifx #1=\ne\else
+\ifx #1<\nless\else
+\ifx #1>\ngtr\else
+\n@t@@n{#1}\fi\fi\fi}
 
 \def\n@t@@n#1{%
-  \begingroup \escapechar\m@ne\xdef\@gtempa{not\string#1}\endgroup%
-  \expandafter\@ifundefined{\@gtempa}%
-     {\not@n@{#1}}%
-     {\@nameuse{\@gtempa}}}
+\begingroup \escapechar\m@ne\xdef\@gtempa{not\string#1}\endgroup%
+\expandafter\@ifundefined{\@gtempa}%
+{\not@n@{#1}}%
+{\@nameuse{\@gtempa}}}
 \def\not@n@#1{%
-  \begingroup \escapechar\m@ne\xdef\@gtempa{n\string#1}\endgroup%
-  \expandafter\@ifundefined{\@gtempa}%
-     {\n@tch@r #1}%
-     {\@nameuse{\@gtempa}}}
+\begingroup \escapechar\m@ne\xdef\@gtempa{n\string#1}\endgroup%
+\expandafter\@ifundefined{\@gtempa}%
+{\n@tch@r #1}%
+{\@nameuse{\@gtempa}}}
 
 %%%%%%%%%%%%%%%%%%%
 % \D close integral
 %%%%%%%%%%%%%%%%%%%
 
 \ifkp@Dcommand
-  \DeclareMathSymbol{\kp@D}{\mathord}{operators}{100}
-  \def\D#1{\mathclose{\,\ifkp@upRm\kp@D%
-    \else\mathit{d}%
-		  \fi}#1}
+\DeclareMathSymbol{\kp@D}{\mathord}{operators}{100}
+\def\D#1{\mathclose{\,\ifkp@upRm\kp@D%
+\else\mathit{d}%
+\fi}#1}
 \fi
 
 %%%%%%%%%%%%
@@ -1620,7 +1620,7 @@
 
 \let\kp@ula\underleftarrow
 \def\underleftarrow#1{\kp@ula{\,#1}\,}
-     
+
 %%%
 \fi %%% End of no-math option
 %%%
@@ -1636,43 +1636,43 @@
 \let\kp@osn\oldstylenums
 
 \ifkp@os
-		\ifkp@osm % fulloldstyle
-			\def\oldstylenums#1{#1}
-		\else
-			\ifkp@vosm % oldstyle and veryoldstylemath
-				\def\oldstylenums#1{#1}
-			\else % oldstyle
-				\def\oldstylenums#1{%
-						\relax\ifmmode\kp@osn{#1}%
-						\else#1\fi}
-			\fi
-		\fi
+\ifkp@osm % fulloldstyle
+\def\oldstylenums#1{#1}
 \else
-		 \ifkp@vos
-				\ifkp@vosm % fullveryoldstyle
-					\def\oldstylenums#1{#1}
-				\else
-					\ifkp@osm % veryoldstyle and oldstylemath
-						\def\oldstylenums#1{#1}
-					\else % veryoldstyle
-						\def\oldstylenums#1{%
-								\relax\ifmmode\kp@osn{#1}%
-								\else#1\fi}
-					\fi
-				\fi
-		 \else
-		 	 \ifkp@osm % oldstylemath
-					\def\oldstylenums#1{%
-							\relax\ifmmode#1%
-							\else\kp@osn{#1}\fi}
-			 \else
-			 		\ifkp@vosm % veryoldstylemath
-						\def\oldstylenums#1{%
-								\relax\ifmmode#1%
-								\else\kp@osn{#1}\fi}
-					\fi
-			 \fi
-		 \fi
+\ifkp@vosm % oldstyle and veryoldstylemath
+\def\oldstylenums#1{#1}
+\else % oldstyle
+\def\oldstylenums#1{%
+\relax\ifmmode\kp@osn{#1}%
+\else#1\fi}
+\fi
+\fi
+\else
+\ifkp@vos
+\ifkp@vosm % fullveryoldstyle
+\def\oldstylenums#1{#1}
+\else
+\ifkp@osm % veryoldstyle and oldstylemath
+\def\oldstylenums#1{#1}
+\else % veryoldstyle
+\def\oldstylenums#1{%
+\relax\ifmmode\kp@osn{#1}%
+\else#1\fi}
+\fi
+\fi
+\else
+\ifkp@osm % oldstylemath
+\def\oldstylenums#1{%
+\relax\ifmmode#1%
+\else\kp@osn{#1}\fi}
+\else
+\ifkp@vosm % veryoldstylemath
+\def\oldstylenums#1{%
+\relax\ifmmode#1%
+\else\kp@osn{#1}\fi}
+\fi
+\fi
+\fi
 \fi
 
 \endinput
