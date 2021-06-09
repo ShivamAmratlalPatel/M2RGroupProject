@@ -1,7 +1,7 @@
 \section{Stationary Strategies}\label{sec:stationary-strategies}
 Here, we define \textbf{stationary} distributions for arms as those where the underlying distribution of each arm stays the same regardless of the round we are in - some strategies for this type of multi-armed bandit problem are described below.
 
-\subsection{$\epsilon$-Greedy}
+\subsection{\textbf{$\epsilon$-Greedy}}
 The \textbf{$\epsilon$-Greedy} strategy is defined as follows: 'The $\epsilon$-Greedy strategy consists of choosing a random lever with $\epsilon$ frequency, and otherwise choosing the lever with the highest estimated mean, the estimation being based on the rewards observed thus far' \citep{vermorel}.
 It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (finding out the effectiveness of new arms) and exploitation (using what we already know about the old arms).
 
