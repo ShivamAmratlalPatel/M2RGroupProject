@@ -1,5 +1,5 @@
 \section{Analysing Simulations}\label{sec:analysing-simulations}
-We see from Figure \ref{fig: epsilon} that the $\epsilon$-first strategy isn't necessarily a zero-regret strategy.
+We see from Figure \ref{fig: epsilon} that the $\epsilon$-first strategy is not necessarily a zero-regret strategy.
 We see this as the graph for $\epsilon$ = 0.5 doesn't increase in cumulative regret after it finishes its exploration phase, however this is not the case for the two $\epsilon$ values (0.75 and 0.9) which are greater in Figure \ref{fig: epsilon}.
 This demonstrates to us that a higher $\epsilon$ value doesn't mean we are guaranteed to find the arm with the highest actual mean, even with more exploration, due to the fact that we have either had the arm with the highest mean underestimated, or an arm with a lower mean overestimated.
 
@@ -7,6 +7,6 @@ We also see that for our 100 machine plot (Figure \ref{fig: all4}), Thompson sam
 Here, UCB also scales to a zero-regret strategy, and $\epsilon$-first does not.
 However, $\epsilon$-first does better than UCB in the number of trials given, due to a fairly low amount of exploration followed by exploitation ($\epsilon$-value 0.2).
 
-In addition, our 10 machine plot (Figure \ref{fig:ten_machines_all_strategies})   suggests that the confidence regions (denoted on the graphs by the shaded regions) are much greater for the UCB and Thompson sampling strategies than the $\epsilon$-first strategy, highlighting how the regret is more uncertain for the UCB and Thompson sampling strategies, due to their greater algorithm complexity.
+In addition, our 10 machine plot (Figure \ref{fig:ten_machines_all_strategies}) suggests that the confidence regions (denoted on the graphs by the shaded regions) are much greater for the UCB and Thompson sampling strategies than the $\epsilon$-first strategy, highlighting how the regret is more uncertain for the UCB and Thompson sampling strategies, due to their greater algorithm complexity.
 The random strategy also has a larger confidence region than the $\epsilon$-first strategy in Figure \ref{fig:ten_machines_all_strategies}, emphasising that if the machine with the highest actual mean is found by the $\epsilon$-first strategy, the cumulative regret will not increase;
 Figure \ref{fig: 100 machines without random} demonstrates that when the $\epsilon$-first strategy does not find the optimal arm, its cumulative regret increases much more, as does the confidence region.
