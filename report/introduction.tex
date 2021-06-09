@@ -2,23 +2,41 @@
 
 \subsection{The Problem}\label{subsec:the-problem}
 The multi armed bandit problem for a gambler is best expressed as a gambler with a row of slot machines, all with unknown expected returns.
-What is the optimal method of playing each machine to maximise returns \citep{vermorel}? This is a problem where there are multiple options and one must choose options to maximise one's gain, however not all the information of such options are known until tried.
+The problem is to determine the optimal method to play each machine to maximise returns \citep{vermorel}.
+This is a problem where there are multiple options and one must choose options to maximise one's gain, however not all the information of such options are known until tried.
 \newline
 \newline
 This problem could be simplified down to 2 coins of unknown bias.
 Suppose we are allowed to make $n$ tosses, with the promise of getting \$1 for each head but nothing for tails \citep{robbins1952some}.
 What is the best way to choose which coin to toss to maximise earnings?
 The problem has many variations, with known or unknown distributions and/or means.
+\newline
+\newline
+In our report we will use levers to describe the slot machine and pulling a lever is equivalent to playing a slot machine.
+We will call each pull a round and such we can say there are $N$ rounds in this example.
 
 \subsection{Applications}\label{subsec:applications}
 The applications of the multi armed bandit problem are extensive.
 In healthcare, statisticians collect data for assessing treatment effectiveness \citep{bouneffouf2019survey}.
+Even in the current COVID-19 situation one could call the vaccine rollout a multi-armed bandit problem.
+Determining which vaccine will give the best protection by trialing so many of the population on each vaccine, to then eventually figure out which is the best to then administer to more people.
 The world of financial services uses the solutions to this problem for portfolio selection to maximise returns on investments.
+For example if one would like to invest in stocks, one could see each stock as a lever, and pulling a lever is like buying such stock.
 \newline
 \newline
 A more modern application is in social media \citep{chen2013combinatorial}.
 Influence maximisation is a huge problem in today's world.
 This particular problem exposes seeds of users to some information and then tracks the spread of said information, with the aim being to find which seed of users will result in the greatest spread of information.
+For example, on one particular website they may show different advertisements but for the same product to determine which advertisement results in the most people clicking on such advertisement.
+
+\subsection{Forms of the Problem}\label{subsec:forms-of-the-problem}
+There are many different forms of the problem.
+The two we will focus on this problem are the stationary and non-stationary problem.
+The stationary problem is where the actual expectation of each lever does not change and in the non-stationary problem, the actual expectation of each lever can change.
+This could be periodically or continuous.
+Another form of the problem is the contextual bandit problem, where one has information on each lever before playing.
+In the stocks example this could be the financial situation of the company.
+Or in the social media application, it is information on the user.
 
 \subsection{Regret}\label{subsec:regret}
 Before analysing strategies, there is one very important measure that we must define.
