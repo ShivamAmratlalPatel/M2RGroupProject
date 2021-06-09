@@ -1,18 +1,20 @@
-\section{Non-stationary Strategies}
-The strategies we have explained above work well when the underlying distributions for each arm don't change, but what happens when they do? In this section, we go through strategies for different non-stationary distribution scenarios, and explain their strengths and weaknesses.
+\section{Non-stationary Strategies}\label{sec:non-stationary-strategies}
+The strategies we have explained above work well when the underlying distributions for each arm don't change, but what happens when they do?
+In this section, we go through strategies for different non-stationary distribution scenarios, and explain their strengths and weaknesses.
 
-\subsection{Discounted UCB}
-Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way in specifically implying in local channels due to the varying time of local environment. The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB1 algorithm, and the average reward is given by \begin{equation*} 
-\hat{z}_i(j)=\frac{\sum\nolimits_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}, \quad
-{\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\textbf{1}_{s(t)=i}
-\end{equation*}where the $\gamma_i$ represents the change rate of i and is also the discount factor. The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
+\subsection{Discounted UCB}\label{subsec:discounted-ucb}
+Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way in specifically implying in local channels due to the varying time of local environment.
+The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB1 algorithm, and the average reward is given by \begin{equation*}
+                                                                                                                                                             \hat{z}_i(j)=\frac{\sum\nolimits_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}, \quad
+                                                                                                                                                             {\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\textbf{1}_{s(t)=i}
+\end{equation*}where the $\gamma_i$ represents the change rate of i and is also the discount factor.
+The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
 
-\subsection{Sliding-Window UCB}
+\subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
 The maximum regret of this algorithm is proven to be O($\sqrt{\gamma_{i}T\log{T}}$)\citep{garivier2008upper}.
 
-
-\subsection{GLR-klUCB}
+\subsection{GLR-klUCB}\label{subsec:glr-klucb}
 GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with an parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
 Regret is upper-bounded by $ O(\Upsilon_T \sqrt{T log(T)} )$ if the number of changed points $\Upsilon_T $ is unknown and $ O(\sqrt{\Upsilon_T T log(T)} )$ if  $\Upsilon_T $ is known.\citep{Besson2019}
 
