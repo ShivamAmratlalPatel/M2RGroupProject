@@ -8,6 +8,8 @@ Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a
 \end{equation*}where the $\gamma_i$ represents the change rate of i and is also the discount factor. The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
 
 \subsection{Sliding-Window UCB}
+The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
+The maximum regret of this algorithm is proven to be O($\sqrt{\gamma_{i}T\log{T}}$)\citep{garivier2008upper}.
 
 
 \subsection{GLR-klUCB}
@@ -15,3 +17,4 @@ GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, wit
 \subsubsection{local restarts}
 regret is upper-bounded by $ O(\gamma T_$
 \subsubsection{global restarts}
+
