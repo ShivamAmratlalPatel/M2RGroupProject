@@ -17,12 +17,12 @@ Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\e
 \textbf{Pseudo Code for Epsilon-first Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of machines, number of trials, epsilon}
+    \KwData{number of arms, number of trials, epsilon}
     \KwResult{regret after using epsilon strategy\;}
     \For{number of trials*epsilon}{
-        Pick random machine\;
+        Pick random arm\;
     }
-    Calculate realised expectation of each machine\;
+    Calculate realised expectation of each arm\;
 
     \For{number of trials*(1-epsilon)}{
         Pick arm with highest realised expectation\;
@@ -52,13 +52,13 @@ We can use Hoeffding's inequality to get the confidence bounds of reward varianc
 % This sentence does not make gramamtical sense but I don't understand what it is and what you are trying to say so do not have any suggestions. Also make sure to use English (UK) spelling and not English (US) spelling. For example initialisation instead of initialization and maximises instead of maximizes. I think you should highlight more the difference between UCB and UCB1.
 UCB1 uses Hoeffding's inequality as the upper limit of the average reward distribution of the arm, where the true average is likely to be lower than the UCB allocated by the algorithm.
 UCB1, achieving logarithmic regret uniformly over n and without any preliminary knowledge about the reward distributions.The index of this policy is the sum of two terms.
-The first term is simply the current average reward. The second term is related to the size of the one-sided confidence interval for the average reward within which the true expected reward falls with overwhelming probability. With initialisation playing each machine once, we do the loop that play machine t which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$ . \citep{Auer2002}
+The first term is simply the current average reward. The second term is related to the size of the one-sided confidence interval for the average reward within which the true expected reward falls with overwhelming probability. With initialisation playing each arm once, we do the loop that play arm t which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$ . \citep{Auer2002}
 \\Under UCB1, logarithmic regret $O(logN)$  is achieved when the reward distributions are supported on [0,1].  \citep{Chan_2020} We can conclude that regret of UCB1 grows at a rate of $log N$.
 \newline
 \textbf{Pseudocode for Upper Confidence Bound Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of machines, number of trials, confidence level}
+    \KwData{number of arms, number of trials, confidence level}
     \KwResult{regret after using UCB strategy\;}
     \For{number of trials}{
         Pick arm with highest upper confidence bound\;
@@ -99,7 +99,7 @@ where T is the number of rounds and N is the number of arms. \citep{agrawal2013f
 \textbf{Pseudocode for Thompson Sampling Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of machines, number of trials, confidence level}
+    \KwData{number of arms, number of trials, confidence level}
     \KwResult{regret after using Thompson Sampling strategy\;}
     Set all arms with prior distribution with a uniform distribution\;
     \For{number of trials}{
