@@ -14,7 +14,4 @@ The maximum regret of this algorithm is proven to be O($\sqrt{\gamma_{i}T\log{T}
 
 \subsection{GLR-klUCB}
 GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with an parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
-\subsubsection{local restarts}
-regret is upper-bounded by $ O(\gamma T_$
-\subsubsection{global restarts}
-
+Regret is upper-bounded by $ O(\Upsilon_T \sqrt{T log(T)} )$ if the number of changed points $\Upsilon_T $ is unknown and $ O(\sqrt{\Upsilon_T T log(T)} )$ if  $\Upsilon_T $ is known.\citep{Besson2019}
