@@ -2,5 +2,9 @@
 The strategies we have explained above work well when the underlying distributions for each arm don't change, but what happens when they do? In this section, we go through strategies for different non-stationary distribution scenarios, and explain their strengths and weaknesses.
 
 \subsection{Discounted UCB}
-Discounted UCB (D-UCB), which was proposed by Levente Kocsis and Csaba Szepesvari (2006), is a way in specifically implying in local channels due to the varying time of local environment. The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB1 algorithm, and the average reward is given by
+Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way in specifically implying in local channels due to the varying time of local environment. The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB1 algorithm, and the average reward is given by \begin{equation*} 
+\hat{z}_i(j)=\frac{\sum\nolimits_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}, \quad
+{\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\textbf{1}_{s(t)=i}
+\end{equation*}where the $\gamma_i$ represents the change rate of i and is also the discount factor. The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
+
 \subsection{Sliding-Window UCB}
