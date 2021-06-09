@@ -42,4 +42,5 @@ Or in the social media application, it is information on the user.
 Before analysing strategies, there is one very important measure that we must define.
 The \textbf{regret} ($\rho$) after T rounds of the multi-armed bandit is defined as $$\rho = T\mu\mbox{*} - \sum_{t=1}^T\hat{r}_t$$ where $\mu\mbox{*}$ is the \textbf{maximal reward mean} and $\hat{r}_t$ is the reward at time t \citep{vermorel}.
 The maximal reward mean is just the mean of all the maximums across arms for each round.
-We can rewrite this as $$\rho = \sum_{t=1}^T\hat{r}_t$$ The reason this is of utmost importance is because minimizing it will give us our most optimal strategies. The 'holy grail' we are searching for is known as a \textbf{zero regret strategy}, which is a strategy whose average regret per round tends to zero with probability 1 as the number of rounds T tends to infinity \citep{vermorel}; in all the strategies below, we shall therefore analyse how close they get to a zero regret strategy.
+We can rewrite this as $$\rho = \sum_{t=1}^T\hat{r}_t$$ The reason this is of utmost importance is because minimizing it will give us our most optimal strategies.
+The 'holy grail' we are searching for is known as a \textbf{zero regret strategy}, which is a strategy whose average regret per round tends to zero with probability 1 as the number of rounds T tends to infinity \citep{vermorel}.
