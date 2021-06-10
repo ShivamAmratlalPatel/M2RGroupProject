@@ -19,7 +19,7 @@ The maximum regret of this algorithm is proven to be $O\left(\sqrt{\gamma_{i}T\l
 However, SW-UCB requires to store the last $j$ actions and rewards at each time $t$ in order to efficiently update ${\hat{n}_i}$ as well as ${\hat{z}_i}$~\citep{garivier2008upper}.
 
 \subsection{GLR-klUCB}\label{subsec:glr-klucb}
-GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
+GLR-klUCB is an algorithm which combines an efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
 Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known~\citep{Besson2019}.
 \par
 For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{\logT}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T \log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T \log\left(T\right)\right)$.
