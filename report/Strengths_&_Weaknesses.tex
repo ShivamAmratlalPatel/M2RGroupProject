@@ -20,8 +20,7 @@ In addition, the Epsilon-Greedy strategy's regret will scale linearly, due to a 
 Therefore, this strategy will never be a zero-regret strategy, unlike UCB and Thompson sampling strategies.
 
 \subsubsection{Best conditions for $\epsilon$-Greedy algorithm}
-It is clear to see from the previous sections that the $\epsilon$-Greedy algorithm is far less computationally expensive than the UCB and Thompson Sampling algorithms.
-Therefore, we can conclude that when we don't have very powerful computers to process algorithms, $\epsilon$-Greedy will be the optimal choice.
+It is clear to see from the previous sections that the $\epsilon$-Greedy algorithm is far less computationally expensive than the UCB and Thompson Sampling algorithms. Therefore, we can conclude that when we don't have very powerful computers to process algorithms, $\epsilon$-Greedy will be the optimal choice. Otherwise, given that the $\epsilon$-Greedy strategy's regret scales linearly, the UCB and Thompson sampling algorithms are a better choice, given they are zero-regret strategies and will exploit the best arms in later rounds.
 
 \subsection{Upper Confidence Bound}\label{subsec:upper-confidence-bound2}
 
