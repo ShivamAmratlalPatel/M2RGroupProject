@@ -42,8 +42,8 @@
     pdfpagemode={UseOutlines},% None, FullScreen, UseOutlines
     bookmarksnumbered=true, bookmarksopen=true, colorlinks,
     citecolor=blue,
-    filecolor=blue,
-    linkcolor=blue,
+    filecolor=black,
+    linkcolor=black,
     urlcolor=blue}
 \usepackage[all]{hypcap}
 \fi
@@ -189,47 +189,7 @@
         &%                                    moved second & here
         \addtocounter{elimination@steps}{1}
 }
-\makeatother
 
-%% Fast macro for column vectors
-\makeatletter
-\def\colvec#1{\expandafter\colvec@i#1,,,,,,,,,\@nil}
-\def\colvec@i#1,#2,#3,#4,#5,#6,#7,#8,#9\@nil{% 
-    \ifx$#2$ \begin{bmatrix}
-                 #1
-    \end{bmatrix} \else
-    \ifx$#3$ \begin{bmatrix}
-                 #1\\#2
-    \end{bmatrix} \else
-    \ifx$#4$ \begin{bmatrix}
-                 #1\\#2\\#3
-    \end{bmatrix}\else
-    \ifx$#5$ \begin{bmatrix}
-                 #1\\#2\\#3\\#4
-    \end{bmatrix}\else
-    \ifx$#6$ \begin{bmatrix}
-                 #1\\#2\\#3\\#4\\#5
-    \end{bmatrix}\else
-    \ifx$#7$ \begin{bmatrix}
-                 #1\\#2\\#3\\#4\\#5\\#6
-    \end{bmatrix}\else
-    \ifx$#8$ \begin{bmatrix}
-                 #1\\#2\\#3\\#4\\#5\\#6\\#7
-    \end{bmatrix}\else
-    \PackageError{Column Vector}{The vector you tried to write is too big, use bmatrix instead}{Try using the bmatrix environment}
-    \fi
-    \fi
-    \fi
-    \fi
-    \fi
-    \fi
-    \fi
-}
 \makeatother
 
 \robustify{\colvec}
-
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "notes"
-%%% End: 

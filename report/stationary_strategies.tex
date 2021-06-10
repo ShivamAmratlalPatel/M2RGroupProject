@@ -14,8 +14,9 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     \subsubsection{Epsilon-first Strategy}
 
     The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning \citep{vermorel}.
-    Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected, followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
-    \newline
+    Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected.
+    This is followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
+    \par
     \textbf{Pseudo Code for Epsilon-first Strategy}
     \newline
     \begin{algorithm}[H]
@@ -34,10 +35,10 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     \end{algorithm}
 
     \subsection{Upper Confidence Bound}\label{subsec:upper-confidence-bound}
-% This sentence does not make sense and needs further clarification. I would write something like. In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level. We then choose the arm which has the highest upper confidence bound to pull next. 
-    We use assumption to construct an upper bound estimate on the mean of each arm at some fixed confidence level, and then choose the arm that looks best under this estimate. \citep{SVGarbar2012} In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level.
-    We then choose the arm which has the highest upper confidence bound to pull next.
-    \\The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$.
+    In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level.
+    We then choose the arm which has the highest upper confidence bound to pull next~\citep{SVGarbar2012}. As an arm is pulled more its confidence region gets smaller and our estimate is assumed to be more accurate.
+    \par
+    The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$.
     Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean.
 
     \subsubsection{Hoeffding’s Inequality}
