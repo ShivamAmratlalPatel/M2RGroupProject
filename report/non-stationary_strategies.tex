@@ -19,10 +19,11 @@ However, SW-UCB requires to store the last $j$ actions and rewards at each time 
 
 \subsection{GLR-klUCB}\label{subsec:glr-klucb}
 GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with an parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
-Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T log\left(T\right)} \right)$ if  $\Upsilon_T $ is known.\citep{Besson2019}
+Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known.\citep{Besson2019}
 
 
-\\For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{logT}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T log\left(T\right)\right)$. Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms.
+\\For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{\logT}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T \log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T \log\left(T\right)\right)$.
+Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms.
 \citep{Besson2019}
 
 
