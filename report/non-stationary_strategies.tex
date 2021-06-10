@@ -6,8 +6,8 @@ In this section, we go through strategies for different non-stationary distribut
 Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
 The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
 \begin{equation*}
-    \hat{z}_i(j)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}, \quad
-    {\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\textbf{1}_{s(t)=i}
+    \hat{z}_i(j)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}\mathfrak{1}_{s(t)=i}, \quad
+    {\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\mathfrak{1}_{s(t)=i}
 \end{equation*}where the $\gamma_i \in[0,1]$ represents the change rate of i and is also the discount factor.
 The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
 
