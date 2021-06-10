@@ -6,23 +6,25 @@ In this section, we go through strategies for different non-stationary distribut
 Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
 The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
 \begin{equation*}
-    \hat{z}_i(j)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}\mathfrak{1}_{s(t)=i}, \quad
-    {\hat{n}_i(j)}=\sum_{t=1}^T\gamma_i^{T-t}\mathfrak{1}_{s(t)=i}
+    \hat{z}_i\left(j\right)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i\left(t\right)}{\hat{n}_i\left(j\right)}\mathfrak{1}_{s\left(t\right)=i}, \quad
+    {\hat{n}_i\left(j\right)}=\sum_{t=1}^T\gamma_i^{T-t}\mathfrak{1}_{s\left(t\right)=i}
 \end{equation*}where the $\gamma_i \in[0,1]$ represents the change rate of i and is also the discount factor.
-The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gamma_{i}T}\log{T}$)\citep{garivier2008upper}.
+The algorithm is also shown to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$\citep{garivier2008upper}.
 
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
-The maximum regret of this algorithm is proven to be O($\sqrt{\gamma_{i}T\log{T}}$)\citep{garivier2008upper}.
-\\Compared with D-UCB, the computational complexity of SW-UCB is linear in time and does not involve $j$. However, SW-UCB requires to store the last $j$ actions and rewards at each time $t$ in order to efficiently update ${\hat{n}_i}$ as well as ${\hat{z}_i}$.\citep{garivier2008upper}
+The maximum regret of this algorithm is proven to be $O\left(\sqrt{\gamma_{i}T\log{T}}\right)$\citep{garivier2008upper}.
+\\Compared with D-UCB, the computational complexity of SW-UCB is linear in time and does not involve $j$.
+However, SW-UCB requires to store the last $j$ actions and rewards at each time $t$ in order to efficiently update ${\hat{n}_i}$ as well as ${\hat{z}_i}$.\citep{garivier2008upper}
 
 \subsection{GLR-klUCB}\label{subsec:glr-klucb}
 GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with an parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
-Regret is upper-bounded by $ O(\Upsilon_T \sqrt{T log(T)} )$ if the number of changed points $\Upsilon_T $ is unknown and $ O(\sqrt{\Upsilon_T T log(T)} )$ if  $\Upsilon_T $ is known.\citep{Besson2019}
+Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T log\left(T\right)} \right)$ if  $\Upsilon_T $ is known.\citep{Besson2019}
 
 
-\\For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{logT}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O(\frac{K}{(\delta^change)^2} \Upsilon_T \sqrt{T log(T)}+\frac{(K-1)}{\delta^opt} \Upsilon_T log(T))$. Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms.
+\\For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{logT}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T log\left(T\right)\right)$. Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms.
 \citep{Besson2019}
 
 
-\\This strategy is efficient for the piece-wise stationary bandit problem. This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes ΥT , but without any other prior knowledge on the problem.\citep{Besson2019}
+\\This strategy is efficient for the piece-wise stationary bandit problem.
+This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes ΥT , but without any other prior knowledge on the problem.\citep{Besson2019}
