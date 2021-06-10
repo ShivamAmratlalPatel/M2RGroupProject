@@ -3,7 +3,7 @@ The strategies we have explained above work well when the underlying distributio
 In this section, we go through strategies for different non-stationary distribution scenarios, and explain their strengths and weaknesses.
 
 \subsection{Discounted UCB}\label{subsec:discounted-ucb}
-Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way in specifically implying in local channels due to the varying time of local environment.
+Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
 The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB1 algorithm, and the average reward is given by
 \begin{equation*}
     \hat{z}_i(j)=\frac{\sum\nolimits_{t=1}^T\gamma_i^{T-t}x_i(t)}{\hat{n}_i(j)}, \quad
