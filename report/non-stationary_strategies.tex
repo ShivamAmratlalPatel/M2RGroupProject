@@ -29,3 +29,6 @@ Regret is upper-bounded by $ O(\Upsilon_T \sqrt{T log(T)} )$ if the number of ch
 
 \\This strategy is efficient for the piece-wise stationary bandit problem. This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes ΥT , but without any other prior knowledge on the problem.\citep{Besson2019}
 
+\subsection{ Limited-Memory DSEE (LM-DSEE)}
+The LM-DSEE algorithm comprises interleaving epochs of exploration and exploitation. In the k-th exploration epoch, each arm is sampled L(k)=$\lceil\gamma\ln({k^{\rho}lb})\rceil$
+
