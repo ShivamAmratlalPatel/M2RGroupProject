@@ -2,16 +2,18 @@
 Here, we define \textbf{stationary} distributions for arms as those where the underlying distribution of each arm stays the same regardless of the round we are in - some strategies for this type of multi-armed bandit problem are described below.
 
 \subsection{$\epsilon$-Greedy}\label{subsec: $epsilon$-greedy}
-    The \textbf{$\epsilon$-Greedy} strategy is defined as follows: 'The $\epsilon$-Greedy strategy consists of choosing a random lever with $\epsilon$ frequency, and otherwise choosing the lever with the highest estimated mean, the estimation being based on the rewards observed thus far' \citep{vermorel}.
-    It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (finding out the effectiveness of new arms) and exploitation (using what we already know about the old arms).
+    The $\epsilon$-Greedy strategy is where arms are explored randomly $\epsilon$ percentage of rounds and $1-\epsilon$ percentage of the time \citep{DBLP:journals/corr/abs-1807-09809}.
+    It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (gathering data from all arms) and exploitation (playing the arm with the highest realised expectation).
+    This theme is key to all solution strategies of the multi-armed bandit, but later strategies rather than having such a clear divide between exploration and exploitation, there is more of a dynamic aproach.
 
     \subsubsection{Random strategy}
-    The first (and most basic) of the $\epsilon$-Greedy strategies to analyse will be the random strategy, which will provide us basic insights into what is required of an optimal strategy.
-    As the name implies, for each round, following this strategy, we choose to play one of the arms at random: here, this means that $\epsilon = 1$.
+    The first (and most basic) of the $\epsilon$-Greedy strategies will be the random strategy, which will provide us a benchmark against which to compare all other strategies.
+    As the name implies, for each round we choose a random strategy.
+    This means $\epsilon=1$ and there will be pure exploration and no exploitation.
 
     \subsubsection{Epsilon-first Strategy}
 
-    The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning\citep{vermorel}.
+    The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning \citep{vermorel}.
     Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected, followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
     \newline
     \textbf{Pseudo Code for Epsilon-first Strategy}
@@ -51,7 +53,7 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     \subsubsection{UCB1}
 % This sentence does not make gramamtical sense but I don't understand what it is and what you are trying to say so do not have any suggestions. Also make sure to use English (UK) spelling and not English (US) spelling. For example initialisation instead of initialization and maximises instead of maximizes. I think you should highlight more the difference between UCB and UCB1.
     UCB1 uses Hoeffding's inequality as the upper limit of the average reward distribution of the arm, where the true average is likely to be lower than the UCB allocated by the algorithm.
-    UCB1, achieving logarithmic regret uniformly over n and without any preliminary knowledge about the reward distributions.The index of this policy is the sum of two terms.
+    UCB1, achieving logarithmic regret uniformly over n and without any preliminary knowledge about the reward distributions. The index of this policy is the sum of two terms.
     The first term is simply the current average reward.
     The second term is related to the size of the one-sided confidence interval for the average reward within which the true expected reward falls with overwhelming probability.
     With initialisation playing each arm once, we do the loop that play arm t which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$ . \citep{Auer2002}
