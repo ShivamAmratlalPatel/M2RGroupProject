@@ -42,25 +42,26 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean.
 
     \subsubsection{Hoeffding’s Inequality}
-% This sentence could be worded better. 'does help at all' does not make sense. I don't know what you are trying to say here so I don't have any suggestions for what you could write. It is that "at all" bit which does not make sense.
-    Hoeffding's inequality is applicable at all bound distribution.
-    Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X]  \textgreater \overline  X_t + u) \leq e^{-2t u^2}$ with u being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
-    \\Then $ P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$ , and we take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by p.
-    So we can get $U_t(a) = \sqrt{\frac{-log p}{2N_t (a)}}$.
-    Threshold is used to distinguish ranges of values and here it is the upper bound of probability.
-% You should explain what the threshold then means. What is it Hoeffding's inequality tells us more about the problem and how it helps.
+    Hoeffding's inequality is applicable in this strategy.
+    Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X] > \overline  X_t + u) \leq e^{-2t u^2}$ with $u$ being the upper confidence bound and $ \overline X_t $ the sample mean respectively. \citep{Hoeffding1963}
+    \par
+    Applied in our case, 
+    $$P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$$
+    ,where $a$ represents the arm index and $t$ is the time. We take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by $p$.
+    So we can get $U_t(a) = \sqrt{\frac{-\log p}{2N_t (a)}}$, where $N_t (a)$ is the number of times arm $a$ has been played at time $t$.
+    \par
+    The threshold is used as the upper bound for probability.
     We can use Hoeffding's inequality to get the confidence bounds of reward variance.
 
     \subsubsection{UCB1}
 % This sentence does not make gramamtical sense but I don't understand what it is and what you are trying to say so do not have any suggestions. Also make sure to use English (UK) spelling and not English (US) spelling. For example initialisation instead of initialization and maximises instead of maximizes. I think you should highlight more the difference between UCB and UCB1.
     UCB1 uses Hoeffding's inequality as the upper limit of the average reward distribution of the arm, where the true average is likely to be lower than the UCB allocated by the algorithm.
-    UCB1, achieving logarithmic regret uniformly over n and without any preliminary knowledge about the reward distributions. The index of this policy is the sum of two terms.
-    The first term is simply the current average reward.
-    The second term is related to the size of the one-sided confidence interval for the average reward within which the true expected reward falls with overwhelming probability.
-    With initialisation playing each arm once, we do the loop that play arm t which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$ . \citep{Auer2002}
-    \\Under UCB1, logarithmic regret $O(logN)$  is achieved when the reward distributions are supported on [0,1] \citep{Chan_2020}.
-    We can conclude that regret of UCB1 grows at a rate of $log N$.
-    \newline
+    UCB1, achieving logarithmic regret uniformly over $n$ and without any preliminary knowledge about the reward distributions. The index of this policy is the sum of two terms.
+    The strategy starts by playing each arm once, we do the loop that play arm $t$ which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$~\citep{Auer2002}.
+    \par
+    Under UCB1, logarithmic regret $O(\log N)$  is achieved when the reward distributions are supported on [0,1] \citep{Chan_2020}.
+    We can conclude that regret of UCB1 grows at a rate of $\log N$.
+    \par
     \textbf{Pseudocode for Upper Confidence Bound Strategy}
     \newline
     \begin{algorithm}[H]
