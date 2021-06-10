@@ -14,6 +14,7 @@ The algorithm is also shown to achieve the upper-bounded regret by O($\sqrt{\gam
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
 The maximum regret of this algorithm is proven to be O($\sqrt{\gamma_{i}T\log{T}}$)\citep{garivier2008upper}.
+\\Compared with D-UCB, the computational complexity of SW-UCB is linear in time and does not involve $j$. However, SW-UCB requires to store the last $j$ actions and rewards at each time $t$ in order to efficiently update ${\hat{n}_i}$ as well as ${\hat{z}_i}$.\citep{garivier2008upper}
 
 \subsection{GLR-klUCB}\label{subsec:glr-klucb}
 GLR-klUCB is a algorithm which combines an efficient bandit algorithm klUCB, with an parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
