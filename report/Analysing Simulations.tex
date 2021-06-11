@@ -10,3 +10,11 @@ However, $\epsilon$-first does better than UCB in the number of rounds given, du
 In addition, our 10 arm plot (Figure \ref{fig:ten_machines_all_strategies}) suggests that the confidence regions (denoted on the graphs by the shaded regions) are much greater for the UCB and Thompson sampling strategies than the $\epsilon$-first strategy, highlighting how the regret is more uncertain for the UCB and Thompson sampling strategies, due to their greater algorithm complexity.
 The random strategy also has a larger confidence region than the $\epsilon$-first strategy in Figure \ref{fig:ten_machines_all_strategies}, emphasising that if the arm with the highest actual mean is found by the $\epsilon$-first strategy, the cumulative regret will not increase;
 our figures \ref{fig: 100 machines without random} demonstrate that when the $\epsilon$-first strategy does not find the optimal arm, its cumulative regret increases much more, as does the confidence region.
+\newline
+Our figure showing the UCB strategy's cumulative regret with varying confidence levels also demonstrates that there is almost a 'sweet spot' region for confidence levels where the algorithm performs its best \ref{alg:ucb_algorithm};
+the cumulative regret decreases as the confidence level goes from 0.5 to 1, but after this it continuously increases through to confidence value 5.
+This highlights how the UCB algorithms with very low confidence intervals (less than 0.5) are more likely to pick the same arm repeatedly and algorithms with very high confidence intervals (>1.5) are more likely to be too broad with the confidence intervals for each arm.
+\newline
+Given more time, we would have plotted more graphs and confidence intervals for each algorithm, whilst exploring more values of $\epsilon$ and the confidence level for the $\epsilon$-first and UCB strategies respectively. 
+In addition, in our plots we have only considered the multi-armed bandit problem with Gaussian distributions for each arm where the means have been randomly generated between 0 and 1;
+given more time, we would have plotted graphs comparing the Gaussian and Bernoulli arm variants for each algorithm, whilst also producing more plots for a greater range of means and comparing them.
