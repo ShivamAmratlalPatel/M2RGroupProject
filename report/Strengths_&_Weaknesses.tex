@@ -31,6 +31,7 @@ The UCB method quickly finds the optimal arm and continuously expoits it, while 
 The UCB algorithm does not perform exploration by simply choosing any action selected with a constant probability, but changes its exploration-exploitation balance when collecting more environmental knowledge.
 \\The UCB-1 results from a single simulation are very stable and similar to the average results.
 This demonstrates that the algorithm can balance exploration and exploitation in a single experiment, can optimize contact allocation to discover the best arm, and then exploit it.
+\\ For arbitrary bounded rewards, the KL-UCB algorithm satisfies a uniformly better regret bound than UCB and its variants. Any maximizer can be chosen in this strategy.\citep{Garivier2011}
 
 \subsubsection{Weaknesses}
 Many variants need to be considered, for example, the non-stochastic bandit, which makes no assumptions about the reward distribution, cannot be estimated under UCB\@.
