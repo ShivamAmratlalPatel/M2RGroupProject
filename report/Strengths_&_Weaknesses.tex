@@ -20,7 +20,9 @@ In addition, the Epsilon-Greedy strategy's regret will scale linearly, due to a 
 Therefore, this strategy will never be a zero-regret strategy, unlike UCB and Thompson sampling strategies.
 
 \subsubsection{Best conditions for $\epsilon$-Greedy algorithm}
-It is clear to see from the previous sections that the $\epsilon$-Greedy algorithm is far less computationally expensive than the UCB and Thompson Sampling algorithms. Therefore, we can conclude that when we don't have very powerful computers to process algorithms, $\epsilon$-Greedy will be the optimal choice. Otherwise, given that the $\epsilon$-Greedy strategy's regret scales linearly, the UCB and Thompson sampling algorithms are a better choice, given they are zero-regret strategies and will exploit the best arms in later rounds.
+It is clear to see from the previous sections that the $\epsilon$-Greedy algorithm is far less computationally expensive than the UCB and Thompson Sampling algorithms. 
+Therefore, we can conclude that when we don't have very powerful computers to process algorithms, $\epsilon$-Greedy will be the optimal choice. 
+Otherwise, given that the $\epsilon$-Greedy strategy's regret scales linearly, the UCB and Thompson sampling algorithms are a better choice, given they are zero-regret strategies and will exploit the best arms in later rounds.
 
 \subsection{Upper Confidence Bound}\label{subsec:upper-confidence-bound2}
 
@@ -41,7 +43,8 @@ Its total regret is relatively high because it is slower in the beginning, due t
 Overall, our results suggest that there is no advantage to using pursuit and reinforcement comparison in practice~\citep{Kuleshov}.
 
 \subsubsection{Best conditions for UCB algorithm}
-Provided that we find the best value for our confidence level, the UCB algorithm works about as well as the Thompson sampling algorithm (which is even more computationally expensive), and this is shown by the plots from our simulations. Therefore, we can conclude that the UCB algorithm is very useful in practice, although this very much depends on whether we choose the right confidence level, as illustrated by the plots above \ref{alg:ucb_algorithm}; this algorithm works best with a large number of rounds, so the size of its confidence intervals for each arm decrease enough and converge towards the mean for each arm.
+Provided that we find the best value for our confidence level, the UCB algorithm works about as well as the Thompson sampling algorithm (which is even more computationally expensive), and this is shown by the plots from our simulations. 
+Therefore, we can conclude that the UCB algorithm is very useful in practice, although this very much depends on whether we choose the right confidence level, as illustrated by the plots above \ref{alg:ucb_algorithm}; this algorithm works best with a large number of rounds, so the size of its confidence intervals for each arm decrease enough and converge towards the mean for each arm.
 
 \subsection{Thompson Sampling}\label{subsec:thompson-sampling}
 Similar to the Upper Confidence Bound (UCB) algorithm above, Thompson Sampling chooses an arm to play based on the highest estimated reward.
