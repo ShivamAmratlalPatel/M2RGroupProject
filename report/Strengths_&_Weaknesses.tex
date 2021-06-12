@@ -52,7 +52,7 @@ Similar to the Upper Confidence Bound (UCB) algorithm above, Thompson Sampling c
 Unlike the UCB algorithm, however, the 'highest estimates' in this case depend on the best \textbf{sample} from the conjugate prior distributions (explained in section 2.3) for each arm, rather than the upper bound of the confidence interval around the estimated value for each arm, as the UCB does.
 
 \subsubsection{Strengths}
-By sampling from the prior distributions of each arm, rather than picking the best estimate like $\epsilon$-greedy or the best potential estimate like UCB, we get a better proportion of draws, with which we can model our new prior distributions - this gives us a very good exploration-exploitation balance.
+By sampling from the prior distributions for each arm, rather than picking the best estimate like $\epsilon$-greedy or the best potential estimate like UCB, we get a better proportion of draws, with which we can model our new prior distributions - this gives us a very good exploration-exploitation balance.
 In addition, unlike the UCB (which sets a confidence value to control the level of exploration) and $\epsilon$-greedy (which sets an exploration value $\epsilon$) algorithms, a parameter doesn't need to be set for Thompson sampling, meaning that Thompson sampling doesn't depend on how well we choose our parameters.
 
 Furthermore, (although beyond the scope of this project), Gaussian Thompson sampling does not necessarily need to have known precision - if both the mean and precision are unknown, we construct our conjugate priors using the \textbf{Normal-Gamma} distribution, with four parameters.
