@@ -56,7 +56,8 @@ By sampling from the prior distributions for each arm, rather than picking the b
 In addition, unlike the UCB (which sets a confidence value to control the level of exploration) and $\epsilon$-greedy (which sets an exploration value $\epsilon$) algorithms, a parameter doesn't need to be set for Thompson sampling, meaning that Thompson sampling doesn't depend on how well we choose our parameters.
 
 Furthermore, (although beyond the scope of this project), Gaussian Thompson sampling does not necessarily need to have known precision - if both the mean and precision are unknown, we construct our conjugate priors using the \textbf{Normal-Gamma} distribution, with four parameters.
-This demonstrates that even with very little information about the underlying distribution, Thompson sampling still manages to find optimal arms and a zero regret strategy.
+This demonstrates that even with very little information about the underlying distribution, Thompson sampling still manages to find optimal arms and a zero regret strategy;
+this is the case with all distributions which have (known) conjugate priors.
 
 \subsubsection{Weaknesses}
 By trying to estimate the underlying distribution for each arm, and continuously updating prior distributions using posterior results, Thompson sampling ends up being very computationally expensive compared to algorithms like $\epsilon$-Greedy~\citep{mazumdar2020thompson}.
