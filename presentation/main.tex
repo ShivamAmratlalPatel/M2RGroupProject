@@ -42,26 +42,27 @@
 %Changing visivility of the text
     \begin{frame}
         \frametitle{Upper-Confidence-Bound(UCB)}
-        Choose the arm with the highest UCB to pull next
+        Choose the arm with the highest UCB to pull next \footnotemark
 
         \begin{itemize}
             \item<1-> True value $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $
             \item<2->  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean
         \end{itemize}
+    \footnotetext[1]{Bubeck, S. and Cesa-Bianchi, N. (2012). Regret analysis of stochastic and non- stochastic multi-armed bandit problems. CoRR, abs/1204.5721. pages 6}
     \end{frame}
-
 %---------------------------------------------------------
 
 
     \begin{frame}
         \frametitle{Hoeffding’s Inequality}
-        Let $X_1, \dots, X_n$ be independent and identically distributed random variables
+        Let $X_1, \dots, X_n$ be independent and identically distributed random variables \footnotemark[1]
 
         \begin{itemize}
             \item<1-> $ P(E[X] > \overline  X_t + u) \leq e^{-2t u^2}$
             \item<2-> $P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}$
             \item<3-> $U_t(a) = \sqrt{\frac{-\log p}{2N_t (a)}}$
         \end{itemize}
+    \footnotetext[1]{Hoeffding, W. (1994). Probability Inequalities for sums of Bounded Random Variables, pages 409–426. Springer New York, New York, NY. pages 6}
     \end{frame}
 
 
@@ -72,23 +73,26 @@
         Achieving logarithmic regret uniformly over $n$ and without any preliminary knowledge about the reward distributions.
 
         \begin{itemize}
-            \item<1-> $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$
-            \item<2-> logarithmic regret $O(\log N)$ on [0,1]
+            \item<1-> $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$ \footnotemark[1]
+            \item<2-> logarithmic regret $O(\log N)$ on [0,1] \footnotemark[2]
 
         \end{itemize}
+    \footnotetext[1]{Auer, P., Cesa-Bianchi, N., and Fischer, P. (2002). Finite-time analysis of the multi- armed bandit problem. Machine learning, 47(2):235–256. pages 7, 15}
+    \footnotetext[2]{Chan, H. P. (2020). The multi-armed bandit problem: An efficient nonparametric solution. The Annals of Statistics, 48(1):346 – 373. pages 7}
     \end{frame}
 
 
 %------------------------------------------------------------
     \begin{frame}
         \frametitle{KL-UCB}
-        We first pull each arm once and choose the next pull according to regret bounds rely on deviations results of independent interest.
+        We first pull each arm once and choose the next pull according to regret bounds rely on deviations results of independent interest.\footnotemark[1]
 
         \begin{itemize}
             \item<1->$\lim_{n\to \infty} \frac{E[R_n]}{\log n} \leq  \sum_{a:u_a < u_{a*}} \frac{u_{a*}-u_a}{d(u_a,u_{a*})}  $
             \item<2->  $d(p, q) = p \log(p/q) + (1 - p) * \log((1 - p/(1 - q))$
             \item<3->  K is the number of arms, a* is the optimal arm and independent rewards bounded in [0,1]
         \end{itemize}
+    \footnotetext[1]{Garivier, A. and Capp ́e, O. (2011). The kl-ucb algorithm for bounded stochastic bandits and beyond. In 24th annual conference on learning theory. JMLR Workshop and Conference Proceedings. pages 7, 15}
     \end{frame}
 
 %---------------------------------------------------------
@@ -98,8 +102,9 @@
         \begin{itemize}
             \item<1-> quicker than the greedy algorithm
             \item<2->  UCB-1 results are very stable and similar to the average results.
-            \item<3->   KL-UCB algorithm satisfies a uniformly better regret bound than UCB and its variants. Any maximizer can be chosen in this strategy
+            \item<3->   KL-UCB algorithm satisfies a uniformly better regret bound than UCB and its variants. Any maximizer can be chosen in this strategy\footnotemark[1]
         \end{itemize}
+    \footnotetext[1]{Garivier, A. and Capp ́e, O. (2011). The kl-ucb algorithm for bounded stochastic bandits and beyond. In 24th annual conference on learning theory. JMLR Workshop and Conference Proceedings. pages 7, 15}
     \end{frame}
 
 %---------------------------------------------------------
@@ -107,22 +112,25 @@
         \frametitle{Weakness of UCB}
 
         \begin{itemize}
-            \item<1->  performance deteriorates much more quickly than that of other algorithms when K becomes large
+            \item<1->  performance deteriorates much more quickly than that of other algorithms when K becomes large \footnotemark[1]
             \item<2->  choice of confidence interval also affects the precision
-            \item<3->  UCB1 converges to a solution much more slowly than the other algorithms
+            \item<3->  UCB1 converges to a solution much more slowly than the other algorithms \footnotemark[2]
         \end{itemize}
+    \footnotetext[1]{Kuleshov, V. and Precup, D. (2014). Algorithms for multi-armed bandit problems. CoRR, abs/1402.6028. pages 15}
+    \footnotetext[2]{Auer, P., Cesa-Bianchi, N., and Fischer, P. (2002). Finite-time analysis of the multi- armed bandit problem. Machine learning, 47(2):235–256. pages 7 , 15}
     \end{frame}
 
 
 %---------------------------------------------------------
     \begin{frame}
         \frametitle{GLR-klUCB}
-        This algorithm combines the efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
+        This algorithm combines the efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.\footnotemark[1]
         \begin{itemize}
             \item<1->  $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown
             \item<2->   and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known
 
         \end{itemize}
+    \footnotetext[1]{Besson, L., Kaufmann, E., Maillard, O.-A., and Seznec, J. (2020).  Efficient change-point detection for tackling piecewise-stationary bandits. pages 18, 19}
     \end{frame}
 
 
