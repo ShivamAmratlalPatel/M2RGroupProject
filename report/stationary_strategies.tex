@@ -2,13 +2,13 @@
 Here, we define \textbf{stationary} distributions for arms as those where the underlying distribution of each arm stays the same regardless of the round we are in - some strategies for this type of multi-armed bandit problem are described below.
 
 \subsection{$\epsilon$-Greedy}\label{subsec: $epsilon$-greedy}
-    The $\epsilon$-Greedy strategy is where arms are explored randomly $\epsilon$ percentage of rounds and $1-\epsilon$ percentage of the time \citep{DBLP:journals/corr/abs-1807-09809}.
+    The $\epsilon$-Greedy strategy is where arms are 'explored randomly $\epsilon$ percentage of rounds and exploited $1-\epsilon$ percentage of the time' \citep{DBLP:journals/corr/abs-1807-09809}.
     It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (gathering data from all arms) and exploitation (playing the arm with the highest realised expectation).
-    This theme is key to all solution strategies of the multi-armed bandit, but later strategies rather than having such a clear divide between exploration and exploitation, there is more of a dynamic aproach.
+    This theme is key to all solution strategies of the multi-armed bandit, but later strategies, rather than having such a clear divide between exploration and exploitation, have more of a dynamic aproach.
 
     \subsubsection{Random strategy}
-    The first (and most basic) of the $\epsilon$-Greedy strategies will be the random strategy, which will provide us a benchmark against which to compare all other strategies.
-    As the name implies, for each round we choose a random strategy.
+    The first (and most basic) of the $\epsilon$-Greedy strategies is the random strategy, which will provide us a benchmark against which to compare all other strategies.
+    As the name implies, for each round we choose an arm at random.
     This means $\epsilon=1$ and there will be pure exploration and no exploitation.
 
     \subsubsection{Epsilon-first Strategy}
@@ -86,7 +86,7 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     The goal of Thompson sampling is to construct an accurate estimate of rewards by building a \textbf{probability distribution} based on the rewards we have already received - this is an example of \textbf{Bayesian inference}, where we update our models based on new knowledge.
     More specifically, we construct the \textbf{conjugate prior} for the distributions of the arms allowing us to approximately predict our posterior reward distribution.
     \par
-    Using these prior distributions, we choose the next arm to play by sampling from each prior distribution, selecting the best value from the samples, and playing the arm which gives this value;
+    Using these prior distributions, we choose the next arm to play by sampling from the prior distribution of each arm, selecting the highest value from the samples, and playing the arm which gives this value;
     we repeat this method after each round, changing our conjugate prior distributions for the following round based on new information we gain.
     These conjugate prior distributions will continue to change as we gain more information (and therefore confidence) about each arm's distribution.
     In this section, we shall go through the Thompson sampling methods where the distribution of the arms is different in each case~\citep{agrawal2012analysis}.
