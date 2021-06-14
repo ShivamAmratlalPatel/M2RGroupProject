@@ -38,10 +38,10 @@ Many variants need to be considered, for example, the non-stochastic bandit, whi
 \\UCB methods can handle bandits with a small number of arms and high reward differences well, but when K becomes larger, their performance deteriorates faster than other algorithms ~\citep{Kuleshov}.
 \\The choice of confidence interval also affects the precision.
 If we choose 95 percent rather than 99 percent, it will generate less specific results.
-\\UCB1 converges to a solution much slower than the other algorithms, although that final solution appears very good, which is consistent with the reported results~\citep{Auer2002}.
-Reinforcement comparison generates good average regret per turn towards the end of 1000 turns for small numbers of arms (K = 2,5), but starts trailing the other algorithms at larger values of K (K = 10, 50).
+\\Although the final solution appears very good, UCB1 converges to a much slower solution than other algorithms ~\citep{Auer2002}.
+For a small number of arms (K = 2,5), the reinforcement comparison produces a good average regret per round at the end of 1000 rounds, but starts lag behind other algorithms at larger K values (K = 10, 50).
 Its total regret is relatively high because it is slower in the beginning, due to the need to estimate the average reward.
-Overall, our results suggest that there is no advantage to using pursuit and reinforcement comparison in practice~\citep{Kuleshov}.
+In general, these results show that there is no advantage to using UCB in practice~\citep{Kuleshov}.
 
 \subsubsection{Best conditions for UCB algorithm}
 Provided that we find the best value for our confidence level, the UCB algorithm works about as well as the Thompson sampling algorithm (which is even more computationally expensive), and this is shown by the plots from our simulations. 
