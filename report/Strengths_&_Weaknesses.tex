@@ -35,10 +35,10 @@ This demonstrates that the algorithm can balance exploration and exploitation in
 
 \subsubsection{Weaknesses}
 Many variants need to be considered, for example, the non-stochastic bandit, which makes no assumptions about the reward distribution, cannot be estimated under UCB\@.
-\\UCB methods for example, handle bandits with small numbers of arms and high reward variances very well, but their performance deteriorates much more quickly than that of other algorithms when K becomes large~\citep{Kuleshov}.
+\\UCB methods can handle bandits with a small number of arms and high reward differences well, but when K becomes larger, their performance deteriorates faster than other algorithms ~\citep{Kuleshov}.
 \\The choice of confidence interval also affects the precision.
 If we choose 95 percent rather than 99 percent, it will generate less specific results.
-\\UCB1 converges to a solution much more slowly than the other algorithms, although that final solution appears to be very good, which is consistent with the results reported by~\citep{Auer2002}.
+\\UCB1 converges to a solution much slower than the other algorithms, although that final solution appears very good, which is consistent with the reported results~\citep{Auer2002}.
 Reinforcement comparison generates good average regret per turn towards the end of 1000 turns for small numbers of arms (K = 2,5), but starts trailing the other algorithms at larger values of K (K = 10, 50).
 Its total regret is relatively high because it is slower in the beginning, due to the need to estimate the average reward.
 Overall, our results suggest that there is no advantage to using pursuit and reinforcement comparison in practice~\citep{Kuleshov}.
