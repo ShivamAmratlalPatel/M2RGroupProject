@@ -16,7 +16,7 @@ Then define the padding function as
     c_t\left(\gamma,i\right)=2B\sqrt{\frac{\delta\log{n_t(\gamma)}}{N_t\left(\gamma,i\right)}}, \quad
 \end{equation*}
 where $\delta$ is an appropriate parameter.
-\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega(\sqrt{T})$\citep{article}. As well, the algorithm is shown to be more weighted for new data rather than old data.
+\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega(\sqrt{T})$\citep{Liu_Lee_Shroff_201}. As well, the algorithm is shown to be more weighted for new data rather than old data.
 
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
