@@ -21,33 +21,37 @@
 {}
 
 
-%End of title page configuration block
-%------------------------------------------------------------
+\setbeamertemplate{headline}{}
 
-
-%------------------------------------------------------------
-%The next block of commands puts the table of contents at the
-%beginning of each section and highlights the current section:
-
-\AtBeginSection[]
-{
-    \begin{frame}
-        \frametitle{Table of Contents}
-        \tableofcontents[currentsection]
-    \end{frame}
-}
 %------------------------------------------------------------
 
 
 \begin{document}
 
 %---------------------------------------------------------
-%Changing visivility of the text
     \begin{frame}
         \frametitle{Simulations for Stationary Multi-Armed Bandit Problem}
         Figure 1
-        \includegraphics[width=0.9\textwidth]{../report/figures/epsilon_plot.png}
+        \includegraphics[width=0.9\textwidth]{../report/figures/epsilon_plot}
     \end{frame}
 
+    \begin{frame}
+        \frametitle{Simulations for Stationary Multi-Armed Bandit Problem}
+        Figure 2
+        \includegraphics[width=0.9\textwidth]{../report/figures/ucb_plot}
+    \end{frame}
 
+    %---------------------------------------------------------
+    \begin{frame}
+        \frametitle{Simulations for Stationary Multi-Armed Bandit Problem}
+        Figure 3
+        \includegraphics[width=0.9\textwidth]{../report/figures/comparison_of_all_strategies_100_machines}
+    \end{frame}
+
+    %---------------------------------------------------------
+    \begin{frame}
+        \frametitle{Simulations for Stationary Multi-Armed Bandit Problem}
+        Figure 4
+        \includegraphics[width=0.85\textwidth]{../report/figures/100machines}
+    \end{frame}
 \end{document}
