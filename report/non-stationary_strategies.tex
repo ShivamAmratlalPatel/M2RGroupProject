@@ -16,7 +16,8 @@ Then define the padding function as
     c_t\left(\gamma,i\right)=2B\sqrt{\frac{\delta\log{n_t(\gamma)}}{N_t\left(\gamma,i\right)}}, \quad
 \end{equation*}
 where $\delta$ is an appropriate parameter.
-\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega(\sqrt{T})$\citep{Liu_Lee_Shroff_2018}. As well, the algorithm is shown to be more weighted for new data rather than old data.
+\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega(\sqrt{T})$\citep{Liu_Lee_Shroff_2018}.
+As well, the algorithm is shown to be more weighted for new data rather than old data.
 
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
@@ -25,7 +26,8 @@ The maximum regret of this algorithm is proven to be $O\left(\sqrt{\gamma_{i}T\l
 However, SW-UCB requires to store the last $j$ actions and rewards at each time $t$ in order to efficiently update ${\hat{n}_i}$ as well as ${\hat{z}_i}$~\citep{garivier2008upper}.
 
 \subsection{GLR-klUCB}\label{subsec:glr-klucb}
-GLR-klUCB can be considered as a klUCB algorithm allowing for some restarts on the different arms. This algorithm combines the efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
+GLR-klUCB can be considered as a klUCB algorithm allowing for some restarts on the different arms.
+This algorithm combines the efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
 \par
 Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known~\citep{Besson2019}.
 \par
@@ -35,8 +37,8 @@ Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of th
 This strategy is efficient for the piece-wise stationary bandit problem.
 This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes $ \Upsilon_T $ , but without any other prior knowledge on the problem~\citep{Besson2019}.
 
-
-\subsection{Limited-Memory DSEE} %note to put reference on%
-Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases. In the n-th exploration phase, each arm is sampled L(k)=$\lceil\gamma\ln({n^{\rho}lb}\rceil$ times, and in the n-th exploitation phase, the arm is getting to have highest sample mean in the n-th exploration phase sampled $an^{\rho}l-NL(n)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
+\subsection{Limited-Memory DSEE}\label{subsec:limited-memory-dsee} %note to put reference on%
+Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases.
+In the n-th exploration phase, each arm is sampled L(k)=$\lceil\gamma\ln({n^{\rho}lb}\rceil$ times, and in the n-th exploitation phase, the arm is getting to have highest sample mean in the n-th exploration phase sampled $an^{\rho}l-NL(n)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
 \newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation phase is exponentially increased with the epoch number and we estimate the mean rewards referring to all the data collected in the previous phase of exploration.\citep{wei2018abruptly}
 
