@@ -6,13 +6,13 @@ Then runs the machine with the highest realised expectation for the rest of the
 trials.
 """
 
-from random import randint
+from random import randint, random
 
 from bandits import Environment, best_machine
 
 
 def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
-                           epsilon, gaussian=False):
+                           epsilon, means: list, gaussian=False):
     """
     Calculate value gained using strategy1.
 
@@ -27,8 +27,11 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     :param number_of_trials: total number of trials
     :return: environment of testing
     """
+    if len(means) != number_of_machines:
+        means = [random() for i in range(number_of_machines)]
+        print("error with means in epsilon strategy")
     # Initialise the environment.
-    epsilon_environment = Environment(number_of_machines, gaussian)
+    epsilon_environment = Environment(number_of_machines, means, gaussian)
 
     exploration_number = int(number_of_trials * epsilon)
     # Do half the number of trials randomly.

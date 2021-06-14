@@ -82,8 +82,8 @@ class ThompsonMachine(Machine):
         super(ThompsonMachine, self).run()
         if self.gaussian:
             self.mu_0 = ((self.tao_0 * self.mu_0) + (
-                        self.n * self.realised_expectation())) / (
-                                    self.tao_0 + self.n)
+                    self.n * self.realised_expectation())) / (
+                                self.tao_0 + self.n)
             self.tao_0 += 1
         else:
             if self.realisations[-1] > 0:
@@ -132,13 +132,14 @@ class UCBMachine(Machine):
 class Environment:
     """Environment class which hosts the machines."""
 
-    def __init__(self, n: int, gaussian=False):
+    def __init__(self, n: int, means: list, gaussian=False):
         """Initialise the environment."""
         self.gaussian = gaussian
         self.machine_list = []
+        self.means = means
         for i in range(n):
             self.machine_list.append(
-                Machine(expectation=random(), name="Machine " + str(i),
+                Machine(expectation=means[i], name="Machine " + str(i),
                         gaussian=gaussian))
         self.regret = []
 

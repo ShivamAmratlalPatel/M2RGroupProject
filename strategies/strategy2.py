@@ -5,11 +5,12 @@ This strategy randomly picks a slot machine to run for x percentage of the
 trials. Then discards the machine with the worst realised expectation.
 This process then continues till their is one machine left for a round.
 """
+from random import random
 
 from bandits import Environment, worst_machine
 
 
-def strategy2(number_of_machines: int, number_of_trials: int, gaussian=False):
+def strategy2(number_of_machines: int, number_of_trials: int, means: list, gaussian=False):
     """
     Calculate value gained from strategy2.
 
@@ -22,11 +23,14 @@ def strategy2(number_of_machines: int, number_of_trials: int, gaussian=False):
     :param number_of_trials: total number of trials
     :return: strategy 2 environment
     """
+    if len(means) != number_of_machines:
+        means = [random() for i in range(number_of_machines)]
+        print("error with means in random strategy")
     # Calculate the number of trials per round.
     number_of_trials_per_round = int(number_of_trials / number_of_machines)
 
     # Initialise the environment
-    strategy2_environment = Environment(number_of_machines, gaussian)
+    strategy2_environment = Environment(number_of_machines, means, gaussian)
 
     # Initialise empty list for discarded machines.
     discarded_list = []

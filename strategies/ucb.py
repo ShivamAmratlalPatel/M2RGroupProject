@@ -5,7 +5,7 @@ from bandits import Environment, UCBMachine, random_argmax
 
 
 def ucb_strategy(number_of_machines: int, number_of_trials: int,
-                 confidence_level, gaussian=False):
+                 confidence_level, means, gaussian=False):
     """
     Return the total value of the ucb strategy.
 
@@ -15,8 +15,11 @@ def ucb_strategy(number_of_machines: int, number_of_trials: int,
     :param confidence_level: the confidence level set by user
     :return: UCB environment
     """
+    if len(means) != number_of_machines:
+        means = [0.2,0.4,0.8]
+        print("error with means in ucb strategy")
     # Initialise the environment
-    ucb_environment = Environment(number_of_machines, gaussian)
+    ucb_environment = Environment(number_of_machines, means, gaussian)
     ucb_environment.machine_list = []
     for i in range(number_of_machines):
         ucb_environment.machine_list.append(
