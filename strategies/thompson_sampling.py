@@ -11,10 +11,11 @@ from bandits import ThompsonMachine, random_argmax, Environment
 
 
 def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int,
-                               means: list,gaussian: bool):
+                               means: list, gaussian: bool):
     """
     Return the total value of the thompson sampling strategy.
 
+    :param means: list of means if being used
     :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
@@ -24,7 +25,7 @@ def thompson_sampling_strategy(number_of_machines: int, number_of_trials: int,
         means = [random() for i in range(number_of_machines)]
         print("error with means in thompson strategy")
     # Initialise the environment
-    thompson_environment = Environment(number_of_machines,means, gaussian)
+    thompson_environment = Environment(number_of_machines, means, gaussian)
     thompson_environment.machine_list = []
     for i in range(number_of_machines):
         thompson_environment.machine_list.append(

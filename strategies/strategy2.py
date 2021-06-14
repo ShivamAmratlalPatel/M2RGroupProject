@@ -10,7 +10,8 @@ from random import random
 from bandits import Environment, worst_machine
 
 
-def strategy2(number_of_machines: int, number_of_trials: int, means: list, gaussian=False):
+def strategy2(number_of_machines: int, number_of_trials: int, means: list,
+              gaussian=False):
     """
     Calculate value gained from strategy2.
 
@@ -18,6 +19,7 @@ def strategy2(number_of_machines: int, number_of_trials: int, means: list, gauss
     trials. Then discards the machine with the worst realised expectation.
     This process then continues till their is one machine left for a round.
 
+    :param means: list of means if being used
     :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials

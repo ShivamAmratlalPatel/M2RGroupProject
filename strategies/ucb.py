@@ -9,6 +9,7 @@ def ucb_strategy(number_of_machines: int, number_of_trials: int,
     """
     Return the total value of the ucb strategy.
 
+    :param means: list of the means if being used
     :param gaussian: whether to use gaussian or Bernoulli distribution
     :param number_of_machines: number of slot machines
     :param number_of_trials: total number of trials
@@ -16,7 +17,7 @@ def ucb_strategy(number_of_machines: int, number_of_trials: int,
     :return: UCB environment
     """
     if len(means) != number_of_machines:
-        means = [0.2,0.4,0.8]
+        means = [random() for i in range(number_of_machines)]
         print("error with means in ucb strategy")
     # Initialise the environment
     ucb_environment = Environment(number_of_machines, means, gaussian)

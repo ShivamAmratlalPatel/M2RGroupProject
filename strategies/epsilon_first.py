@@ -20,6 +20,7 @@ def epsilon_first_strategy(number_of_machines: int, number_of_trials: int,
     Then runs the machine with the highest realised expectation for the rest
     of the trials.
 
+    :param means: list of means if being used
     :param gaussian: whether to use gaussian or Bernoulli distribution
     :param epsilon: user defined value
     :type number_of_trials: int
