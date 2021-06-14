@@ -6,11 +6,12 @@ In this section, we go through strategies for different non-stationary distribut
 Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
 The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
 \begin{equation*}
-    \hat{z}_i\left(j\right)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i\left(t\right)}{\hat{n}_i\left(j\right)}\mathfrak{1}_{s\left(t\right)=i}, \quad
-    {\hat{n}_i\left(j\right)}=\sum_{t=1}^T\gamma_i^{T-t}\mathfrak{1}_{s\left(t\right)=i},
+    \hat{z}_i\left(j\right)=\frac{\sum_{t=1}^T\gamma_i^{T-t}x_i\left(t\right)}{\hat{n}_i\left(j\right)}\mathfrak{1}, \quad
+    {\hat{n}_i\left(j\right)}=\sum_{t=1}^T\gamma_i^{T-t}\mathfrak{1}, \quad  {s\left(t\right)=i},
 \end{equation*}
 where the $\gamma_i \in[0,1]$ represents the change rate of i and is also the discount factor.
-The algorithm is also shown to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$\citep{garivier2008upper}.
+The algorithm is also shown to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$\citep{article}.
+\newline As well the algorithm is shown to be much efficient for 
 
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
 The Sliding-Window UCB (SW-UCB) algorithm is similar to the D-UCB, but it updates observation in UCB1 algorithm and consider average reward only within a window with fixed length of l, where l decreases when the change rate of environment increases.
@@ -30,6 +31,6 @@ This strategy is efficient for the piece-wise stationary bandit problem.
 This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes ΥT , but without any other prior knowledge on the problem~\citep{Besson2019}.
 
 \subsection{Limited-Memory DSEE} %note to put reference on%
-Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, compriseing interleaving epochs of exploration and exploitation. In the k-th exploration epoch, each arm is sampled L(k)=$\lceil\gamma\ln({k^{\rho}lb}\rceil$ number of times. In the k-th exploitation epoch, the arm with the highest sample mean in the k-th exploration epoch is sampled $ak^{\rho}l-NL(k)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
-\newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation epoch increases exponentially with the epoch number and all the data collected in the previous exploration epochs is used to estimate the mean rewards.
+Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases. In the n-th exploration phase, each arm is sampled L(k)=$\lceil\gamma\ln({n^{\rho}lb}\rceil$ times, and in the n-th exploitation phase, the arm is getting to have highest sample mean in the n-th exploration phase sampled $an^{\rho}l-NL(n)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
+\newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation phase is exponentially increased with the epoch number and we estimate the mean rewards referring to all the data collected in the previous phase of exploration.\citep{wei2018abruptly}
 
