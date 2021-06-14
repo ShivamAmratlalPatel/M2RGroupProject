@@ -98,12 +98,12 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
     In this case, the arms have a Gaussian (Normal) distribution \textbf{with known variance}: this means we can model our conjugate prior distribution as a Normal distribution.
     However, the parameters are now changed.
     We shall use the \textbf{precision} ($\tau$), which is 1/variance and therefore known, to make the expression to update the parameters after each round easier to manipulate.
-    We name our modelling parameters before the round $\mu_0$ and $\tau_0$ for the mean and precision respectively.
-    Therefore, the updated precision for the socket after the round is given by
+    We name our modelling parameters for the arm before the round $\mu_0$ and $\tau_0$ for the mean and precision respectively.
+    Therefore, the updated precision for the arm after the round is given by
     \[\tau_0\xleftarrow{}\tau_0 + n\tau\text{,}\]
     and the updated mean for the arm after the round is given by
     \[\mu_0\xleftarrow{}\frac{\tau_0\mu_0 + \tau\sum_{t=1}^T\widehat{r}_t}{\tau_0 + n\tau}\text{,}\]
-    where $\widehat{r}_t$ is the reward in round t \citep{agrawal2013further}, which was defined in section 1.3. This means the posterior distribution in this case is a normal distribution using the updated parameters above for the precision and mean respectively.
+    where $\widehat{r}_t$ is the reward in round t \citep{agrawal2013further}, which was defined in section 1.3 and n is the. This means the posterior distribution in this case is a normal distribution using the updated parameters above for the precision and mean respectively.
     Similar to our Bernoulli Thompson sampling model above, as the rounds progress, the precision for each arm increases, and the variance for each arm therefore decreases, meaning that the arms with the highest estimated mean are chosen more often.
 
     \subsubsection{Regret for Thompson Sampling}
