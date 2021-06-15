@@ -1,27 +1,28 @@
 \section{Introduction}\label{sec:introduction}
 
 \subsection{The Problem}\label{subsec:the-problem}
-The multi armed bandit problem for a gambler is best expressed as a gambler with a row of slot machines, all with unknown expected returns.
+The multi-armed bandit problem is best expressed as a gambler with a row of slot machines, all with unknown expected returns.
 The problem is to determine the optimal method to play each machine to maximise returns~\citep{vermorel}.
-This is a problem where there are multiple options and one must choose options to maximise one's gain, however not all the information of such options are known until tried.
+The difficulty of the problem lies in the fact that we only get to know more information about each machine by playing that machine.
+This will be highlighted when we come onto the concept of regret later on.
 \newline
 \newline
 This problem could be simplified down to 2 coins of unknown bias.
 Suppose we are allowed to make $n$ tosses, with the promise of getting \$1 for each head but nothing for tails~\citep{robbins1952some}.
 What is the best way to choose which coin to toss to maximise earnings?
-The problem has many variations, with known or unknown distributions and/or means.
+The multi-armed bandit problem has many variations, with known or unknown distributions and/or means.
 \newline
 \newline
-In our report we will use arms to describe the slot machine and pulling a arm is equivalent to playing a slot machine.
-We will call each pull a round and such we can say there are $N$ rounds in this example.
+In our report we will use arms to describe the slot machines and pulling an arm is equivalent to playing a slot machine.
+We will call each pull a round such that in the coin example above, we can say there are $n$ rounds.
 
 \subsection{Applications}\label{subsec:applications}
 The applications of the multi armed bandit problem are extensive.
 In healthcare, statisticians collect data for assessing treatment effectiveness~\citep{bouneffouf2019survey}.
 Even in the current COVID-19 situation one could call the vaccine rollout a multi-armed bandit problem.
-Determining which vaccine will give the best protection by trialing so many of the population on each vaccine, to then eventually figure out which is the best to then administer to more people.
+Determining which vaccine will give the best protection by trialing a proportion of population on each vaccine, to then eventually figure out which is the best to then administer to more people.
 The world of financial services uses the solutions to this problem for portfolio selection to maximise returns on investments.
-For example if one would like to invest in stocks, one could see each stock as an arm, and pulling an arm is like buying such stock.
+For example if one would like to invest in stocks, one could see each stock as an arm, and pulling an arm is like buying such a stock.
 \newline
 \newline
 A more modern application is in social media~\citep{chen2013combinatorial}.
@@ -30,17 +31,17 @@ This particular problem exposes seeds of users to some information and then trac
 For example, on one particular website they may show different advertisements but for the same product to determine which advertisement results in the most people clicking on such advertisement.
 
 \subsection{Forms of the Problem}\label{subsec:forms-of-the-problem}
-There are many different forms of the problem.
+There are many forms of the problem.
 The two we will focus on this problem are the stationary and non-stationary problem.
 The stationary problem is where the actual expectation of each arm does not change and in the non-stationary problem, the actual expectation of each arm can change.
 This could be periodically or continuous.
 Another form of the problem is the contextual bandit problem, where one has information on each arm before playing.
 In the stocks example this could be the financial situation of the company.
-Or in the social media application, it is information on the user.
+Or in the social media example, it is information on the user.
 
 \subsection{Regret}\label{subsec:regret}
 Before analysing strategies, there is one very important measure that we must define.
 The \textbf{regret} ($\rho$) after T rounds of the multi-armed bandit is defined as \[\rho = T\mu\mbox{*} - \sum_{t=1}^T\hat{r}_t\] where $\mu\mbox{*}$ is the \textbf{maximal reward mean} and $\hat{r}_t$ is the reward at time t~\citep{vermorel}.
-The maximal reward mean is just the mean of all the maximums across arms for each round.
+The maximal reward mean is the mean of all the maximums across arms for each round.
 We can rewrite this as \[\rho = \sum_{t=1}^T\hat{r}_t\] The reason this is of utmost importance is because minimizing it will give us our most optimal strategies.
 The 'holy grail' we are searching for is known as a \textbf{zero regret strategy}, which is a strategy whose average regret per round tends to zero with probability 1 as the number of rounds T tends to infinity~\citep{vermorel}.
