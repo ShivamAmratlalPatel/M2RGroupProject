@@ -114,7 +114,6 @@ where $\widehat{r}_t$ is the reward for each round the arm has been tested in~\c
 This means the posterior distribution in this case is a normal distribution using the updated parameters above for the precision and mean respectively;
 this will function as our prior distribution for the next round.
 Similar to our Bernoulli Thompson sampling model above, as the rounds progress, the precision for each arm increases, and the variance for each arm therefore decreases, meaning that the arms with the highest estimated mean are chosen more often.
-
 \subsubsection{Regret for Thompson Sampling}
 The expected regret for both our Thompson sampling models above has order
 \[O\left(\sqrt{NT\ln{T}}\right)\]
