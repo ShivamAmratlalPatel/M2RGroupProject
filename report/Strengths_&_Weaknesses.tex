@@ -5,16 +5,16 @@ In this section, we explore which strategies work best and worst in different sc
 
 \subsubsection{Strengths}
 The largest strength of epsilon-greedy is it is quite easy to understand and it is not computationally expensive at all, especially compared to UCB and Thompson Sampling - we have found that it has been the easiest strategy to code in our Python environment.
-After an initial process of exploration (e.g. 10,000 rounds), the algorithm greedily exploits the best option k, $\epsilon$ percent of the time.
-For example, if we set $\epsilon$=0.01, the epsilon-greedy algorithm will exploit the best variant 99\% of the time and will explore random alternatives 1\% of the time.
+After the initial process of exploration (e.g. 10,000 rounds), the algorithm greedily exploits the best option k, $\epsilon$ percent of the time.
+For example, if we set $\epsilon$=0.01, the epsilon-greedy algorithm will exploit the best variant 99\% of the time and also will explore random alternatives 1\% of the time.
 This would be rather effective in practice.\citep{ConorMc2018}
 
 \subsubsection{Weaknesses}
 Epsilon-Greedy is a pretty powerful algorithm capable of exploring the arms and making close to optimal decisions within it.
 However, the algorithm does not always identify the absolute best arm.
-Certainly we can increase the rounds for exploration, but then we are wasting more rounds randomly searching, which will further hurt the total reward.
-Also, there is inherent randomness in this process, so if we were to run the algorithm again it is possible that epsilon-greedy will identify and exploit the best arm.
-This means that epsilon-greedy can get stuck exploiting a sub-optimal arm.\citep{ConorMc2018}
+Certainly we can increase the rounds for exploration, but then we are wasting more number of rounds in searching randomly. This would then further hurt our total reward.
+Moreover, there is inherent randomness during this process, which means if we were to run the algorithm for one more time it is possible that epsilon-greedy will identify and exploit the best arm.
+This indicates that epsilon-greedy can get stuck exploiting a sub-optimal arm.\citep{ConorMc2018}
 \newline
 In addition, the Epsilon-Greedy strategy's regret will scale linearly, due to a random arm being chosen every so often (this will probably not be the optimal arm in later rounds).
 Therefore, this strategy will never be a zero-regret strategy, unlike UCB and Thompson sampling strategies.
