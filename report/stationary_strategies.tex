@@ -71,7 +71,7 @@ We can conclude that regret of UCB1 grows at a rate of $\log N$.
 In KL-UCB strategy, we first pull each arm once and choose the next pull according to regret bounds rely on deviations results of independent interest~\citep{Garivier2011}.
 
 The regret of KL-UCB algorithm is \[\lim_{n\to \infty} \frac{E[R_n]}{\log n} \leq  \sum_{a:u_a < u_{a*}} \frac{u_{a*}-u_a}{d(u_a,u_{a*})}  \]
-where $d(p, q) = p \log(p/q) + (1 - p) * \log((1 - p/(1 - q))$ denotes the Kullback-Leibler diver- gence between Bernoulli distributions of parameters p and q, respectively.
+where $d(p, q) = p \log(\dfrac{p}{q}) + (1 - p) * \log((1 - p/(1 - q))$ denotes the Kullback-Leibler diver- gence between Bernoulli distributions of parameters p and q, respectively.
 Here K is the number of arms, a* is the optimal arm and independent rewards bounded in [0,1].\citep{Garivier2011}
 \par
 \textbf{Pseudocode for Upper Confidence Bound Strategy}
