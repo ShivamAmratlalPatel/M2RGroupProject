@@ -119,7 +119,7 @@ The expected regret for both our Thompson sampling models above has order
 \[O\left(\sqrt{NT\ln{T}}\right)\]
 where T is the number of rounds and N is the number of arms~\citep{agrawal2013further}.
 This means that Thompson sampling is a \textbf{zero regret} strategy, as the order of the expected regret is such that its gradient becomes flatter as time progresses.
-This is because as $T\to\infty$, $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases, given that $\ln{T}$ has decreasing gradient.
+This is because as $T\to\infty$, $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases, given that $\sqrt{T\ln{T}}$ has decreasing gradient.
 \newline
 \textbf{Pseudocode for Thompson Sampling Strategy}
 \newline
