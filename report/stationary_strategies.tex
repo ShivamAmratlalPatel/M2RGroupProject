@@ -48,8 +48,8 @@ Hoeffding's inequality is applicable in this strategy.
 Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X] > \overline  X_t + u) \leq e^{-2t u^2}$ with $u$ being the upper confidence bound and $ \overline X_t $ the sample mean respectively~\citep{Hoeffding1963}.
 
 Applied in our case,
-\[P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}\]
-,where $a$ represents the arm index and $t$ is the time.
+\[P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2},\]
+where $a$ represents the arm index and $t$ is the time.
 We take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by $p$.
 So we can get $U_t(a) = \sqrt{\frac{-\log p}{2N_t (a)}}$, where $N_t (a)$ is the number of times arm $a$ has been played at time $t$.
 
