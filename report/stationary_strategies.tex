@@ -4,7 +4,7 @@ Here, we define \textbf{stationary} distributions for arms as those where the un
 \subsection{$\epsilon$-Greedy}\label{subsec: $epsilon$-greedy}
 The $\epsilon$-Greedy strategy is where arms are 'explored randomly $\epsilon$ percentage of rounds and exploited $1-\epsilon$ percentage of the time'~\citep{DBLP:journals/corr/abs-1807-09809}.
 It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (gathering data from all arms) and exploitation (playing the arm with the highest realised expectation).
-This theme is key to all solution strategies of the multi-armed bandit, but later strategies, rather than having such a clear divide between exploration and exploitation, have more of a dynamic aproach.
+This theme is key to all solution strategies of the multi-armed bandit, but later strategies, rather than having such a clear divide between exploration and exploitation, have more of a dynamic approach.
 
 \subsubsection{Random strategy}
 The first (and most basic) of the $\epsilon$-Greedy strategies is the random strategy, which will provide us a benchmark against which to compare all other strategies.
@@ -14,20 +14,21 @@ This means $\epsilon=1$ and there will be pure exploration and no exploitation.
 \subsubsection{Epsilon-first Strategy}
 
 The $\epsilon$-first strategy consists of doing the exploration all at once at the beginning~\citep{vermorel}.
-Assume we arbitrarily take k trails in total, where k $\in \mathbb{N}$, then $\epsilon$k trails of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected.
-This is followed by (1-$\epsilon$)k trails in the exploitation phase, where the arm with the highest realised expectation is always selected.
+Assume we arbitrarily take k rounds in total, where k $\in \mathbb{N}$, then $\epsilon$k rounds of them will be selected in the exploration phase, where $\epsilon$ is in the interval (0,1), during which an arm is randomly selected.
+This is followed by (1-$\epsilon$)k rounds in the exploitation phase, where the arm with the highest realised expectation is always selected.
 \par
 \textbf{Pseudo Code for Epsilon-first Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of arms, number of arms, epsilon}
+    \KwData{number of rounds, number of arms, epsilon}
     \KwResult{regret after using epsilon strategy\;}
-    \For{number of arms*epsilon}{
+    Initialise environment with number of arms\;
+    \For{number of rounds*epsilon}{
         Pick random arm\;
-        }
-        Calculate realised expectation of each arm\;
+    }
+    Calculate realised expectation of each arm\;
 
-    \For{number of arms*(1-epsilon)}{
+    \For{number of rounds*(1-epsilon)}{
         Pick arm with highest realised expectation\;
     }
     Calculate and return regret
