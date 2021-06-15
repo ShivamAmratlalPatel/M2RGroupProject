@@ -39,20 +39,20 @@ This is followed by (1-$\epsilon$)k rounds in the exploitation phase, where the 
 In the Upper Confidence Bound (UCB) strategy, we use the realised values to construct upper confidence bounds on the expectation of each arm at some fixed confidence level.
 We then choose the arm which has the highest upper confidence bound to pull next~\citep{SVGarbar2012}.
 As an arm is pulled more its confidence region gets smaller and our estimate is assumed to be more accurate.
-\par
+
 The algorithm measures potential by an upper confidence bound of the reward value, $\widehat{U_t (a)}$.
 Then the true value becomes $ Q(a)  \leq \widehat{Q_t (a)}+\widehat{U_t (a)} $, where  $ \widehat{Q_t (a)}$ is the sample mean and $ Q(a)$ is the true mean.
 
 \subsubsection{Hoeffding’s Inequality}
 Hoeffding's inequality is applicable in this strategy.
 Let $X_1, \dots, X_n$ be independent and identically distributed random variables, then $ P(E[X] > \overline  X_t + u) \leq e^{-2t u^2}$ with $u$ being the upper confidence bound and $ \overline X_t $ the sample mean respectively~\citep{Hoeffding1963}.
-\par
+
 Applied in our case,
 \[P[Q(a) >\widehat{Q_t (a)}+\widehat{U_t (a)}] \leq e^{-2t U_t(a)^2}\]
 ,where $a$ represents the arm index and $t$ is the time.
 We take $e^{-2t U_t(a)^2} $ to be the threshold here and represented by $p$.
 So we can get $U_t(a) = \sqrt{\frac{-\log p}{2N_t (a)}}$, where $N_t (a)$ is the number of times arm $a$ has been played at time $t$.
-\par
+
 The threshold is used as the upper bound for probability.
 We can use Hoeffding's inequality to get the confidence bounds of reward variance.
 
@@ -62,14 +62,14 @@ UCB1 uses Hoeffding's inequality as the upper limit of the average reward distri
 UCB1, achieving logarithmic regret uniformly over $n$ and without any preliminary knowledge about the reward distributions.
 The index of this policy is the sum of two terms.
 The strategy starts by playing each arm once, we do the loop that play arm $t$ which maximises $\overline X_t + \sqrt{\frac{2log t}{N_t (a)}}$~\citep{Auer2002}.
-\par
+
 Under UCB1, logarithmic regret $O(\log N)$  is achieved when the reward distributions are supported on [0,1]~\citep{Chan_2020}.
 We can conclude that regret of UCB1 grows at a rate of $\log N$.
 \par
 
 \subsubsection{KL-UCB}
 In KL-UCB strategy, we first pull each arm once and choose the next pull according to regret bounds rely on deviations results of independent interest~\citep{Garivier2011}.
-\par
+
 The regret of KL-UCB algorithm is \[\lim_{n\to \infty} \frac{E[R_n]}{\log n} \leq  \sum_{a:u_a < u_{a*}} \frac{u_{a*}-u_a}{d(u_a,u_{a*})}  \]
 where $d(p, q) = p \log(p/q) + (1 - p) * \log((1 - p/(1 - q))$ denotes the Kullback-Leibler diver- gence between Bernoulli distributions of parameters p and q, respectively.
 Here K is the number of arms, a* is the optimal arm and independent rewards bounded in [0,1].\citep{Garivier2011}
@@ -91,7 +91,7 @@ Here K is the number of arms, a* is the optimal arm and independent rewards boun
 \subsection{Thompson Sampling (Bayesian)}\label{subsec:thompson-sampling-(bayesian)}
 The goal of Thompson sampling is to construct an accurate estimate of rewards by building a \textbf{probability distribution} based on the rewards we have already received - this is an example of \textbf{Bayesian inference}, where we update our models based on new knowledge.
 More specifically, we construct the \textbf{conjugate prior} for the distributions of the arms allowing us to approximately predict our posterior reward distribution.
-\par
+
 Using these prior distributions, we choose the next arm to play by sampling from the prior distribution of each arm, selecting the highest value from the samples, and playing the arm which gives this value;
 we repeat this method after each round, changing our conjugate prior distributions for the following round based on new information we gain.
 These conjugate prior distributions will continue to change as we gain more information (and therefore confidence) about each arm's distribution.
@@ -122,7 +122,7 @@ where T is the number of rounds and N is the number of arms~\citep{agrawal2013fu
 This means that Thompson sampling is a \textbf{zero regret} strategy, as the order of the expected regret is such that its gradient becomes flatter as time progresses.
 This is because as $T\to\infty$, $NT\ln{T} < NT^2$ (with N being a constant), and the gradient of the square root of $NT^2$ is constant, meaning the gradient of the expected regret decreases, given that $\sqrt{T\ln{T}}$ has a decreasing gradient which tends to zero as $T\to\infty$:
 \newline
-\[\frac{\mathrm{d} }{\mathrm{d} T} (\sqrt{T \ln{T}}) = \frac{1}{2}T^{-\frac{1}{2}}(\ln{T})^\frac{1}{2} + \frac{1}{2}T^{\frac{1}{2}}(\ln{T})^{-\frac{1}{2}}\frac{1}{T}\]
+\[\frac{\mathrm{d} }{\mathrm{d} T} \left(\sqrt{T \ln{T}}\right) = \frac{1}{2}T^{-\frac{1}{2}}(\ln{T})^\frac{1}{2} + \frac{1}{2}T^{\frac{1}{2}}(\ln{T})^{-\frac{1}{2}}\frac{1}{T}\]
 which then becomes
 \newline
 \[ \frac{1}{2}\left(\frac{\ln{T}}{T}\right)^\frac{1}{2} + \frac{1}{2}(T\ln{T})^{-\frac{1}{2}} \]
