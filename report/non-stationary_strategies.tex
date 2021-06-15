@@ -29,13 +29,13 @@ However, SW-UCB requires to store the last $j$ actions and rewards at each time 
 GLR-klUCB can be considered as a klUCB algorithm allowing for some restarts on the different arms.
 This algorithm combines the efficient bandit algorithm klUCB, with a parameter- free, change-point detector, the Bernoulli Generalized Likelihood Ratio Test.
 \par
-Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known~\citep{Besson2019}.
+Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known~\citep{besson2019}.
 \par
 For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{\log T}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T \log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T \log\left(T\right)\right)$.
-Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms~\citep{Besson2019}.
+Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms~\citep{besson2019}.
 \par
 This strategy is efficient for the piece-wise stationary bandit problem.
-This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes $ \Upsilon_T $ , but without any other prior knowledge on the problem~\citep{Besson2019}.
+This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes $ \Upsilon_T $ , but without any other prior knowledge on the problem~\citep{besson2019}.
 
 \subsection{Limited-Memory DSEE}\label{subsec:limited-memory-dsee} %note to put reference on%
 Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases.
