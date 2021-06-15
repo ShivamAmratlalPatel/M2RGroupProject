@@ -7,12 +7,10 @@ We also see that for our 100 arm plot (Figure~\ref{fig: all4}), Thompson samplin
 Here, UCB also scales to a zero-regret strategy, and $\epsilon$-first does not.
 However, $\epsilon$-first does better than UCB in the number of rounds given, due to a fairly low amount of exploration followed by exploitation ($\epsilon$-value 0.2).
 \newline
-Figure 4 demonstrates that when the $\epsilon$-first strategy does not find the optimal arm, its cumulative regret increases much more, as does the confidence region.
-\newline
 Our figure showing the UCB strategy's cumulative regret with varying confidence levels also demonstrates that there is almost a 'sweet spot' region for confidence levels where the algorithm performs its best (Figure~\ref{alg:ucb_algorithm});
 the cumulative regret decreases as the confidence level goes from 0.5 to 1, but after this it continuously increases through to confidence value 5.
 This highlights how the UCB algorithms with very low confidence intervals (less than 0.5) are more likely to pick the same arm repeatedly and algorithms with very high confidence intervals ($>$1.5) are more likely to be too broad with the confidence intervals for each arm.
 \newline
 Given more time, we would have plotted more graphs and confidence intervals for each algorithm, whilst exploring more values of $\epsilon$ and the confidence level for the $\epsilon$-first and UCB strategies respectively.
 In addition, in our plots we have only considered the multi-armed bandit problem with Gaussian distributions for each arm where the means have been randomly generated between 0 and 1;
-given more time, we would have plotted graphs comparing the Gaussian and Bernoulli arm variants for each algorithm, whilst also producing more plots for a greater range of means and comparing them.
+we would have also plotted graphs comparing the Gaussian and Bernoulli arm variants for each algorithm, whilst also producing more plots for a greater range of means and comparing them.
