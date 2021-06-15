@@ -1,9 +1,9 @@
 \section{Implementation}\label{sec:implementation}
 
-We created an environment to test out our strategies and produce the regret plots from simulations in section~\ref{sec:simulations-for-stationary-strategies}.
+We created an environment to test out our strategies and produce the regret plots for the simulations in section~\ref{sec:simulations-for-stationary-strategies}.
 This was done using Python and Jupyter Notebooks.
 
-To create the environment, we created a class of all the levers, and each lever itself was a class.
+To create the environment, we created a class of all the arms, and each lever arm was a class.
 We then defined the strategies as functions, so they could be called by the Jupyter notebook files to run the simulations.
 
 To run our simulations we used Amazon Web Services servers and set up an email feature such that when the simulation was complete it would email us with the regret plot and raw data of the simulation.
@@ -12,5 +12,5 @@ To run our simulations we used Amazon Web Services servers and set up an email f
 
 Initially we focused on the stationary form of the problem.
 We started by creating our testing environment and implementing a few basic strategies we had thought of, one of which turning out to be the $\epsilon$-first strategy.
-We then researched through a host of strategies and chose to implement UCB and Thompson as well.
+We then researched through a host of strategies and chose to implement UCB and Thompson Sampling as well.
 Along with this, other members of the group would research more into theoretical results of these strategies to confirm our results from the simulations.
