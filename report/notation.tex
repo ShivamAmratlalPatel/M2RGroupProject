@@ -1,10 +1,3 @@
-% quick way of adding a figure
-\newcommand{\fig}[3]{
-    \begin{center}
-        \scalebox{#3}{\includegraphics[#2]{#1}}
-    \end{center}
-}
-
 %\newcommand*{\point}[1]{\vec{\mkern0mu#1}}
 \newcommand{\ci}[0]{\perp\!\!\!\!\!\perp} % conditional independence
 \newcommand{\point}[1]{{#1}} % points 
@@ -15,11 +8,7 @@
 \newcommand{\N}[0]{\mathds{N}} % natural numbers
 \newcommand{\nat}[0]{\mathds{N}} % natural numbers
 \newcommand{\Q}[0]{\mathds{Q}} % rational numbers
-\ifxetex
 \newcommand{\C}[0]{\mathds{C}} % complex numbers
-\else
-\newcommand{\C}[0]{\mathds{C}} % complex numbers
-\fi
 \newcommand{\tr}[0]{\text{tr}} % trace
 \renewcommand{\d}[0]{\mathrm{d}} % total derivative
 \newcommand{\inv}{^{-1}} % inverse
@@ -38,12 +27,8 @@
 \newcommand{\gaussx}[3]{\mathcal{N}\big(#1\,|\,#2,\,#3\big)} % gaussian distribution N(.|.,.)
 \newcommand{\gaussBig}[2]{\mathcal{N}\left(#1,\,#2\right)} % see above, but with brackets that adjust to the height of the arguments
 \newcommand{\gaussxBig}[3]{\mathcal{N}\left(#1\,|\,#2,\,#3\right)} % see above, but with brackets that adjust to the height of the arguments
-\DeclareMathOperator{\cov}{Cov} % covariance (matrix) 
-\ifxetex
+\DeclareMathOperator{\cov}{Cov} % covariance (matrix)
 \renewcommand{\T}[0]{^\top} % transpose
-\else
-\newcommand{\T}[0]{^\top}
-\fi
 % matrix determinant
 \newcommand{\matdet}[1]{
     \left|
@@ -66,11 +51,5 @@
 
 
 % redefine emph
-\renewcommand{\emph}[1]{\blue{\bf{#1}}}
+\renewcommand{\emph}[1]{\blue{\textbf{#1}}}
 
-% place a colored box around a character
-\gdef\colchar#1#2{%
-    \tikz[baseline]{%
-        \node[anchor=base,inner sep=2pt,outer sep=0pt,fill = #2!20] {#1};
-    }%
-}%

@@ -3,7 +3,7 @@ The strategies we have explained above work well when the underlying distributio
 In this section, we go through strategies for different non-stationary distribution scenarios, and explain their strengths and weaknesses.
 
 \subsection{Discounted UCB}\label{subsec:discounted-ucb}
-Discounted UCB (D-UCB), which was proposed by \citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
+Discounted UCB (D-UCB), which was proposed by~\citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
 The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
 \begin{equation*}
     \bar{X}_t\left(\gamma,i\right)=\frac{\sum_{k=1}^t\gamma^{t-k}X_k\left(i\right)}{N_t\left(\gamma,i\right)}\mathfrak{1}, \quad
@@ -16,7 +16,7 @@ Then define the padding function as
     c_t\left(\gamma,i\right)=2B\sqrt{\frac{\delta\log{n_t(\gamma)}}{N_t\left(\gamma,i\right)}}, \quad
 \end{equation*}
 where $\delta$ is an appropriate parameter.
-\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega(\sqrt{T})$\citep{Liu_Lee_Shroff_2018}.
+\newline The algorithm is also proved to achieve the upper-bounded regret by $O\left(\sqrt{\gamma_{i}T}\log{T}\right)$ as the lower bound is $\Omega\left(\sqrt{T}\right)$\citep{Liu_Lee_Shroff_2018}.
 As well, the algorithm is shown to be more weighted for new data rather than old data.
 
 \subsection{Sliding-Window UCB}\label{subsec:sliding-window-ucb}
@@ -31,8 +31,8 @@ This algorithm combines the efficient bandit algorithm klUCB, with a parameter- 
 \par
 Regret is upper-bounded by $ O\left(\Upsilon_T \sqrt{T \log\left(T\right)} \right)$ if the number of changed points $\Upsilon_T $ is unknown and $ O\left(\sqrt{\Upsilon_T T \log\left(T\right)} \right)$ if  $\Upsilon_T $ is known~\citep{besson2019}.
 \par
-For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{\log T}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^change\right)^2} \Upsilon_T \sqrt{T \log\left(T\right)}+\frac{\left(K-1\right)}{\delta^opt} \Upsilon_T \log\left(T\right)\right)$.
-Here $\delta^opt$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^change$ be the smallest magnitude of any change point on any arm and K is the number of arms~\citep{besson2019}.
+For a simple model with global changes, choosing parameter $\alpha$ and $\delta $ as $\sqrt{\frac{\log T}{T}}$ and $1/\sqrt{T}$ respectively, the regret becomes $O\left(\frac{K}{\left(\delta^{change}\right)^2} \Upsilon_T \sqrt{T \log\left(T\right)}+\frac{\left(K-1\right)}{\delta^{opt}} \Upsilon_T \log\left(T\right)\right)$.
+Here $\delta^{opt}$ denote the smallest value of a sub-optimality gap on one of the stationary segments, $\delta^{change}$ be the smallest magnitude of any change point on any arm and K is the number of arms~\citep{besson2019}.
 \par
 This strategy is efficient for the piece-wise stationary bandit problem.
 This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes $ \Upsilon_T $ , but without any other prior knowledge on the problem~\citep{besson2019}.
