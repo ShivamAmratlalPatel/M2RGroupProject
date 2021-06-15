@@ -71,15 +71,16 @@ We can conclude that regret of UCB1 grows at a rate of $\log N$.
 In KL-UCB strategy, we first pull each arm once and choose the next pull according to regret bounds rely on deviations results of independent interest~\citep{Garivier2011}.
 
 The regret of KL-UCB algorithm is \[\lim_{n\to \infty} \frac{E[R_n]}{\log n} \leq  \sum_{a:u_a < u_{a*}} \frac{u_{a*}-u_a}{d(u_a,u_{a*})}  \]
-where $d(p, q) = p \log(\dfrac{p}{q}) + (1 - p) * \log((1 - p/(1 - q))$ denotes the Kullback-Leibler diver- gence between Bernoulli distributions of parameters p and q, respectively.
-Here K is the number of arms, a* is the optimal arm and independent rewards bounded in [0,1].\citep{Garivier2011}
+where $d(p, q) = p \log(\sfrac{p}{q}) + (1 - p) * \log(\sfrac{(1 - p)}{(1 - q)})$ denotes the Kullback-Leibler diver- gence between Bernoulli distributions of parameters p and q, respectively.
+Here K is the number of arms, a* is the optimal arm and independent rewards bounded in [0,1]~\citep{Garivier2011}.
 \par
 \textbf{Pseudocode for Upper Confidence Bound Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of arms, number of arms, confidence level}
+    \KwData{number of rounds, number of arms, confidence level}
     \KwResult{regret after using UCB strategy\;}
-    \For{number of arms}{
+    Initialise environment with number of arms\;
+    \For{number of rounds}{
         Pick arm with highest upper confidence bound\;
         arm uncertainty = confidence level $\times\sqrt{\frac{\ln{N+1}}{N}}$\;
         arm upper confidence bound = arm realised expectation + arm uncertainty\;
@@ -130,17 +131,20 @@ which then becomes
 which tends to zero as $T\to\infty$, demonstrating that the algorithm is a zero regret strategy.
 
 
-\textbf{Pseudocode for Thompson Sampling Strategy}
+\textbf{Pseudocode for Bernoulli Thompson Sampling Strategy}
 \newline
 \begin{algorithm}[H]
-    \KwData{number of arms, number of arms, confidence level}
+    \KwData{number of rounds, number of arms}
     \KwResult{regret after using Thompson Sampling strategy\;}
-    Set all arms with prior distribution with a uniform distribution\;
-    \For{number of arms}{
+    Initialise environment with number of arms\;
+    Set all arms with same prior distribution Beta(1,1)\;
+    \For{number of rounds}{
         Sample distributions for all arms\;
-        Select arm with highest arg max of sample
-            Update success and failure numbers of arm
+        Select arm with highest arg max of Beta(successes+1,failures+1) sample\;
+        Update success and failure numbers of arm
         }
         Calculate and return regret
         \caption{Thompson Strategy}\label{alg:thompson_algorithm}
     \end{algorithm}
+    
+The pseudocode for Gaussian Thompson Sampling is similar except the prior and posterior distributions and parameters are different.
