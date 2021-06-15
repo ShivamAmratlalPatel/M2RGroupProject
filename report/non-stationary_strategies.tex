@@ -40,5 +40,5 @@ This actively adaptive method attains state-of-the-art regret upper-bounds when 
 \subsection{Limited-Memory DSEE}\label{subsec:limited-memory-dsee} %note to put reference on%
 Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases.
 In the n-th exploration phase, each arm is sampled L(k)=$\lceil\gamma\ln({n^{\rho}lb}\rceil$ times, and in the n-th exploitation phase, the arm is getting to have highest sample mean in the n-th exploration phase sampled $an^{\rho}l-NL(n)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
-\newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation phase is exponentially increased with the epoch number and we estimate the mean rewards referring to all the data collected in the previous phase of exploration.\citep{wei2018abruptly}
+\newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation phase is exponentially increased with the epoch number and we estimate the mean rewards referring to all the data collected in the previous phase of exploration~\citep{wei2018abruptly}.
 
