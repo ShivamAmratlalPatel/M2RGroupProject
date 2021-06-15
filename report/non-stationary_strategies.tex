@@ -4,7 +4,7 @@ In this section, we go through strategies for different non-stationary distribut
 
 \subsection{Discounted UCB}\label{subsec:discounted-ucb}
 Discounted UCB (D-UCB), which was proposed by~\citep{kocsis2006discounted}, is a way specifically implying in local channels due to the varying time of local environment.
-The principle is adding a discount factor, which is geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
+The principle is adding a discount factor, which is a geometric moving average over the samples, to the UCB Tuned (UCBT) algorithm, and the average reward is given by
 \begin{equation*}
     \bar{X}_t\left(\gamma,i\right)=\frac{\sum_{k=1}^t\gamma^{t-k}X_k\left(i\right)}{N_t\left(\gamma,i\right)}\mathfrak{1}, \quad
     N_t(\gamma,i)=\sum_{k=1}^t\gamma^{t-k}, \quad
@@ -38,7 +38,7 @@ This strategy is efficient for the piece-wise stationary bandit problem.
 This actively adaptive method attains state-of-the-art regret upper-bounds when tuned with a prior knowledge of the number of changes $ \Upsilon_T $ , but without any other prior knowledge on the problem~\citep{besson2019}.
 
 \subsection{Limited-Memory DSEE}\label{subsec:limited-memory-dsee} %note to put reference on%
-Limited-Memory DSEE is also the algorithm works for a non-stationary bandit, including both exploration and exploitation phases.
+Limited-Memory DSEE is also an algorithm which works for a non-stationary bandit, including both exploration and exploitation phases.
 In the n-th exploration phase, each arm is sampled L(k)=$\lceil\gamma\ln({n^{\rho}lb}\rceil$ times, and in the n-th exploitation phase, the arm is getting to have highest sample mean in the n-th exploration phase sampled $an^{\rho}l-NL(n)$ times, where $\rho, \gamma,a,b,l$ are parameters tuning on the characteristics of environment.
 \newline This is a similar algorithm to DSEE algorithm, wherein the length of exploitation phase is exponentially increased with the epoch number and we estimate the mean rewards referring to all the data collected in the previous phase of exploration~\citep{wei2018abruptly}.
 
