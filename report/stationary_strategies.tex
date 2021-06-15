@@ -2,7 +2,7 @@
 Here, we define \textbf{stationary} distributions for arms as those where the underlying distribution of each arm stays the same regardless of the round we are in - some strategies for this type of multi-armed bandit problem are described below.
 
 \subsection{$\epsilon$-Greedy}\label{subsec: $epsilon$-greedy}
-The $\epsilon$-Greedy strategy is where arms are 'explored randomly $\epsilon$ percentage of rounds and exploited $1-\epsilon$ percentage of the time'~\citep{DBLP:journals/corr/abs-1807-09809}.
+The $\epsilon$-Greedy strategy is where arms are "explored randomly $\epsilon$ percentage of rounds and exploited $1-\epsilon$ percentage of the time"~\citep{DBLP:journals/corr/abs-1807-09809}.
 It follows that the $\epsilon$ we choose must be in the interval [0,1], and we would like to choose $\epsilon$ so that we get the perfect balance between exploration (gathering data from all arms) and exploitation (playing the arm with the highest realised expectation).
 This theme is key to all solution strategies of the multi-armed bandit, but later strategies, rather than having such a clear divide between exploration and exploitation, have more of a dynamic aproach.
 
